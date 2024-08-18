@@ -1,9 +1,15 @@
 allow_embedding: false
-package_name: Classic_1
-name: Classic 1
+package_name: jDoc
+name: jDoc
 runtime_options:
   version: 2
   client_version: '3'
   server_version: python3-sandbox
   server_spec: {base: python310-standard}
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+startup_form: null
+startup: {type: form, module: homepage}
+metadata: {title: jDoc, description: Document Finder}

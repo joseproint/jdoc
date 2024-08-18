@@ -1,0 +1,35 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:dashboard.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: card_1
+    properties: {role: card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'OZKUGE,TSOWND'}
+    components:
+    - name: label_1
+      properties: {text: Plataforma Gestion de Documentos, align: center, bold: true, font_size: 21}
+      type: Label
+      layout_properties: {grid_position: 'PJFVIU,EGJAUW'}
+  - name: card_2
+    properties: {role: card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'MNRELT,SUNQET'}
+    components:
+    - name: btn_inicio
+      properties: {text: Inicia Sesion}
+      type: Button
+      layout_properties: {grid_position: 'YROAMF,QROXNJ'}
+      event_bindings: {click: btn_inicio_click}
+- name: lbl_titulo
+  properties:
+    text: |
+      jDoc
+  type: Label
+  layout_properties: {slot: title}
