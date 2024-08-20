@@ -138,7 +138,7 @@ def fFuPago(email):
   #creo que el email no es necesario pasarlo porque el usuario ya fue validado en fUserOk
   #print(email)
   #coachID=f_CoachRowID()
-  coachID=fCoachRowId(email)
+  coachID=f_CoachRowId(email)
   #user_row=app_tables.userinfo.get_by_id(coachID)
   user_row=app_tables.userinfo.get(userEmail=email)
   coachID=user_row.get_id()
@@ -151,6 +151,19 @@ def fFuPago(email):
   else:
     FuPago=datetime.datetime(1950,1,1)
   return FuPago
+
+@anvil.server.callable
+def f_CoachRowID():
+  usuario = anvil.server.session.get('usuario')
+  #cRow = app_tables.userinfo.get(userName=usuario)
+  cRow = anvil.server.call('get_datosUsuario',usuario)
+  if cRow is not None:
+    email = cRow['userEmail']
+    #rowID = app_tables.userinfo.get(userEmail=email).get_id()
+    #return rowID
+    return email
+  else:
+    return None
 
 @anvil.server.callable
 def roleEmpleado(email):
@@ -177,3 +190,15 @@ def fEmail(origen,destino,titulo,notas):
           text= notas)
   print(f"from_name:{origen} to:{destino} subject:{titulo} texto:{notas}")
   #anvil.email.send(from_name="Rafa",from_address="support@jclock.app",to="jose@proint.com",subject="probando",text="esto es una prueba")
+
+@anvil.server.callable
+def roleEmpleado(email):
+  #user_row=app_tables.userinfo.get(userEmail=email)
+  queryStr=f"""
+    select userRolId from userinfo where userEmail='{email}'
+  """
+  user_row=anvil.server.call('f_extDb',queryStr,True)
+  if user_row is not None:
+    role=user_row['userRolId']
+  return role
+

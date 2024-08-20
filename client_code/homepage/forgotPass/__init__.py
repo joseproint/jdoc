@@ -67,7 +67,8 @@ class forgotPass(forgotPassTemplate):
     email=self.text_box_email.text
     titulo=f"Reset Your jClock App Password"
     #nombreServidor="http://owbswcpspi01.prdweb.web:8080/"
-    nombreServidor="http://spimobile:8080/"
+    #nombreServidor="http://spimobile:8080/"
+    nombreServidor="localhost"
     ##notas=f""" Hi {userName}, You've asked to reset the password to your jClock App account. To update your password, click the link below:  {anvil.server.get_app_origin('published')}#?email={url_encode(email)}&confirm={url_encode(user_row['userLink_key'])} Thanks! """
     print(f"ok {email} userLink:{user_row['userLink_key']}")
     notas=f"""
