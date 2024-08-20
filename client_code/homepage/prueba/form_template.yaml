@@ -1,0 +1,12 @@
+container: {type: ColumnPanel}
+components:
+- name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'IEBBGB,FZKXXR'}
+  components:
+  - name: label_1
+    properties: {text: Prueba, align: center, bold: true}
+    type: Label
+    layout_properties: {grid_position: 'WNCTWI,JIKYMY'}
+is_package: true
