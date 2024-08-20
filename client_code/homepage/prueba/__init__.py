@@ -8,3 +8,4 @@ class prueba(pruebaTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    anvil.alert('Hola, este msg fue creado localmente...')
