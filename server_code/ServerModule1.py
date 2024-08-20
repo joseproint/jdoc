@@ -159,3 +159,21 @@ def roleEmpleado(email):
     role=user_row['userRolId']
   return role
 
+@anvil.server.callable
+def supervisor_registered(email):
+  #user_row=app_tables.userinfo.get(userEmail=email)
+  user_row = anvil.server.call('get_datosUsuarioSql',email)
+  if user_row is not None:
+    return True
+  else:
+    return False
+
+@anvil.server.callable
+def fEmail(origen,destino,titulo,notas):
+  anvil.email.send( from_name = origen,
+          from_address="support@jclock.app",         
+          to=destino,
+          subject = titulo,
+          text= notas)
+  print(f"from_name:{origen} to:{destino} subject:{titulo} texto:{notas}")
+  #anvil.email.send(from_name="Rafa",from_address="support@jclock.app",to="jose@proint.com",subject="probando",text="esto es una prueba")
