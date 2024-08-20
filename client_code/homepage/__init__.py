@@ -1,5 +1,6 @@
 from ._anvil_designer import homepageTemplate
 from anvil import *
+import anvil.server
 
 
 class homepage(homepageTemplate):

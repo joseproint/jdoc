@@ -7,7 +7,9 @@ unique_ids:
     homepage.mainmenu: '1723995158959267520776202.30795'
     homepage.prueba: '1724179384715866099429150.6545'
   modules: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1724182604405133134129118.8859'
+    jDoc: '1724183397337473908664175.3725'
   assets:
     dashboard.html: 7B4PCZH2UUGMD5FIHQSX4GO5ENMMU55Z
     single-column.html: CJOPWVX3AVXKHJ7ZWDX57PCCA6GP5VVO

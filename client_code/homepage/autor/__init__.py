@@ -1,5 +1,6 @@
 from ._anvil_designer import autorTemplate
 from anvil import *
+import anvil.server
 
 
 class autor(autorTemplate):

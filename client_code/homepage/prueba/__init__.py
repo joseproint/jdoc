@@ -1,5 +1,6 @@
 from ._anvil_designer import pruebaTemplate
 from anvil import *
+import anvil.server
 
 
 class prueba(pruebaTemplate):
