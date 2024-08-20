@@ -61,7 +61,8 @@ class login(loginTemplate):
         #  open_form('homepage.pago')
         #else:
         if role=="Empleado":
-          open_form('homepage.mainamenu', usuario)
+          #open_form('homepage.mainmenu', usuario)
+          open_form('homepage.mainmenu')
           #open_form('homepage.ponches')
         else:
           open_form('homepage')

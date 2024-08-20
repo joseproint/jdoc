@@ -137,25 +137,58 @@ def fComparaHash(email,password):
 def fFuPago(email):
   #creo que el email no es necesario pasarlo porque el usuario ya fue validado en fUserOk
   #print(email)
-  #coachID=f_CoachRowID()
-  coachID=fCoachRowId(email)
-  #user_row=app_tables.userinfo.get_by_id(coachID)
-  user_row=app_tables.userinfo.get(userEmail=email)
-  coachID=user_row.get_id()
+  ##coachID=f_CoachRowID()
+  #coachID=fCoachRowId(email)
+  ##user_row=app_tables.userinfo.get_by_id(coachID)
+  #user_row=app_tables.userinfo.get(userEmail=email)
+  queryStr=f"""
+    select userFuPago from userinfo where userEmail='{email}'
+  """
+  user_row = anvil.server.call('f_extDb',queryStr,True)
+  #coachID=user_row.get_id()
   if user_row is not None:
     FuPago=user_row['userFuPago']
     #print(f"FuPago desde Servidor: {FuPago}")
     if FuPago is None:
-      FuPago=datetime.datetime(2020,1,1)
+      #FuPago=datetime.datetime(2020,1,1)
+      FuPago=datetime(2020,1,1)
       #print(f"OK FuPago desde Servidor: {FuPago}")
   else:
-    FuPago=datetime.datetime(1950,1,1)
+    #FuPago=datetime.datetime(1950,1,1)
+    FuPago=datetime(1950,1,1)
   return FuPago
 
 @anvil.server.callable
 def roleEmpleado(email):
-  user_row=app_tables.userinfo.get(userEmail=email)
+  #user_row=app_tables.userinfo.get(userEmail=email)
+  queryStr=f"""
+    select userRolId from userinfo where userEmail='{email}'
+  """
+  user_row=anvil.server.call('f_extDb',queryStr,True)
   if user_row is not None:
     role=user_row['userRolId']
   return role
 
+@anvil.server.callable
+def blanqueaUsuario():
+    anvil.server.session['usuario'] = None
+    
+@anvil.server.callable
+def supervisor_registered(email):
+  #user_row=app_tables.userinfo.get(userEmail=email)
+  user_row = anvil.server.call('get_datosUsuarioSql',email)
+  if user_row is not None:
+    return True
+  else:
+    return False
+
+
+@anvil.server.callable
+def fEmail(origen,destino,titulo,notas):
+  anvil.email.send( from_name = origen,
+          from_address="support@jclock.app",         
+          to=destino,
+          subject = titulo,
+          text= notas)
+  print(f"from_name:{origen} to:{destino} subject:{titulo} texto:{notas}")
+  #anvil.email.send(from_name="Rafa",from_address="support@jclock.app",to="jose@proint.com",subject="probando",text="esto es una prueba")

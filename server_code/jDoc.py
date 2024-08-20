@@ -705,3 +705,19 @@ def f_userConfirmEmailSql(confirmedEmail,userLink,email):
   else:
     Notification('Invalid ser Info...')
 
+@anvil.server.callable
+def get_datosUsuarioSql(email):
+  queryStr=f"""
+    SELECT userName, userEmail, userCiaName, userPass, userConfirmed_email, userPassword_hash, userLink_key from userInfo where userEmail='{email}'
+  """
+  print(queryStr)
+  rowAf = f_extDb(queryStr,True)
+  #conn=connect()
+  #cur=conn.cursor()
+  #cur.execute(queryStr)
+  #rowAf=cur.fetchone()
+  #cur.close()
+  #conn.close()
+  print(rowAf)
+  return rowAf
+
