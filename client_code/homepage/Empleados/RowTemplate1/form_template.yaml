@@ -1,61 +1,42 @@
 container:
   type: DataRowPanel
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', auto_display_data: false,
-    visible: true, font_size: null, font: '', spacing_above: none, spacing_below: none,
-    italic: false, background: white, bold: false, underline: false}
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', auto_display_data: false, visible: true, font_size: null, font: '', spacing_above: none, spacing_below: none, italic: false, background: white, bold: false, underline: false}
   data_bindings:
   - {property: tag, code: 'self.item[''empNombre'']'}
   - {property: tag, code: 'self.item[''empTelefono'']'}
   - {property: tag, code: 'self.item[''empStatus'']'}
 components:
 - type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black,
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: white, bold: false, underline: false,
-    icon: ''}
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
   name: label_nombre
   layout_properties: {column: ZSYRSV}
   event_bindings: {show: label_nombre_show}
   data_bindings:
   - {property: text, code: 'self.item[''empNombre'']'}
 - type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black,
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: white, bold: false, underline: false,
-    icon: ''}
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
   name: label_Telefono
   layout_properties: {column: MYFBMA}
   data_bindings:
   - {property: text, code: 'self.item[''empTelefono'']'}
 - type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black,
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: white, bold: false, underline: false,
-    icon: ''}
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
   name: label_status
   layout_properties: {column: QZTOJK}
   data_bindings:
   - {property: text, code: 'self.item[''empStatus'']'}
 - type: Link
-  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
-    visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-    italic: false, background: '', bold: false, underline: false, icon: 'fa:trash'}
+  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:trash'}
   name: link_borrar
   layout_properties: {column: SXEIVP}
   event_bindings: {click: link_borrar_click}
 - type: Link
-  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
-    visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-    italic: false, background: '', bold: false, underline: false, icon: 'fa:pencil'}
+  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:pencil'}
   name: link_editar
   layout_properties: {column: OKEQUO}
   event_bindings: {click: link_editar_click}
 - type: Image
-  properties: {role: null, vertical_align: center, height: 40, tooltip: '', border: '',
-    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
-    source: '', spacing_below: small, background: '', horizontal_align: center}
+  properties: {role: null, vertical_align: center, height: 40, tooltip: '', border: '', foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small, source: '', spacing_below: small, background: '', horizontal_align: center}
   name: image_1
   layout_properties: {column: EWRZLQ}
   data_bindings: []
