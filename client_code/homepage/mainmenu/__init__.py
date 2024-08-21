@@ -20,6 +20,10 @@ class mainmenu(mainmenuTemplate):
 
   def link_usuarios_click(self, **event_args):
     """This method is called when the link is clicked"""
+<<<<<<< HEAD
     anvil.alert('Ok, aqui voy!')
     open_form('homepage.Empleados')
 
+=======
+    pass
+>>>>>>> 28f5781832076a792b17345f1bd982bf53c80266
