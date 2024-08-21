@@ -17,3 +17,7 @@ class mainmenu(mainmenuTemplate):
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('homepage')
+
+  def link_usuarios_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
