@@ -202,3 +202,75 @@ def roleEmpleado(email):
     role=user_row['userRolId']
   return role
 
+
+@anvil.server.callable
+def get_Empleados(status):
+  coachID=f_CoachRowID()
+  ##print(f"CoachID: {coachID}")
+  ##print(f"Estatus: {status}")
+  ##if status=='T':
+  ##  return app_tables.empleados.search(tables.order_by("empCodigo",ascending=True), empCoachID=coachID)
+  ##else:  
+  ##  return app_tables.empleados.search(empStatus=status,empCoachID=coachID)
+  rowEmpleados=anvil.server.call('get_empleadosSql',status,coachID)  
+  return rowEmpleados
+
+@anvil.server.callable
+def search_Empleados(query,status):
+  coachID=f_CoachRowID()
+  if status=='T':
+    #trae todos los empleados del coach indicado
+    #result = app_tables.empleados.search(empCoachID=coachID)
+    result = anvil.server.call('get_empleadosSql',status,coachID)
+  else:  
+    #result = app_tables.empleados.search(empStatus=status,empCoachID=coachID)
+    result = anvil.server.call('get_empleadosSql',status,coachID)
+  if query:
+    result = [
+      x for x in result
+      if query in x['empNombre']
+      #or query in x['last_name']
+      #or query in str(x['pay_grade'])
+      #or query in x['team']
+    ]
+  return result
+
+@anvil.server.callable
+def creaEmpleado(codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday):
+  if tipoPago=='Hour':
+    frecPago='Hourly'
+  from . import Nomina
+  tasaHora = Nomina.f_tasaHora(sueldo,frecPago)
+  coachID = f_CoachRowID()
+  #if not empRegistrado(email):
+    # creo el cliente porque no está registrado
+    #emp_row = app_tables.clientes.add_row(clteNombre=nombre, clteEmail=email, clteStatus=estado, clteTelefono=telefono, clteTarifa=precio, clteSexo=sexo, clteCFisica=cfisicaRow, clteDieta=dieta, clteDireccion=direccion, clteCiudad=ciudad, clteObjetivo=objetivo, clteDiasVisita=diasvisita, clteHoraVisita=horavisita, clteHoraVisita24=horavisita24, clteFoto=foto, clteCoachID=fUserRowId(),clteBirthday=birthday )
+  #emp_row = app_tables.empleados.add_row(empCodigo=codigo,empNombre=nombre, empEmail=email, empStatus=estado, empTelefono=telefono, empSueldo=sueldo, empFrecPago=frecPago, empTasaHora=tasaHora, empTipoPago=tipoPago,empSexo=sexo, empDireccion=direccion, empCiudad=ciudad, empFoto=foto, empCoachID=f_CoachRowID(),empBirthday=birthday )
+  anvil.server.call('InsertaEmpSql',codigo,nombre, email, estado, telefono, sueldo, frecPago, tasaHora, tipoPago,sexo, direccion, ciudad, foto, coachID, birthday)
+  # print(f"Customer {emp_row['clteNombre']} created")
+    #return emp_row
+  #else:
+    # actualizo los datos del cliente
+  #  emp_row=app_tables.clientes.get(clteEmail=email)
+  #  emp_row['empCodigo']=codigo
+  #  emp_row['empNombre']=nombre
+  #  emp_row['empEmail']=email
+  #  emp_row['empTelefono']=telefono
+  #  emp_row['empSueldo']=sueldo
+  #  emp_row['empSexo']=sexo
+  #  emp_row['empDireccion']=direccion
+  #  emp_row['empCiudad']=ciudad
+  #  emp_row['empFoto']=foto
+  #  emp_row['empBirthday']=birthday
+  #  # print(f"Customer {emp_row['empNombre']} updated!")
+  #  #return emp_row
+
+@anvil.server.callable
+def creaUsuarioEmp(username,email,password,foto):
+    pwhash = hash_password(password, bcrypt.gensalt())
+    role="Empleado" #para no presentar pantalla bloqueo por falta de pago
+    #user_row=app_tables.userinfo.add_row(userName=username,userEmail=email, userPass=password, userImage=foto, userPassword_hash=pwhash, userRolId=role)
+    userlinkey = None
+    anvil.server.call('InsertaUserSql',username,email,password,pwhash,role, userlinkey)
+    #user_row['userLink_key']=None
+    #return user_row

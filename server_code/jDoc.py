@@ -472,6 +472,7 @@ def get_empleadosSql(status,coachID):
         and empStatus='{status}'
         order by empCodigo Asc
     """
+  print(queryStr)
   rowEmp = f_extDb(queryStr,False)
   return rowEmp
   
@@ -720,3 +721,4 @@ def get_datosUsuarioSql(email):
   #conn.close()
   print(rowAf)
   return rowAf
+

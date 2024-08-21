@@ -46,7 +46,7 @@ class Empleados(EmpleadosTemplate):
 
   def link_home_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage')
+    open_form('homepage.mainmenu')
 
   def text_box_search_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
