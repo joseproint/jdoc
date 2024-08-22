@@ -36,13 +36,14 @@ class claseexp(claseexpTemplate):
       registrado=False
       # anvil.alert("No registrado")
 
-  def f_llenaPantalla(self, nombreBuscado, clasRow):
+  def f_llenaPantalla(self, id, clasRow):
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
     emp_row=clasRow
     #row_id = emp_row.get_id()
-    self.text_box_descripcion.text=nombreBuscado
+    self.text_box_codigo.text=id
+    self.text_box_descripcion.text=clasRow['descripcion']
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
     #self.text_box_direccion.text=emp_row['sucDireccion']
@@ -59,12 +60,12 @@ class claseexp(claseexpTemplate):
     global nombreAnt
     global ClasRowGlobal
 
-    nombre=self.text_box_nombre.text
+    nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
     #lat=self.text_box_lat.text
     #direccion=self.text_box_direccion.text
     #lng=self.text_box_lng.text
-    nombreNuevo = self.text_box_nombre.text
+    nombreNuevo = self.text_box_descripcion.text
     #maxRadio=float(self.text_box_maxradio.text)
     #hini=self.drop_down_hini.selected_value
     #hout=self.drop_down_hout.selected_value
@@ -110,12 +111,12 @@ class claseexp(claseexpTemplate):
 
   def button_delete_click(self, **event_args):
     """This method is called when the button is clicked"""
-    save_clicked = alert(f"Are you sure you want to delete {self.text_box_nombre.text}",
+    save_clicked = alert(f"Are you sure you want to delete {self.text_box_descripcion.text}",
                    large=True,
                    buttons=[("yes", True), ("Cancel", False)])
     if save_clicked:
       #anvil.server.call('delete_Sucursal', self.text_box_email.text)
-      anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_nombre.text)
+      anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
       #get_open_form().raise_event('x-refresh')
       open_form('homepage.sucursales')
 
