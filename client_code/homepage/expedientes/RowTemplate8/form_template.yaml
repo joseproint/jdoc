@@ -1,0 +1,25 @@
+container: {type: DataRowPanel}
+components:
+- type: Label
+  properties: {}
+  name: label_1
+  layout_properties: {column: RATJHT}
+  data_bindings:
+  - {property: text, code: 'self.item[''id'']', writeback: false}
+- type: Link
+  properties: {role: null, bold: false, align: left, col_widths: '', spacing_above: small, background: '', icon: 'fa:trash', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: ''}
+  name: link_delete
+  layout_properties: {column: DEAVIS}
+  event_bindings: {click: link_delete_click}
+- type: Link
+  properties: {role: null, bold: false, align: left, col_widths: '', spacing_above: small, background: '', icon: 'fa:pencil', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: ''}
+  name: link_edit
+  layout_properties: {column: UJBISM}
+  event_bindings: {click: link_edit_click}
+- type: Label
+  properties: {}
+  name: label_2
+  layout_properties: {column: GFZRFD}
+  data_bindings:
+  - {property: text, code: 'self.item[''descripcion'']', writeback: false}
+is_package: true
