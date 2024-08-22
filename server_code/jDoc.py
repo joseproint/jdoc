@@ -324,7 +324,7 @@ def creaSucursalSql(nombre, lat, lng, direccion, maxRadio, horaIni,horaFi):
   data = (nombre, lat, lng, direccion, maxRadio, horaIni,horaFi)
   queryStr = f"""
     INSERT INTO SUCURSALES (sucNombre, sucLat, sucLng, sucDireccion, sucMaxRadio, sucHoraIni,sucHoraFin)
-    VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
+    VALUES(%s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)
@@ -636,7 +636,8 @@ def comandoSql(queryStr,data):
       cur.execute(queryStr, tuple(dataok))
       conn.commit()
       print(tuple(dataok))
-    except pymysql.MySQLError as e:
+    #except pymysql.MySQLError as e:
+    except pymssql.Error as e:
       print('Got error {!r}, errno is {}'.format(e, e.args[0]))
       conn.rollback()
     cur.close()
@@ -653,7 +654,7 @@ def deleteSql(queryStr):
       cur.execute(queryStr)
       conn.commit()
       #print(tuple(dataok))
-    except pymysql.MySQLError as e:
+    except pymssql.Error as e:
       print('Got error {!r}, errno is {}'.format(e, e.args[0]))
       conn.rollback()
     cur.close()

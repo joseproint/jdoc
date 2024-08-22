@@ -59,11 +59,11 @@ class sucursal(sucursalTemplate):
     global nombreAnt
     global SucRowGlobal
 
-    lat=""
-    lng=""
+    lat=0
+    lng=0
     horaIni=""
     horaFin=""
-    maxRadio=""
+    maxRadio=0
     nombre=self.text_box_nombre.text
     #lat=self.text_box_lat.text
     direccion=self.text_box_direccion.text
@@ -94,7 +94,7 @@ class sucursal(sucursalTemplate):
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
         #anvil.server.call('f_sucActualiza',SucRowGlobal, nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
-        anvil.server.call('f_sucActualizaSql',SucRowGlobal, nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
+        anvil.server.call('f_sucActualizaSql', nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
