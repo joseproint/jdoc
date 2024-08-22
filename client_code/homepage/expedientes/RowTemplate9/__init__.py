@@ -24,6 +24,6 @@ class RowTemplate9(RowTemplate9Template):
                    buttons=[("yes", True), ("Cancel", False)])
     if delete_clicked:
       nombreCexp = self.label_1.text #nombre
-      anvil.server.call('deleteCExpFromGridSql', self.item,nombreCexp)
+      anvil.server.call('deleteExpFromGridSql', self.item,nombreCexp)
       #anvil.server.call('delete_Cliente', self.text_box_email.text)
       get_open_form().raise_event('x-refresh')

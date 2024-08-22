@@ -16,7 +16,7 @@ class expedientes(expedientesTemplate):
 
   def refresh(self, **event_args):
     #self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_expedientes.items = anvil.server.call('get_ClasesExpSql')
+    self.repeating_panel_expedientes.items = anvil.server.call('get_ExpedientesSql')
     
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""

@@ -62,6 +62,9 @@ class expediente(expedienteTemplate):
 
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
+    ubicacion=self.txt_ubicacion.text
+    tags=self.txt_tags.text
+    
     #lat=self.text_box_lat.text
     #direccion=self.text_box_direccion.text
     #lng=self.text_box_lng.text
@@ -90,7 +93,7 @@ class expediente(expedienteTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_claseExpActualizaSql',nombreAnt, nombre, codigo) 
+        anvil.server.call('f_claseExpActualizaSql',nombreAnt, nombre, ubicacion, tags, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -101,7 +104,7 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaClaseExpSql',nombre, codigo)
+        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags)
         anvil.alert(f"Branch {nombre} created!")
         open_form('homepage.expedientes')
 

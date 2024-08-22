@@ -340,6 +340,16 @@ def creaClaseExpSql(nombre, id):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
+def creaExpedienteSql(nombre, id, ubicacion, tags):
+  data = (id, nombre, ubicacion, tags)
+  queryStr = f"""
+    INSERT INTO EXPEDIENTE (id, descripcion, ubicacion, tags)
+    VALUES(%s, %s, %s, %s)
+  """
+  print(f"queryStr {queryStr} data {data}")
+  comandoSql(queryStr,data)
+  
+@anvil.server.callable
 def get_perfilUsuario(email):
   queryStr=f"""
       SELECT empNombre, empEmail, empCoachID from empleados where
@@ -511,6 +521,14 @@ def get_ClasesExpSql():
   """
   rowCExp = f_extDb(queryStr,False)
   return rowCExp
+
+@anvil.server.callable
+def get_ExpedientesSql():
+  queryStr=f"""
+      SELECT * from Expedientes
+  """
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
   
 @anvil.server.callable
 def actualizaPoncheSQL(row,fechaOriginal,poncheIni,poncheFin,email,empresa,fechaEntrada):
@@ -606,6 +624,17 @@ def deleteCExpFromGridSql(row,nombreExp):
       deleteSql(queryStr)
 
 @anvil.server.callable
+def deleteExpFromGridSql(row,nombreExp):
+    if row is not None:
+      queryStr=f"""
+        DELETE FROM EXPEDIENTES 
+        WHERE descripcion='{nombreExp}'
+      """
+      #data = (nombreSuc)
+      print(f"{queryStr}")
+      deleteSql(queryStr)
+      
+@anvil.server.callable
 def delete_EmpleadoSql(email,empresa):
     queryStr=f"""
       DELETE FROM EMPLEADOS 
@@ -694,7 +723,7 @@ def f_sucActualizaSql(nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFi
     Notification('New name is empty')
 
 @anvil.server.callable
-def f_claseExpActualizaSql(nombreAnt,nombre,id):
+def f_claseExpActualizaSql(nombreAnt,nombre, id):
   if nombre is not None:
       queryStr=f"""
       UPDATE CLASESEXP SET descripcion=%s
@@ -706,6 +735,19 @@ def f_claseExpActualizaSql(nombreAnt,nombre,id):
   else:
     Notification('Nueva descripción está vacía..')
 
+@anvil.server.callable
+def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, id):
+  if nombre is not None:
+      queryStr=f"""
+      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s
+        WHERE id=%s
+      """
+      data=(nombre,ubicacion,tags,id)
+      print(f"queryStr {queryStr} datos {data}")
+      comandoSql(queryStr,data)
+  else:
+    Notification('Nueva descripción está vacía..')
+    
 @anvil.server.callable
 def f_userActualizaSql(nombre,email,telefono,ciaName,lunchTime,nombreAnt):
   if nombre is not None:
