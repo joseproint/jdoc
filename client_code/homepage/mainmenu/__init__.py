@@ -24,4 +24,4 @@ class mainmenu(mainmenuTemplate):
 
   def link_ubicaciones_click(self, **event_args):
     """This method is called when the link is clicked"""
-    pass
+    open_form('homepage.sucursales')
