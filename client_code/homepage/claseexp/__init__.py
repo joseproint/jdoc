@@ -103,7 +103,7 @@ class claseexp(claseexpTemplate):
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         anvil.server.call('creaClaseExpSql',nombre, codigo)
         anvil.alert(f"Branch {nombre} created!")
-        open_form('homepage.sucursales')
+        open_form('homepage.clasesexp')
 
   def convert(self,time_string):
     date_var = time.strptime(time_string, '%H:%M')
@@ -118,7 +118,7 @@ class claseexp(claseexpTemplate):
       #anvil.server.call('delete_Sucursal', self.text_box_email.text)
       anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
       #get_open_form().raise_event('x-refresh')
-      open_form('homepage.sucursales')
+      open_form('homepage.clasesexp')
 
   def button_cancel_click(self, **event_args):
     """This method is called when the button is clicked"""
