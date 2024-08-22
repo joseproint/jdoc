@@ -20,7 +20,7 @@ class sucursales(sucursalesTemplate):
     
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage')
+    open_form('homepage.mainmenu')
 
   def link_add_click(self, **event_args):
     """This method is called when the link is clicked"""
