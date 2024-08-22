@@ -14,7 +14,7 @@ components:
       col_widths: {}
       grid_position: RYRLUL,ETGGBQ
   - type: ColumnPanel
-    properties: {role: null, col_widths: '{"IDOPYI":5,"LWRZBM":55,"IXLGPT":50,"JWZPFV":3,"PSIDYH":43,"QDGUMR":5,"GDCORR":35,"WGCCJA":5,"PSIGOY":55,"RBVMTM":8,"CPPZCW":5,"UATHOR":15,"WTFWYX":10,"RLJBHB":10,"DVCGEM":10,"PXEETX":10,"SADRZD":7,"WZTHLF":7}', spacing_above: small, background: '', wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: large, visible: true, border: '', tooltip: ''}
+    properties: {role: null, col_widths: '{"IDOPYI":5,"LWRZBM":55,"IXLGPT":50,"QDGUMR":5,"GDCORR":35,"RBVMTM":8}', spacing_above: small, background: '', wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: large, visible: true, border: '', tooltip: ''}
     name: column_panel_1
     layout_properties: {grid_position: 'TRVLPQ,KVFGQW', row_background: ''}
     components:
@@ -23,7 +23,7 @@ components:
       name: spacer_2
       layout_properties: {grid_position: 'ZHYZMM,FZOOJH'}
     - type: Label
-      properties: {role: title, bold: false, align: center, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Branch Basic Information}
+      properties: {role: title, bold: false, align: center, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Clase de Expediente}
       name: label_1
       layout_properties: {grid_position: 'UJEJAK,IXLGPT'}
     - type: Link
@@ -38,160 +38,22 @@ components:
       layout_properties: {grid_position: 'YKXKXB,BCSUPD', row_background: ''}
       event_bindings: {click: link_back_click}
     - type: Label
-      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Name}
+      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Codigo}
       name: label_2
       layout_properties: {grid_position: 'RYVSDZ,IDOPYI'}
     - type: TextBox
       properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: text, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: ''}
-      name: text_box_nombre
+      name: text_box_codigo
       layout_properties: {grid_position: 'RYVSDZ,LWRZBM'}
       event_bindings: {pressed_enter: text_box_nombre_pressed_enter}
     - type: Label
-      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Address}
-      name: label_direccion
+      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Descripcion}
+      name: label_descripcion
       layout_properties: {grid_position: 'MVIYGE,QDGUMR'}
     - type: TextBox
       properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: text, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: ''}
-      name: text_box_direccion
+      name: text_box_descripcion
       layout_properties: {grid_position: 'MVIYGE,GDCORR'}
-    - type: Link
-      properties: {role: null, bold: true, align: left, col_widths: '', spacing_above: small, background: '', icon: 'fa:map-marker', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: 18, tooltip: Type the address and click here to get geo coordinates!, text: ''}
-      name: link_geoloc
-      layout_properties: {grid_position: 'MVIYGE,RBVMTM'}
-      event_bindings: {click: link_geoloc_click}
-    - type: Label
-      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Lat}
-      name: label_lat
-      layout_properties: {grid_position: 'RQGJSL,WGCCJA'}
-    - type: TextBox
-      properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: number, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: '0'}
-      name: text_box_lat
-      layout_properties: {grid_position: 'RQGJSL,PSIGOY'}
-      event_bindings: {pressed_enter: text_box_telefono_pressed_enter}
-    - type: Label
-      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Lng}
-      name: label_lng
-      layout_properties: {grid_position: 'GNNOFC,JWZPFV'}
-    - type: TextBox
-      properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: number, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: '0'}
-      name: text_box_lng
-      layout_properties: {grid_position: 'GNNOFC,PSIDYH'}
-    - type: Label
-      properties: {role: null, bold: false, align: left, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Max Radio Mts}
-      name: label_3
-      layout_properties: {grid_position: 'LEXILJ,CPPZCW'}
-    - type: TextBox
-      properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: text, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: Max radio in meters to capture de punch. If the employee is out of this limit then he/she won't be able to capture the punch., text: '50.00'}
-      name: text_box_maxradio
-      layout_properties: {grid_position: 'LEXILJ,UATHOR'}
-    - type: Label
-      properties: {role: null, bold: false, align: right, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: In Hour}
-      name: label_4
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,WTFWYX
-    - type: DropDown
-      properties:
-        role: null
-        include_placeholder: false
-        bold: false
-        align: full
-        placeholder: ''
-        spacing_above: small
-        background: ''
-        underline: false
-        font: ''
-        foreground: ''
-        items: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
-        spacing_below: small
-        visible: true
-        border: ''
-        italic: false
-        enabled: true
-        font_size: null
-        tooltip: ''
-      name: drop_down_hini
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,RLJBHB
-    - type: DropDown
-      properties:
-        role: null
-        include_placeholder: false
-        bold: false
-        align: full
-        placeholder: ''
-        spacing_above: small
-        background: ''
-        underline: false
-        font: ''
-        foreground: ''
-        items: ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '59']
-        spacing_below: small
-        visible: true
-        border: ''
-        italic: false
-        enabled: true
-        font_size: null
-        tooltip: ''
-      name: drop_down_mini
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,DVCGEM
-    - type: Label
-      properties: {role: null, bold: false, align: right, spacing_above: small, background: '', icon: '', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Out Hour}
-      name: label_5
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,PXEETX
-    - type: DropDown
-      properties:
-        role: null
-        include_placeholder: false
-        bold: false
-        align: full
-        placeholder: ''
-        spacing_above: small
-        background: ''
-        underline: false
-        font: ''
-        foreground: ''
-        items: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
-        spacing_below: small
-        visible: true
-        border: ''
-        italic: false
-        enabled: true
-        font_size: null
-        tooltip: ''
-      name: drop_down_hout
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,SADRZD
-    - type: DropDown
-      properties:
-        role: null
-        include_placeholder: false
-        bold: false
-        align: full
-        placeholder: ''
-        spacing_above: small
-        background: ''
-        underline: false
-        font: ''
-        foreground: ''
-        items: ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '59']
-        spacing_below: small
-        visible: true
-        border: ''
-        italic: false
-        enabled: true
-        font_size: null
-        tooltip: ''
-      name: drop_down_mout
-      layout_properties:
-        col_widths: {}
-        grid_position: LEXILJ,WZTHLF
     - type: ColumnPanel
       properties: {col_widths: '{}'}
       name: column_panel_4

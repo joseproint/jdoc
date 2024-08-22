@@ -328,7 +328,17 @@ def creaSucursalSql(nombre, lat, lng, direccion, coachID, maxRadio, horaIni,hora
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)
-  
+
+@anvil.server.callable
+def creaClaseExpSql(nombre, id):
+  data = (id, nombre)
+  queryStr = f"""
+    INSERT INTO CLASESEXP (id, descripcion)
+    VALUES(%s, %s)
+  """
+  print(f"queryStr {queryStr} data {data}")
+  comandoSql(queryStr,data)
+
 @anvil.server.callable
 def get_perfilUsuario(email):
   queryStr=f"""
@@ -681,6 +691,19 @@ def f_sucActualizaSql(nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFi
       comandoSql(queryStr,data)
   else:
     Notification('New name is empty')
+
+@anvil.server.callable
+def f_claseExpActualizaSql(nombreAnt,nombre,id):
+  if nombre is not None:
+      queryStr=f"""
+      UPDATE CLASESEXP SET descripcion=%s
+        WHERE id=%s
+      """
+      data=(nombre,id)
+      print(f"queryStr {queryStr} datos {data}")
+      comandoSql(queryStr,data)
+  else:
+    Notification('Nueva descripción está vacía..')
 
 @anvil.server.callable
 def f_userActualizaSql(nombre,email,telefono,ciaName,lunchTime,nombreAnt):
