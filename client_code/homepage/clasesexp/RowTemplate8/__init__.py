@@ -5,7 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class RowTemplate7(RowTemplate8Template):
+class RowTemplate8(RowTemplate8Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -14,7 +14,7 @@ class RowTemplate7(RowTemplate8Template):
 
   def link_edit_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.sucursal',self.label_1.text, self.item )
+    open_form('homepage.claseexp',self.label_1.text, self.item )
     
 
   def link_delete_click(self, **event_args):
@@ -23,7 +23,7 @@ class RowTemplate7(RowTemplate8Template):
                    large=True,
                    buttons=[("yes", True), ("Cancel", False)])
     if delete_clicked:
-      nombreSuc = self.label_1.text #nombre
-      anvil.server.call('deleteSucFromGridSql', self.item,nombreSuc)
+      nombreCexp = self.label_1.text #nombre
+      anvil.server.call('deleteCExpFromGridSql', self.item,nombreCexp)
       #anvil.server.call('delete_Cliente', self.text_box_email.text)
       get_open_form().raise_event('x-refresh')

@@ -493,6 +493,14 @@ def get_SucursalesSql():
   """
   rowSucursales = f_extDb(queryStr,False)
   return rowSucursales
+
+@anvil.server.callable
+def get_ClasesExpSql():
+  queryStr=f"""
+      SELECT * from clasesExp
+  """
+  rowCExp = f_extDb(queryStr,False)
+  return rowCExp
   
 @anvil.server.callable
 def actualizaPoncheSQL(row,fechaOriginal,poncheIni,poncheFin,email,empresa,fechaEntrada):
@@ -575,7 +583,18 @@ def deleteSucFromGridSql(row,nombreSuc):
       #data = (nombreSuc)
       print(f"{queryStr}")
       deleteSql(queryStr)
-      
+
+@anvil.server.callable
+def deleteCExpFromGridSql(row,nombreExp):
+    if row is not None:
+      queryStr=f"""
+        DELETE FROM CLASESEXP 
+        WHERE sucNombre='{nombreExp}'
+      """
+      #data = (nombreSuc)
+      print(f"{queryStr}")
+      deleteSql(queryStr)
+
 @anvil.server.callable
 def delete_EmpleadoSql(email,empresa):
     queryStr=f"""

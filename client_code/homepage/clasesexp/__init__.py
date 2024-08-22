@@ -16,7 +16,7 @@ class sucursales(sucursalesTemplate):
 
   def refresh(self, **event_args):
     #self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_sucursales.items = anvil.server.call('get_SucursalesSql')
+    self.repeating_panel_sucursales.items = anvil.server.call('get_ClasesExpSql')
     
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -26,7 +26,7 @@ class sucursales(sucursalesTemplate):
     """This method is called when the link is clicked"""
     descripcion=None
     sucRow=None
-    open_form('homepage.sucursal',descripcion,sucRow)
+    open_form('homepage.claseexp',descripcion,sucRow)
 
 
 
