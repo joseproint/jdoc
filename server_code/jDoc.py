@@ -320,10 +320,10 @@ def InsertaUserSql(username,email,password,pwhash,role,userlinkey):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
-def creaSucursalSql(nombre, lat, lng, direccion, coachID, maxRadio, horaIni,horaFi):
-  data = (nombre, lat, lng, direccion, coachID, maxRadio, horaIni,horaFi)
+def creaSucursalSql(nombre, lat, lng, direccion, maxRadio, horaIni,horaFi):
+  data = (nombre, lat, lng, direccion, maxRadio, horaIni,horaFi)
   queryStr = f"""
-    INSERT INTO SUCURSALES (sucNombre, sucLat, sucLng, sucDireccion, sucCiaEmail, sucMaxRadio, sucHoraIni,sucHoraFin)
+    INSERT INTO SUCURSALES (sucNombre, sucLat, sucLng, sucDireccion, sucMaxRadio, sucHoraIni,sucHoraFin)
     VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
