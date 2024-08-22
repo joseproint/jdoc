@@ -93,7 +93,8 @@ class sucursal(sucursalTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_sucActualiza',SucRowGlobal, nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
+        #anvil.server.call('f_sucActualiza',SucRowGlobal, nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
+        anvil.server.call('f_sucActualizaSql',SucRowGlobal, nombreAnt,nombre,lat,lng,direccion,maxRadio,horaIni,horaFin) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -104,7 +105,8 @@ class sucursal(sucursalTemplate):
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaSucursal',nombre,lat,lng,direccion,maxRadio,horaIni,horaFin)
+        #anvil.server.call('creaSucursal',nombre,lat,lng,direccion,maxRadio,horaIni,horaFin)
+        anvil.server.call('creaSucursalSql',nombre,lat,lng,direccion,maxRadio,horaIni,horaFin)
         anvil.alert(f"Branch {nombre} created!")
         open_form('homepage.sucursales')
 
