@@ -54,7 +54,7 @@ components:
     layout_properties: {grid_position: 'BNSMTN,CFRQYY'}
     components:
     - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: homepage.sucursales.RowTemplate8}
+      properties: {spacing_above: none, spacing_below: none, item_template: homepage.clasesexp.RowTemplate8}
       name: repeating_panel_sucursales
       layout_properties: {}
 is_package: true
