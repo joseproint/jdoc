@@ -32,5 +32,5 @@ class mainmenu(mainmenuTemplate):
 
   def link_clasesExp_click(self, **event_args):
     """This method is called when the link is clicked"""
-    pass
+    open_form('homepage.clasesexp')
 
