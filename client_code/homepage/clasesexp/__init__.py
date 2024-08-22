@@ -1,11 +1,11 @@
-from ._anvil_designer import sucursalesTemplate
+from ._anvil_designer import clasesexpTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class sucursales(sucursalesTemplate):
+class clasesexp(clasesexpTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -16,7 +16,7 @@ class sucursales(sucursalesTemplate):
 
   def refresh(self, **event_args):
     #self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_sucursales.items = anvil.server.call('get_ClasesExpSql')
+    self.repeating_panel_clasesexp.items = anvil.server.call('get_ClasesExpSql')
     
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""

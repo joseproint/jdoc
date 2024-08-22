@@ -55,6 +55,6 @@ components:
     components:
     - type: RepeatingPanel
       properties: {spacing_above: none, spacing_below: none, item_template: homepage.clasesexp.RowTemplate8}
-      name: repeating_panel_sucursales
+      name: repeating_panel_clasesexp
       layout_properties: {}
 is_package: true

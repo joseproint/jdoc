@@ -26,6 +26,7 @@ class mainmenu(mainmenuTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.sucursales')
 
-  def link_clasesExp_click(self, **event_args):
+  def link_clasesexp_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('homepage.clasesexp')
+
