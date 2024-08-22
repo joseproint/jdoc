@@ -1,4 +1,4 @@
-from ._anvil_designer import clasexpTemplate
+from ._anvil_designer import claseexpTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
