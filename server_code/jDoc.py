@@ -343,7 +343,7 @@ def creaClaseExpSql(nombre, id):
 def creaExpedienteSql(nombre, id, ubicacion, tags):
   data = (id, nombre, ubicacion, tags)
   queryStr = f"""
-    INSERT INTO EXPEDIENTE (id, descripcion, ubicacion, tags)
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags)
     VALUES(%s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
@@ -624,16 +624,16 @@ def deleteCExpFromGridSql(row,nombreExp):
       deleteSql(queryStr)
 
 @anvil.server.callable
-def deleteExpFromGridSql(row,nombreExp):
+def deleteExpFromGridSql(row,id):
     if row is not None:
       queryStr=f"""
         DELETE FROM EXPEDIENTES 
-        WHERE descripcion='{nombreExp}'
+        WHERE id='{id}'
       """
       #data = (nombreSuc)
       print(f"{queryStr}")
       deleteSql(queryStr)
-      
+         
 @anvil.server.callable
 def delete_EmpleadoSql(email,empresa):
     queryStr=f"""
