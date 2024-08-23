@@ -169,7 +169,7 @@ class expediente(expedienteTemplate):
     """This method is called when an item is selected"""
     global sucursal,deposito,archivo,gaveta,seccion
     dep = self.dd_deposito.selected_value
-    deposito=str(dep).zfill(3)
+    deposito=str(dep).zfill(2)
     self.actUbicacion()
     
   def dd_archivo_change(self, **event_args):
@@ -183,13 +183,13 @@ class expediente(expedienteTemplate):
     """This method is called when an item is selected"""
     global sucursal,deposito,archivo,gaveta,seccion
     gav = self.dd_gaveta.selected_value
-    gaveta=str(gav).zfill(3)
+    gaveta=str(gav).zfill(2)
     self.actUbicacion()
     
   def dd_seccion_change(self, **event_args):
     """This method is called when an item is selected"""
     global sucursal,deposito,archivo,gaveta,seccion
     sec = self.dd_seccion.selected_value
-    seccion=str(sec).zfill(3)
+    seccion=str(sec).zfill(2)
     self.actUbicacion()
     
