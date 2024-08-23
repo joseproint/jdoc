@@ -55,11 +55,11 @@ class expediente(expedienteTemplate):
     self.txt_ubicacion.text=ubicacion
     self.txt_tags.text=clasRow['tags']
     ubicacion='00102030405'
-    sucursal=ubicacion[0:3]
-    deposito=ubicacion[3:2]
-    archivo=ubicacion[5:2]
-    gaveta=ubicacion[7:2]
-    seccion=ubicacion[9:2]
+    sucursal =ubicacion[0:3]
+    deposito =ubicacion[3:4]
+    archivo =ubicacion[5:6]
+    gaveta =ubicacion[7:8]
+    seccion =ubicacion[9:11]
     alert(f"suc:{sucursal} dep:{deposito} arc:{archivo} gav:{gaveta} sec:{seccion}")
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
