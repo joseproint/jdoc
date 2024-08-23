@@ -99,6 +99,7 @@ class expediente(expedienteTemplate):
     nombre=nombre.strip()
     ubicacion=ubicacion.strip()
     tags=tags.strip()
+    clase=clase.strip()
     
     #lat=self.text_box_lat.text
     #direccion=self.text_box_direccion.text
