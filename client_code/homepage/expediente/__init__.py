@@ -57,6 +57,7 @@ class expediente(expedienteTemplate):
     self.txt_ubicacion.text=ubicacion
     self.txt_tags.text=clasRow['tags']
     clase=clasRow['clase']
+    alert(f"clase: {clase}")
     self.dd_clases.selected_value=clase
     
     #ubicacion='00102030405'
