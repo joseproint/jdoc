@@ -56,6 +56,7 @@ class expediente(expedienteTemplate):
     #self.drop_down_mout.selected_value=emp_row['sucHoraFin'][3:]
     #self.marcarMapa()
     # Any code you write here will run before the form opens.
+    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(100)]
 
   def button_salvar_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -128,7 +129,7 @@ class expediente(expedienteTemplate):
       #get_open_form().raise_event('x-refresh')
       open_form('homepage.expedientes')
 
-  def button_cancel_click(self, **event_args):
+  def btn_etiqueta_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('homepage.expedientes')
 
