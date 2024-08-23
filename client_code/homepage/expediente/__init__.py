@@ -56,8 +56,13 @@ class expediente(expedienteTemplate):
     #self.drop_down_mout.selected_value=emp_row['sucHoraFin'][3:]
     #self.marcarMapa()
     # Any code you write here will run before the form opens.
-    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(100)]
 
+    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(100)]
+    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(10)]
+    self.dd_archivo.items = [(f"Archivo {r}",r) for r inrange(20)]
+    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(8)]
+    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(20)]
+                             
   def button_salvar_click(self, **event_args):
     """This method is called when the button is clicked"""
     global nombreAnt
