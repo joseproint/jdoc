@@ -14,8 +14,14 @@ class expediente(expedienteTemplate):
     global registrado
     global nombreAnt
     global ClasRowGlobal
-
+    global sucursal,deposito,archivo,gaveta,seccion
+    
     ClasRowGlobal=clasRow
+    sucursal="001"
+    deposito="01"
+    archivo="01"
+    gaveta="01"
+    seccion="01"
     
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
