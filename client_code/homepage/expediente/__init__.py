@@ -47,6 +47,7 @@ class expediente(expedienteTemplate):
   def f_llenaPantalla(self, id, clasRow):
     global sucursal,deposito,archivo,gaveta,seccion
     global rowClases
+    self.llenaListas(rowClases)
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
@@ -66,7 +67,7 @@ class expediente(expedienteTemplate):
     archivo =ubicacion[5:7]
     gaveta =ubicacion[7:9]
     seccion =ubicacion[9:11]
-    
+
     #alert(f"suc:{sucursal} dep:{deposito} arc:{archivo} gav:{gaveta} sec:{seccion}")
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
@@ -79,6 +80,7 @@ class expediente(expedienteTemplate):
     #self.marcarMapa()
     # Any code you write here will run before the form opens.
 
+  def llenaListas(self, rowClases):
     self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(100)]
     self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(10)]
     self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(20)]
