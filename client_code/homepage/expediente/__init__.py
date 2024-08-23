@@ -149,7 +149,8 @@ class expediente(expedienteTemplate):
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
     row = self.dd_sucursal.selected_value
-    sucursal=row[0]
-    otro=row[1]
-    alert(f"sucursal: {sucursal} otro: {otro}")
+    print(f"row: {row}")
+    #sucursal=row[0]
+    #otro=row[1]
+    #alert(f"sucursal: {sucursal} otro: {otro}")
 
