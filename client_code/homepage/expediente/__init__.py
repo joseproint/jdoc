@@ -60,7 +60,7 @@ class expediente(expedienteTemplate):
     clase=clasRow['clase']
     alert(f"clase: {clase}")
     #self.dd_clases.selected_value=clase
-    self.dd_clases.selected_value="Certificado Deposito"
+    self.dd_clases.selected_value="CFinanciero"
     
     #ubicacion='00102030405'
     sucursal =ubicacion[0:3]
