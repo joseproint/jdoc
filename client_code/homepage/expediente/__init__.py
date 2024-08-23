@@ -214,4 +214,8 @@ class expediente(expedienteTemplate):
     sec = self.dd_seccion.selected_value
     seccion=str(sec).zfill(2)
     self.actUbicacion()
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.dd_clases.selected_value=self.txt_ubicacion.text
     
