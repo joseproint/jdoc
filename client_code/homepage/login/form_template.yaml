@@ -13,18 +13,18 @@ components:
     layout_properties:
       col_widths: {}
       grid_position: VHPUTZ,JDPCWD
-      row_background: black
+      row_background: white
   - type: ColumnPanel
-    properties: {role: null, col_widths: '{}', spacing_above: small, background: 'theme:Disabled Container', wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: small, visible: true, border: '', tooltip: ''}
+    properties: {role: null, col_widths: '{}', spacing_above: small, background: white, wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: small, visible: true, border: '', tooltip: ''}
     name: column_panel_2
-    layout_properties: {grid_position: 'YOPIDX,JPXEEK', row_background: black}
+    layout_properties: {grid_position: 'YOPIDX,JPXEEK', row_background: white}
     components:
     - type: Label
-      properties: {role: null, bold: true, align: center, spacing_above: small, background: black, icon: '', underline: false, font: '', icon_align: left, foreground: white, spacing_below: small, visible: true, border: '', italic: false, font_size: 26, tooltip: '', text: jDoc}
+      properties: {role: null, bold: true, align: center, spacing_above: small, background: white, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:Accent 1', spacing_below: small, visible: true, border: '', italic: false, font_size: 26, tooltip: '', text: jDoc}
       name: label_3
-      layout_properties: {grid_position: 'VWHETG,GDCPZG', row_background: black}
+      layout_properties: {grid_position: 'VWHETG,GDCPZG', row_background: white}
     - type: ColumnPanel
-      properties: {role: elevated-card, col_widths: '{"GXJGJI":10,"SSOMRE":50,"WEFZTC":10,"RYFXEX":50}', spacing_above: large, background: black, wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: large, visible: true, border: '', tooltip: ''}
+      properties: {role: elevated-card, col_widths: '{"GXJGJI":10,"SSOMRE":50,"WEFZTC":10,"RYFXEX":50}', spacing_above: large, background: white, wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: large, visible: true, border: '', tooltip: ''}
       name: column_panel_1
       layout_properties: {grid_position: 'FDYHLG,TWUOSJ', full_width_row: false, row_background: ''}
       components:
@@ -37,39 +37,39 @@ components:
           row_background: ''
         event_bindings: {click: link_home_click}
       - type: Label
-        properties: {role: null, bold: true, align: left, spacing_above: small, background: black, icon: '', underline: false, font: '', icon_align: left, foreground: yellow, spacing_below: small, visible: true, border: '', italic: false, font_size: 20, tooltip: '', text: Log in}
+        properties: {role: null, bold: true, align: left, spacing_above: small, background: white, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:Accent 1', spacing_below: small, visible: true, border: '', italic: false, font_size: 20, tooltip: '', text: Log in}
         name: label_2
         layout_properties: {grid_position: 'VRHQQD,WKDSGG'}
       - type: Label
-        properties: {role: null, bold: true, align: left, spacing_above: small, background: black, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:On Primary', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: 'Email:'}
+        properties: {role: null, bold: true, align: left, spacing_above: small, background: white, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:On Primary', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: 'Email:'}
         name: label_1
         layout_properties: {grid_position: 'BSUQEC,GXJGJI'}
       - type: TextBox
-        properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: email, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: ''}
+        properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: email, underline: false, font: '', hide_text: false, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: jose@proint.com}
         name: text_box_email
         layout_properties: {grid_position: 'BSUQEC,SSOMRE'}
       - type: Label
-        properties: {role: null, bold: true, align: left, spacing_above: small, background: black, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:On Primary', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Password}
+        properties: {role: null, bold: true, align: left, spacing_above: small, background: white, icon: '', underline: false, font: '', icon_align: left, foreground: 'theme:On Primary', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Password}
         name: label_password
         layout_properties: {grid_position: 'SPYLTA,WEFZTC'}
       - type: TextBox
-        properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: text, underline: false, font: '', hide_text: true, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: ''}
+        properties: {role: null, bold: false, align: left, placeholder: '', spacing_above: small, background: '', type: text, underline: false, font: '', hide_text: true, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: '123'}
         name: text_box_password
         layout_properties: {grid_position: 'SPYLTA,RYFXEX'}
         event_bindings: {pressed_enter: text_box_1_pressed_enter}
     - type: Link
-      properties: {role: null, bold: false, align: center, col_widths: '', spacing_above: small, background: '', icon: '', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: white, url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: 12, tooltip: '', text: 'Forgot your password?'}
+      properties: {role: null, bold: false, align: center, col_widths: '', spacing_above: small, background: 'theme:Background', icon: '', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: 'theme:Accent 1', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: 12, tooltip: '', text: 'Forgot your password?'}
       name: link_forgot
-      layout_properties: {grid_position: 'TTTZYA,JBLFWW', row_background: black}
+      layout_properties: {grid_position: 'TTTZYA,JBLFWW', row_background: white}
       event_bindings: {click: link_forgot_click}
     - type: Link
-      properties: {role: null, bold: true, align: center, col_widths: '{}', spacing_above: small, background: black, icon: 'fa:user-plus', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: yellow, url: '', spacing_below: small, visible: false, border: '', italic: false, font_size: 14, tooltip: '', text: Sign up for a new account}
+      properties: {role: null, bold: true, align: center, col_widths: '{}', spacing_above: small, background: 'theme:Background', icon: 'fa:user-plus', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: 'theme:Accent 1', url: '', spacing_below: small, visible: false, border: '', italic: false, font_size: 14, tooltip: '', text: Sign up for a new account}
       name: link_signup
       layout_properties: {grid_position: 'LDASCF,YCYBFD', row_background: ''}
       event_bindings: {click: link_signup_click}
       components: []
     - type: Link
-      properties: {role: null, bold: true, align: center, col_widths: '', spacing_above: small, background: black, icon: '', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: white, url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: 14, tooltip: '', text: Log in}
+      properties: {role: null, bold: true, align: center, col_widths: '', spacing_above: small, background: 'theme:Background', icon: '', wrap_on: mobile, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: 'theme:Accent 1', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: 14, tooltip: '', text: Log in}
       name: link_login
       layout_properties: {grid_position: 'GIZHID,VBLOUG'}
       event_bindings: {click: link_login_click}
