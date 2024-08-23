@@ -44,15 +44,23 @@ class expediente(expedienteTemplate):
       # anvil.alert("No registrado")
 
   def f_llenaPantalla(self, id, clasRow):
+    global sucursal,deposito,archivo,gaveta,seccion
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
-    emp_row=clasRow
     #row_id = emp_row.get_id()
+    ubicacion=clasRow['ubicacion']
     self.text_box_codigo.text=id
     self.text_box_descripcion.text=clasRow['descripcion']
-    self.txt_ubicacion.text=clasRow['ubicacion']
+    self.txt_ubicacion.text=ubicacion
     self.txt_tags.text=clasRow['tags']
+    ubicacion='00102030405'
+    sucursal=ubicacion[0,3]
+    deposito=ubicacion[3,2]
+    archivo=ubicacion[5:2]
+    gaveta=ubicacion[7,2]
+    seccion=ubicacion[9,2]
+    alert(f"suc:{sucursal} dep:{deposito} arc:{archivo} gav:{gaveta} sec:{seccion}")
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
     #self.text_box_direccion.text=emp_row['sucDireccion']
