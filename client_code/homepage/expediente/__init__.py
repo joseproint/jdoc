@@ -83,7 +83,7 @@ class expediente(expedienteTemplate):
     self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(20)]
     self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(8)]
     self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(20)]
-    self.dd_clases.items = [(rowClases['descripcion'],r) for r in rowClases]
+    self.dd_clases.items = [(r['descripcion'], r) for r in rowClases]
     
   def button_salvar_click(self, **event_args):
     """This method is called when the button is clicked"""
