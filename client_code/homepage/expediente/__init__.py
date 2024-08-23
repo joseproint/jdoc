@@ -5,6 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import time
+global sucursal,deposito,archivo,gaveta,seccion
 
 class expediente(expedienteTemplate):
   def __init__(self, descripcion, clasRow, **properties):
@@ -146,10 +147,43 @@ class expediente(expedienteTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.mainmenu')
 
+  def actUbicacion(self):
+    global sucursal,deposito,archivo,gaveta,seccion
+    ubicacion=f"{sucursal}{deposito}{archivo}{gaveta}{seccion}"  
+    self.txt_ubicacion.text=ubicacion
+    
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
     suc = self.dd_sucursal.selected_value
+    global sucursal,deposito,archivo,gaveta,seccion
     sucursal=str(suc).zfill(3)
-    print(f"suc: {sucursal}")
+    self.actUbicacion()
     
-      
+  def dd_deposito_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    dep = self.dd_deposito.selected_value
+    deposito=str(dep).zfill(3)
+    self.actUbicacion()
+    
+  def dd_archivo_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    arc = self.dd_archivo.selected_value
+    archivo=str(arc).zfill(3)
+    self.actUbicacion()
+    
+  def dd_gaveta_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    gav = self.dd_gaveta.selected_value
+    gaveta=str(gav).zfill(3)
+    self.actUbicacion()
+    
+  def dd_seccion_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    sec = self.dd_seccion.selected_value
+    seccion=str(sec).zfill(3)
+    self.actUbicacion()
+    

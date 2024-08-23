@@ -73,22 +73,26 @@ components:
         items: []
       type: DropDown
       layout_properties: {grid_position: 'QGMJXB,TPORQO'}
+      event_bindings: {change: dd_deposito_change}
     - name: dd_archivo
       properties: {tooltip: Archivo}
       type: DropDown
       layout_properties: {grid_position: 'QGMJXB,NKJYKB'}
+      event_bindings: {change: dd_archivo_change}
     - name: dd_gaveta
       properties:
         tooltip: Gaveta
         items: []
       type: DropDown
       layout_properties: {grid_position: 'QGMJXB,IIJWSZ'}
+      event_bindings: {change: dd_gaveta_change}
     - name: dd_seccion
       properties:
         tooltip: Seccion
         items: []
       type: DropDown
       layout_properties: {grid_position: 'QGMJXB,QDZPVM'}
+      event_bindings: {change: dd_seccion_change}
     - name: lbl_tags
       properties: {text: Tags}
       type: Label
