@@ -6,6 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import time
 global sucursal,deposito,archivo,gaveta,seccion
+global rowClases
 
 class expediente(expedienteTemplate):
   def __init__(self, descripcion, clasRow, **properties):
@@ -13,7 +14,7 @@ class expediente(expedienteTemplate):
     self.init_components(**properties)
     global registrado
     global nombreAnt
-    global ClasRowGlobal
+    global ClasRowGlobal, rowClases
     global sucursal,deposito,archivo,gaveta,seccion
     
     ClasRowGlobal=clasRow
@@ -25,7 +26,7 @@ class expediente(expedienteTemplate):
     
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-
+    rowClases =  anvil.server.call('get_ClasesExpSql')
     #cf_rows = anvil.server.call('get_CFisicas')
     ##cf_lista= [(r['cfdescripcion'],r['cfdescripcion']) for r in cf_rows]
     #cf_lista= [(r['cfdescripcion'],r) for r in cf_rows]
@@ -45,6 +46,7 @@ class expediente(expedienteTemplate):
 
   def f_llenaPantalla(self, id, clasRow):
     global sucursal,deposito,archivo,gaveta,seccion
+    global rowClases
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
@@ -54,6 +56,7 @@ class expediente(expedienteTemplate):
     self.text_box_descripcion.text=clasRow['descripcion']
     self.txt_ubicacion.text=ubicacion
     self.txt_tags.text=clasRow['tags']
+    self.txt_clase.text=clasRow['clase']
     
     #ubicacion='00102030405'
     sucursal =ubicacion[0:3]
@@ -79,7 +82,8 @@ class expediente(expedienteTemplate):
     self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(20)]
     self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(8)]
     self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(20)]
-                             
+    self.dd_clases.items = [(rowClases['descripcion'],r) for r in rowClases]
+    
   def button_salvar_click(self, **event_args):
     """This method is called when the button is clicked"""
     global nombreAnt
@@ -88,10 +92,12 @@ class expediente(expedienteTemplate):
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
     ubicacion=self.txt_ubicacion.text
+    clase = self.txt_clase.text
     tags=self.txt_tags.text
     codigo=codigo.strip()
     nombre=nombre.strip()
     ubicacion=ubicacion.strip()
+    tags=tags.strip()
     
     #lat=self.text_box_lat.text
     #direccion=self.text_box_direccion.text
@@ -121,7 +127,7 @@ class expediente(expedienteTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, codigo) 
+        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, clase, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -132,7 +138,7 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags)
+        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase)
         anvil.alert(f"Branch {nombre} created!")
         open_form('homepage.expedientes')
 
@@ -186,7 +192,7 @@ class expediente(expedienteTemplate):
     """This method is called when an item is selected"""
     global sucursal,deposito,archivo,gaveta,seccion
     arc = self.dd_archivo.selected_value
-    archivo=str(arc).zfill(3)
+    archivo=str(arc).zfill(2)
     self.actUbicacion()
     
   def dd_gaveta_change(self, **event_args):

@@ -340,11 +340,11 @@ def creaClaseExpSql(nombre, id):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
-def creaExpedienteSql(nombre, id, ubicacion, tags):
-  data = (id, nombre, ubicacion, tags)
+def creaExpedienteSql(nombre, id, ubicacion, tags, clase):
+  data = (id, nombre, ubicacion, tags, clase)
   queryStr = f"""
-    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags)
-    VALUES(%s, %s, %s, %s)
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase)
+    VALUES(%s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)
@@ -529,7 +529,7 @@ def get_ExpedientesSql():
   """
   rowExp = f_extDb(queryStr,False)
   return rowExp
-  
+ 
 @anvil.server.callable
 def actualizaPoncheSQL(row,fechaOriginal,poncheIni,poncheFin,email,empresa,fechaEntrada):
     if row is not None:
@@ -736,13 +736,13 @@ def f_claseExpActualizaSql(nombreAnt,nombre, id):
     Notification('Nueva descripción está vacía..')
 
 @anvil.server.callable
-def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, id):
+def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, id):
   if nombre is not None:
       queryStr=f"""
-      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s
+      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s
         WHERE id=%s
       """
-      data=(nombre,ubicacion,tags,id)
+      data=(nombre,ubicacion,tags,clase,id)
       print(f"queryStr {queryStr} datos {data}")
       comandoSql(queryStr,data)
   else:
