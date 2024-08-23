@@ -66,6 +66,7 @@ components:
       properties: {tooltip: Sucursal}
       type: DropDown
       layout_properties: {grid_position: 'QGMJXB,UVJNSP'}
+      event_bindings: {change: dd_sucursal_change}
     - name: dd_deposito
       properties:
         tooltip: Deposito

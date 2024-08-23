@@ -146,3 +146,10 @@ class expediente(expedienteTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.mainmenu')
 
+  def dd_sucursal_change(self, **event_args):
+    """This method is called when an item is selected"""
+    row = self.dd_sucursal.selected_value
+    sucursal=row[0]
+    otro=row[1]
+    alert(f"sucursal: {sucursal} otro: {otro}")
+
