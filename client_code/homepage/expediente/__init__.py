@@ -56,7 +56,8 @@ class expediente(expedienteTemplate):
     self.text_box_descripcion.text=clasRow['descripcion']
     self.txt_ubicacion.text=ubicacion
     self.txt_tags.text=clasRow['tags']
-    self.txt_clase.text=clasRow['clase']
+    clase=clasRow['clase']
+    self.dd_clases.selected_value=clase
     
     #ubicacion='00102030405'
     sucursal =ubicacion[0:3]
