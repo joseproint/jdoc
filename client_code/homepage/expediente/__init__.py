@@ -149,7 +149,7 @@ class expediente(expedienteTemplate):
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
     suc = self.dd_sucursal.selected_value
-    suc=suc.zfill(3)
-    print(f"suc: {suc}")
+    sucursal=str(suc).zfill(3)
+    print(f"suc: {sucursal}")
     
       
