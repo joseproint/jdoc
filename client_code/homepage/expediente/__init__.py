@@ -94,7 +94,7 @@ class expediente(expedienteTemplate):
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
     ubicacion=self.txt_ubicacion.text
-    clase = self.dd_clases.selected_value['id']
+    clase = self.dd_clases.selected_value
     tags=self.txt_tags.text
     codigo=codigo.strip()
     nombre=nombre.strip()
