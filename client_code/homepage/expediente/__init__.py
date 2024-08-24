@@ -69,16 +69,16 @@ class expediente(expedienteTemplate):
     gaveta =ubicacion[7:9]
     seccion =ubicacion[9:11]
 
-    suc = sucursal.strip("0")
-    dep = deposito.strip("0")
-    arc = archivo.strip("0")
-    gav = gaveta.strip("0")
-    sec = seccion.strip("0")
-    suc=1
-    dep=2
-    arc=3
-    gav=4
-    sec=5
+    suc = int(sucursal.strip("0"))
+    dep = int(deposito.strip("0"))
+    arc = int(archivo.strip("0"))
+    gav = int(gaveta.strip("0"))
+    sec = int(seccion.strip("0"))
+    #suc=1
+    #dep=2
+    #arc=3
+    #gav=4
+    #sec=5
     self.dd_sucursal.selected_value = suc
     self.dd_deposito.selected_value = dep
     self.dd_archivo.selected_value = arc
