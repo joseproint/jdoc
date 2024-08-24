@@ -276,7 +276,7 @@ def creaUsuarioEmp(username,email,password,foto):
     #return user_row
 
 @anvil.server.callable
-def search_Expediente(dato):
+def search_Expedientes(dato):
   coachID=f_CoachRowID()
   #result = anvil.server.call('get_empleadosSql',status,coachID)
   result = anvil.server.call('get_expSearchSql',dato)
