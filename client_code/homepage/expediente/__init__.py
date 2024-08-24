@@ -74,11 +74,11 @@ class expediente(expedienteTemplate):
     arc = archivo.strip("0")
     gav = gaveta.strip("0")
     sec = seccion.strip("0")
-    suc='1'
-    dep='2'
-    arc='3'
-    gav='4'
-    sec='5'
+    suc=1
+    dep=2
+    arc=3
+    gav=4
+    sec=5
     self.dd_sucursal.selected_value = suc
     self.dd_deposito.selected_value = dep
     self.dd_archivo.selected_value = arc
