@@ -274,3 +274,23 @@ def creaUsuarioEmp(username,email,password,foto):
     anvil.server.call('InsertaUserSql',username,email,password,pwhash,role, userlinkey)
     #user_row['userLink_key']=None
     #return user_row
+
+@anvil.server.callable
+def search_Expediente(query,status):
+  coachID=f_CoachRowID()
+  if status=='T':
+    #trae todos los empleados del coach indicado
+    #result = app_tables.empleados.search(empCoachID=coachID)
+    result = anvil.server.call('get_empleadosSql',status,coachID)
+  else:  
+    #result = app_tables.empleados.search(empStatus=status,empCoachID=coachID)
+    result = anvil.server.call('get_empleadosSql',status,coachID)
+  if query:
+    result = [
+      x for x in result
+      if query in x['empNombre']
+      #or query in x['last_name']
+      #or query in str(x['pay_grade'])
+      #or query in x['team']
+    ]
+  return result

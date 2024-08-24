@@ -28,5 +28,18 @@ class expedientes(expedientesTemplate):
     sucRow=None
     open_form('homepage.expediente',descripcion,sucRow)
 
+  def text_box_search_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
+  def search(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    #status = self.drop_down_status.selected_value
+    #status=self.realStatus(status)
+    self.repeating_panel_empleados.items = anvil.server.call(
+      'search_Empleados',
+      self.text_box_search.text, status
+    )
+
 
 

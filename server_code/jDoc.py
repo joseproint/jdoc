@@ -340,11 +340,11 @@ def creaClaseExpSql(nombre, id):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
-def creaExpedienteSql(nombre, id, ubicacion, tags, clase):
-  data = (id, nombre, ubicacion, tags, clase)
+def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion):
+  data = (id, nombre, ubicacion, tags, clase, email, fcreacion)
   queryStr = f"""
-    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase)
-    VALUES(%s, %s, %s, %s, %s)
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion)
+    VALUES(%s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)

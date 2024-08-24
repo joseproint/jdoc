@@ -4,7 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ..logo import Globals
 import time
+import datetime
 global sucursal,deposito,archivo,gaveta,seccion
 global rowClases
 
@@ -99,11 +101,11 @@ class expediente(expedienteTemplate):
     # Any code you write here will run before the form opens.
 
   def llenaListas(self, rowClases):
-    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,100)]
-    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,10)]
-    self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,20)]
-    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,8)]
-    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,20)]
+    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,101)]
+    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
+    self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
+    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
+    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,21)]
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
     
   def button_salvar_click(self, **event_args):
@@ -163,8 +165,10 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase)
-        anvil.alert(f"Branch {nombre} created!")
+        email=Globals.f_getEmail()
+        fecha=datetime.today()
+        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
+        anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
 
   def convert(self,time_string):
