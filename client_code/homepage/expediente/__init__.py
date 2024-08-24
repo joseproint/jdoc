@@ -5,6 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..logo import Globals
+from .. import hpGlobals
 import time
 import datetime
 global sucursal,deposito,archivo,gaveta,seccion
@@ -167,7 +168,7 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         email=Globals.f_getEmail()
-        fecha=datetime.today()
+        fecha=hpGlobals.f_fechaHoy()
         anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
