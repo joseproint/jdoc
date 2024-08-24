@@ -45,7 +45,7 @@ class expediente(expedienteTemplate):
     else:
       registrado=False
       # anvil.alert("No registrado")
-      self.llenaListas()
+      self.llenaListas(rowClases)
 
   def f_llenaPantalla(self, id, clasRow):
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
