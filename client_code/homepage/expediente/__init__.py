@@ -86,7 +86,7 @@ class expediente(expedienteTemplate):
     self.dd_gaveta.selected_value = gav
     self.dd_seccion.selected_value = sec
     
-    alert(f"suc:{suc} dep:{dep} arc:{arc} gav:{gav} sec:{sec}")
+    #alert(f"suc:{suc} dep:{dep} arc:{arc} gav:{gav} sec:{sec}")
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
     #self.text_box_direccion.text=emp_row['sucDireccion']
@@ -99,11 +99,11 @@ class expediente(expedienteTemplate):
     # Any code you write here will run before the form opens.
 
   def llenaListas(self, rowClases):
-    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(100)]
-    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(10)]
-    self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(20)]
-    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(8)]
-    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(20)]
+    self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,100)]
+    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,10)]
+    self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,20)]
+    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,8)]
+    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,20)]
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
     
   def button_salvar_click(self, **event_args):
