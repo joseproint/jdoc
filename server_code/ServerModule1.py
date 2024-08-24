@@ -276,7 +276,7 @@ def creaUsuarioEmp(username,email,password,foto):
     #return user_row
 
 @anvil.server.callable
-def search_Expediente(query,status):
+def search_Expediente(query):
   coachID=f_CoachRowID()
   if status=='T':
     #trae todos los empleados del coach indicado
