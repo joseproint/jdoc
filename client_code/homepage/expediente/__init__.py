@@ -15,7 +15,7 @@ class expediente(expedienteTemplate):
     global registrado
     global nombreAnt
     global ClasRowGlobal, rowClases
-    global sucursal,deposito,archivo,gaveta,seccion
+    global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     
     ClasRowGlobal=clasRow
     sucursal="001"
@@ -45,7 +45,7 @@ class expediente(expedienteTemplate):
       # anvil.alert("No registrado")
 
   def f_llenaPantalla(self, id, clasRow):
-    global sucursal,deposito,archivo,gaveta,seccion
+    global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     global rowClases
     self.llenaListas(rowClases)
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
@@ -55,7 +55,8 @@ class expediente(expedienteTemplate):
     ubicacion=clasRow['ubicacion']
     self.text_box_codigo.text=id
     self.text_box_descripcion.text=clasRow['descripcion']
-    self.txt_ubicacion.text=ubicacion
+    #self.txt_ubicacion.text=ubicacion
+    ubiGlobal = ubicacion
     self.txt_tags.text=clasRow['tags']
     clase=clasRow['clase']
     #alert(f"clase: {clase}")
@@ -109,10 +110,12 @@ class expediente(expedienteTemplate):
     """This method is called when the button is clicked"""
     global nombreAnt
     global ClasRowGlobal
+    global ubiGlobal
 
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
-    ubicacion=self.txt_ubicacion.text
+    #ubicacion=self.txt_ubicacion.text
+    ubicacion = ubiGlobal
     clase = self.dd_clases.selected_value
     tags=self.txt_tags.text
     codigo=codigo.strip()
@@ -192,9 +195,10 @@ class expediente(expedienteTemplate):
     open_form('homepage.mainmenu')
 
   def actUbicacion(self):
-    global sucursal,deposito,archivo,gaveta,seccion
+    global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     ubicacion=f"{sucursal}{deposito}{archivo}{gaveta}{seccion}"  
-    self.txt_ubicacion.text=ubicacion
+    #self.txt_ubicacion.text=ubicacion
+    ubiGlobal = ubicacion
     
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -231,7 +235,3 @@ class expediente(expedienteTemplate):
     seccion=str(sec).zfill(2)
     self.actUbicacion()
 
-  def button_1_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.dd_clases.selected_value=self.txt_ubicacion.text
-    
