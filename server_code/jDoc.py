@@ -529,7 +529,19 @@ def get_ExpedientesSql():
   """
   rowExp = f_extDb(queryStr,False)
   return rowExp
- 
+
+@anvil.server.callable
+def get_expSearchSql(dato):
+  queryStr=f"""
+      SELECT * from Expedientes
+      where id like '%{dato}%'
+      or descripcion like '%{dato}%'
+      or tags like '%{dato}%'
+      or clase like '%{dato}%'
+  """
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
+  
 @anvil.server.callable
 def actualizaPoncheSQL(row,fechaOriginal,poncheIni,poncheFin,email,empresa,fechaEntrada):
     if row is not None:

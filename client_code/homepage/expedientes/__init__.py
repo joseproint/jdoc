@@ -37,8 +37,8 @@ class expedientes(expedientesTemplate):
     #status = self.drop_down_status.selected_value
     #status=self.realStatus(status)
     self.repeating_panel_empleados.items = anvil.server.call(
-      'search_Empleados',
-      self.text_box_search.text, status
+      'search_Expedientes',
+      self.text_box_search.text
     )
 
 
