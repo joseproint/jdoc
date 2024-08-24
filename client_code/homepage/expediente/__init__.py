@@ -9,7 +9,7 @@ from .. import hpGlobals
 import time
 import datetime
 global sucursal,deposito,archivo,gaveta,seccion
-global rowClases
+global rowClases, server_time
 
 class expediente(expedienteTemplate):
   def __init__(self, descripcion, clasRow, **properties):
@@ -115,7 +115,11 @@ class expediente(expedienteTemplate):
     global nombreAnt
     global ClasRowGlobal
     global ubiGlobal
+    global server_time
 
+    server_time = anvil.server.call('ServerTimeZone')
+    fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+    
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
     #ubicacion=self.txt_ubicacion.text
@@ -168,7 +172,6 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         email=Globals.f_getEmail()
-        fecha=hpGlobals.f_fechaHoy()
         anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')

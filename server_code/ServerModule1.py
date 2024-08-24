@@ -291,3 +291,19 @@ def search_Expedientes(dato):
   #    #or query in x['team']
   #  ]
   return result
+
+@anvil.server.callable
+def ServerTimeZone():
+    #from zoneinfo import ZoneInfo
+    #import zoneinfo
+    import pytz
+    #print(f"Zonas: {zoneinfo.available_timezones()}")
+    #server_timezone = ZoneInfo('EST')
+    #server_timezone = pytz.timezone('America/New_York') #Europe/Paris
+    #server_timezone = pytz.timezone('America/La_Paz') #Europe/Paris
+    server_timezone = pytz.timezone('America/Manaus') #Europe/Paris
+    server_time = datetime.now(server_timezone)
+    # Print the current time in Boston
+    #print("Current time in Server EST is:", server_time.strftime('%Y-%m-%d %H:%M:%S %Z%z'))  
+    print("Current time in Server EST is:", server_time.strftime('%Y-%m-%d %H:%M:%S.%f'))  
+    return server_time
