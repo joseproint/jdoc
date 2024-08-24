@@ -36,7 +36,7 @@ class expedientes(expedientesTemplate):
     """This method is called when the user presses Enter in this text box"""
     #status = self.drop_down_status.selected_value
     #status=self.realStatus(status)
-    self.repeating_panel_empleados.items = anvil.server.call(
+    self.repeating_panel_expedientes.items = anvil.server.call(
       'search_Expedientes',
       self.text_box_search.text
     )
