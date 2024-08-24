@@ -69,6 +69,12 @@ class expediente(expedienteTemplate):
     gaveta =ubicacion[7:9]
     seccion =ubicacion[9:11]
 
+    self.dd_sucursal.selected_value = sucursal
+    self.dd_deposito.selected_value = deposito
+    self.dd_archivo.selected_value = archivo
+    self.dd_gaveta.selected_value = gaveta
+    self.dd_seccion.selected_value = seccion
+    
     #alert(f"suc:{sucursal} dep:{deposito} arc:{archivo} gav:{gaveta} sec:{seccion}")
     #self.text_box_lat.text=emp_row['sucLat']
     #self.text_box_lng.text=emp_row['sucLng']
