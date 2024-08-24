@@ -23,26 +23,6 @@ components:
   type: ColumnPanel
   layout_properties: {grid_position: 'REHFPQ,OJJHSV'}
   components:
-  - name: outlined_card_2
-    properties: {role: outlined-card, col_widths: '{"FZKAOS":20,"GQLFVY":20,"CYYBKL":20}', spacing_above: small, background: '', wrap_on: never, col_spacing: medium, foreground: '', spacing_below: small, visible: true, border: '', tooltip: ''}
-    type: ColumnPanel
-    layout_properties: {grid_position: ''}
-    components:
-    - name: link_tservice
-      properties: {role: null, bold: false, align: left, col_widths: '{}', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Terms of Service}
-      type: Link
-      layout_properties: {grid_position: 'GFKVMG,FZKAOS', row_background: ''}
-      event_bindings: {click: link_tservice_click}
-    - name: link_pnotice
-      properties: {role: null, bold: false, align: center, col_widths: '', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Privace Notice}
-      type: Link
-      layout_properties: {grid_position: 'GFKVMG,GQLFVY', row_background: ''}
-      event_bindings: {click: link_pnotice_click}
-    - name: link_tuse
-      properties: {role: null, bold: false, align: right, col_widths: '{}', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Terms of Use}
-      type: Link
-      layout_properties: {grid_position: 'GFKVMG,CYYBKL', row_background: ''}
-      event_bindings: {click: link_tuse_click}
   - name: rich_text_1
     properties: {role: null, format: markdown, align: left, spacing_above: small, content: 'Our mission is  to help companies get more productive, save time, deliver a better experience , and grow their business.', background: '', font: '', foreground: '', spacing_below: small, visible: true, border: '', enable_slots: true, font_size: 18, tooltip: '', data: null}
     type: RichText
@@ -52,6 +32,26 @@ components:
       properties: {height: 187}
       type: Spacer
       layout_properties: {}
+    - name: outlined_card_2
+      properties: {role: outlined-card, col_widths: '{"CYYBKL":20}', spacing_above: small, background: '', wrap_on: never, col_spacing: medium, foreground: '', spacing_below: small, visible: true, border: '', tooltip: ''}
+      type: ColumnPanel
+      components:
+      - name: link_tservice
+        properties: {role: null, bold: false, align: left, col_widths: '{}', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Terms of Service}
+        type: Link
+        layout_properties: {grid_position: 'GFKVMG,XXBAJN'}
+        event_bindings: {click: link_tservice_click}
+        components: []
+      - name: link_pnotice
+        properties: {role: null, bold: false, align: center, col_widths: '', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Privace Notice}
+        type: Link
+        layout_properties: {grid_position: 'GFKVMG,ZTFHKU'}
+        event_bindings: {click: link_pnotice_click}
+      - name: link_tuse
+        properties: {role: null, bold: false, align: right, col_widths: '{}', spacing_above: small, background: '', icon: '', wrap_on: never, underline: false, font: '', col_spacing: medium, icon_align: left, foreground: '', url: '', spacing_below: small, visible: true, border: '', italic: false, font_size: null, tooltip: '', text: Terms of Use}
+        type: Link
+        layout_properties: {grid_position: 'GFKVMG,CYYBKL', row_background: ''}
+        event_bindings: {click: link_tuse_click}
   - name: spacer_2
     properties: {visible: true, spacing_above: small, spacing_below: small, height: 32, tooltip: ''}
     type: Spacer
