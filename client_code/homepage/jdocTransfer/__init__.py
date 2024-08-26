@@ -30,9 +30,9 @@ class jdocTransfer(jdocTransferTemplate):
 
     status='T'
     emp_rows = anvil.server.call('get_Empleados',status)
-    emp_lista= [(r['empNombre'],r) for r in emp_rows]
-    self.drop_down_empleados.items = sorted(list(set(emp_lista)))
-  
+    #emp_lista= [(r['empNombre'],r) for r in emp_rows]
+    #self.drop_down_empleados.items = sorted(list(set(emp_lista)))
+    self.drop_down_empleados.items = emp_rows
     # Any code you write here will run before the form opens.
 
   def link_back_click(self, **event_args):
