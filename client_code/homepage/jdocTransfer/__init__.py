@@ -61,7 +61,7 @@ class jdocTransfer(jdocTransferTemplate):
   def btn_guardar_click(self, **event_args):
     """This method is called when the button is clicked"""
     fecha=self.fechaRetorno.date
-    etiqueta=self.rowAF.txt_box_codigo.text
+    etiqueta=self.rowAF.text_box_codigo.text
 
     #loc=self.drop_down_loc.selected_value
     #self.loc=loc['sucID']
