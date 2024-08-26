@@ -89,9 +89,11 @@ class jdocTransfer(jdocTransferTemplate):
     notas=self.txt_notes.text
     firma=None
     cia=''
-    codigoaf=self.rowAF.codigoaf
-    descripcion=self.rowAF.descripcion
-
+    #codigoaf=self.rowAF.codigoaf
+    #descripcion=self.rowAF.descripcion
+    codigoaf=etiqueta
+    descripcion='?'
+    
     self.loc=0
     self.lat=0
     self.depto=''
