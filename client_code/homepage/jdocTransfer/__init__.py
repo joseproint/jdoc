@@ -35,7 +35,7 @@ class jdocTransfer(jdocTransferTemplate):
 
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.jdocview')
+    open_form('homepage.expedientes')
 
   def drop_down_loc_change(self, **event_args):
     """This method is called when an item is selected"""
