@@ -74,7 +74,9 @@ class jdocTransfer(jdocTransferTemplate):
     ##depname=depto['nombre']
     
     empleado=self.drop_down_empleados.selected_value
-    self.empleado=empleado['empCodigo']
+    alert(f"Empleado:{empleado}")
+    #self.empleado=empleado['empCodigo']
+    self.empleado=empleado
     codemp=self.empleado
     #self.nombreemp=empleado['empNombre']
     nombreemp=self.empname
