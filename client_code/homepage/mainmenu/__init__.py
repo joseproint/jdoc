@@ -40,5 +40,5 @@ class mainmenu(mainmenuTemplate):
 
   def link_transferencia_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.jdocTransfer')
+    open_form('homepage.jdocTransfer', self)
 
