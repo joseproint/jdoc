@@ -5,6 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from .. import hpGlobals
+from ..logo import Globals
 import json
 
 class jdocTransfer(jdocTransferTemplate):
@@ -61,15 +62,15 @@ class jdocTransfer(jdocTransferTemplate):
     fecha=self.fechaRetorno.date
     etiqueta=self.rowAF.txt_codigo.text
 
-    loc=self.drop_down_loc.selected_value
-    self.loc=loc['sucID']
-    locname=self.locname
-    depname=self.depname
+    #loc=self.drop_down_loc.selected_value
+    #self.loc=loc['sucID']
+    #locname=self.locname
+    #depname=self.depname
 
-    depto=self.drop_down_dep.selected_value
-    self.depto=depto['depto'] #guardo el codigo del depto
-    depto=self.depto
-    #depname=depto['nombre']
+    #depto=self.drop_down_dep.selected_value
+    #self.depto=depto['depto'] #guardo el codigo del depto
+    #depto=self.depto
+    ##depname=depto['nombre']
     
     empleado=self.drop_down_empleados.selected_value
     self.empleado=empleado['empCodigo']
@@ -77,14 +78,20 @@ class jdocTransfer(jdocTransferTemplate):
     #self.nombreemp=empleado['empNombre']
     nombreemp=self.empname
     
-    lat=hpGlobals.f_getLat()
-    lng=hpGlobals.f_getLng()
+    #lat=hpGlobals.f_getLat()
+    #lng=hpGlobals.f_getLng()
     notas=self.txt_notes.text
     firma=None
     cia=''
     codigoaf=self.rowAF.codigoaf
     descripcion=self.rowAF.descripcion
-    
+
+    self.loc=0
+    self.lat=0
+    self.depto=''
+    locname=''
+    depname=''
+        
     if anvil.server.call('transfiereAF',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,lat,lng,firma,notas)==True:
       #transferencia Ok
       alert('transferencia realizada')
@@ -100,9 +107,10 @@ class jdocTransfer(jdocTransferTemplate):
     anvil.media.download(pdf)
     #===============> envio el pdf por enail <===================
     origen=anvil.server.call('f_CoachRowID')
+    origen=Globals.f_getEmail()
     empDestino=self.drop_down_empleados.selected_value
     nombreEmp=empDestino['empNombre']
-    destino=anvil.server.call('emailEmp',nombreEmp)
+    destino=anvil.server.call('f_emailEmpSql',nombreEmp)
     titulo='Transferencia AF - jdoc Platform'
     notas=f"""
       

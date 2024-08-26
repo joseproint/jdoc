@@ -307,3 +307,31 @@ def ServerTimeZone():
     #print("Current time in Server EST is:", server_time.strftime('%Y-%m-%d %H:%M:%S %Z%z'))  
     print("Current time in Server EST is:", server_time.strftime('%Y-%m-%d %H:%M:%S.%f'))  
     return server_time
+
+@anvil.server.callable
+def f_emailEmpSql(nombre):
+  queryStr=f"""
+    select empEmail from empleados where empNombre='{nombre}'
+  """
+  empRow=anvil.server.call('f_extDb',queryStr,True)
+  if empRow is None:
+    correo=None
+  else:
+    correo=empRow['empEmail']
+  return correo
+
+@anvil.server.callable
+def fEmailTask(origen,destino,titulo,notas,pdf):
+  task=anvil.server.launch_background_task('fEmailTaskPdf',origen,destino,titulo,notas,pdf)
+  return task
+  
+@anvil.server.background_task
+def fEmailTaskPdf(origen,destino,titulo,notas,pdf):
+  print(f"enviando pdf por email a {destino} desde {origen} titulo {titulo} notas {notas}")
+  anvil.email.send( from_name = origen,
+          from_address=origen,         
+          to=destino,
+          subject = titulo,
+          text= notas,
+          attachments=pdf)
+  print('correo enviado')
