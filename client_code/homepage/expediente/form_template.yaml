@@ -110,23 +110,29 @@ components:
       name: column_panel_4
       layout_properties: {grid_position: 'HDCIDY,QLROIH'}
       components:
-      - type: Button
-        properties: {role: filled-button, bold: false, align: center, spacing_above: small, background: '', icon: 'fa:floppy-o', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: Salvar}
-        name: button_salvar
-        layout_properties: {grid_position: 'GYJWAD,IWBSFG', row_background: ''}
-        event_bindings: {click: button_salvar_click}
-      - type: Button
-        properties: {role: filled-button, bold: false, align: center, spacing_above: small, background: '', icon: 'fa:trash', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: Borrar}
-        name: button_delete
-        layout_properties: {grid_position: 'GYJWAD,VMAXEU', row_background: ''}
-        event_bindings: {click: button_delete_click}
-      - type: Button
-        properties: {role: filled-button, bold: false, align: center, spacing_above: small, background: '', icon: 'fa:reply', underline: false, font: '', icon_align: left, foreground: '', spacing_below: small, visible: true, border: '', italic: false, enabled: true, font_size: null, tooltip: '', text: Etiqueta}
-        name: btn_etiqueta
-        layout_properties: {grid_position: 'GYJWAD,ZZAMGY', row_background: ''}
-        event_bindings: {click: btn_etiqueta_click}
-      - name: btn_historial
-        properties: {text: Historial}
-        type: Button
-        layout_properties: {grid_position: 'GYJWAD,OYBBGS'}
+      - name: link_salvar
+        properties: {align: center, icon: 'fa:floppy-o', text: '', font_size: 23, tooltip: Salvar}
+        type: Link
+        layout_properties: {grid_position: 'GYJWAD,FFLONY'}
+        event_bindings: {click: link_salvar_click}
+      - name: link_borrar
+        properties: {align: center, text: '', icon: 'fa:trash', font_size: 23, tooltip: Borrar}
+        type: Link
+        layout_properties: {grid_position: 'GYJWAD,WEYIIB'}
+        event_bindings: {click: link_borrar_click}
+      - name: link_etiqueta
+        properties: {align: center, icon: 'fa:barcode', font_size: 23, tooltip: Etiqueta}
+        type: Link
+        layout_properties: {grid_position: 'GYJWAD,XTVRIT'}
+        event_bindings: {click: link_etiqueta_click}
+      - name: link_historial
+        properties: {align: center, icon: 'fa:header', font_size: 23, icon_align: left, tooltip: Historial, text: ''}
+        type: Link
+        layout_properties: {grid_position: 'GYJWAD,NSPGBI'}
+        event_bindings: {click: link_historial_click}
+      - name: link_transferir
+        properties: {icon: 'fa:exchange', align: center, font_size: 23, tooltip: Transferir}
+        type: Link
+        layout_properties: {grid_position: 'GYJWAD,ZODYXM'}
+        event_bindings: {click: link_transferir_click}
 is_package: true

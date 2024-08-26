@@ -109,9 +109,85 @@ class expediente(expedienteTemplate):
     self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
     self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,21)]
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
+
+  def convert(self,time_string):
+    date_var = time.strptime(time_string, '%H:%M')
+    return date_var
+
+  def link_back_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.expedientes')
+
+  def link_home_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.mainmenu')
+
+  def actUbicacion(self):
+    global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
+    ubicacion=f"{sucursal}{deposito}{archivo}{gaveta}{seccion}"  
+    #self.txt_ubicacion.text=ubicacion
+    ubiGlobal = ubicacion
     
-  def button_salvar_click(self, **event_args):
-    """This method is called when the button is clicked"""
+  def dd_sucursal_change(self, **event_args):
+    """This method is called when an item is selected"""
+    suc = self.dd_sucursal.selected_value
+    global sucursal,deposito,archivo,gaveta,seccion
+    sucursal=str(suc).zfill(3)
+    self.actUbicacion()
+    
+  def dd_deposito_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    dep = self.dd_deposito.selected_value
+    deposito=str(dep).zfill(2)
+    self.actUbicacion()
+    
+  def dd_archivo_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    arc = self.dd_archivo.selected_value
+    archivo=str(arc).zfill(2)
+    self.actUbicacion()
+    
+  def dd_gaveta_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    gav = self.dd_gaveta.selected_value
+    gaveta=str(gav).zfill(2)
+    self.actUbicacion()
+    
+  def dd_seccion_change(self, **event_args):
+    """This method is called when an item is selected"""
+    global sucursal,deposito,archivo,gaveta,seccion
+    sec = self.dd_seccion.selected_value
+    seccion=str(sec).zfill(2)
+    self.actUbicacion()
+
+  def link_transferir_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
+  def link_etiqueta_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
+  def link_historial_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
+  def link_borrar_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    save_clicked = alert(f"Are you sure you want to delete {self.text_box_descripcion.text}",
+                   large=True,
+                   buttons=[("yes", True), ("Cancel", False)])
+    if save_clicked:
+      #anvil.server.call('delete_Sucursal', self.text_box_email.text)
+      anvil.server.call('deleteExpFromGridSql', self.item, self.text_box_codigo.text)
+      #get_open_form().raise_event('x-refresh')
+      open_form('homepage.expedientes')
+
+  def link_salvar_click(self, **event_args):
+    """This method is called when the link is clicked"""
     global nombreAnt
     global ClasRowGlobal
     global ubiGlobal
@@ -175,72 +251,3 @@ class expediente(expedienteTemplate):
         anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
-
-  def convert(self,time_string):
-    date_var = time.strptime(time_string, '%H:%M')
-    return date_var
-
-  def button_delete_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    save_clicked = alert(f"Are you sure you want to delete {self.text_box_descripcion.text}",
-                   large=True,
-                   buttons=[("yes", True), ("Cancel", False)])
-    if save_clicked:
-      #anvil.server.call('delete_Sucursal', self.text_box_email.text)
-      anvil.server.call('deleteExpFromGridSql', self.item, self.text_box_codigo.text)
-      #get_open_form().raise_event('x-refresh')
-      open_form('homepage.expedientes')
-
-  def btn_etiqueta_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    open_form('homepage.expedientes')
-
-  def link_back_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    open_form('homepage.expedientes')
-
-  def link_home_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    open_form('homepage.mainmenu')
-
-  def actUbicacion(self):
-    global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
-    ubicacion=f"{sucursal}{deposito}{archivo}{gaveta}{seccion}"  
-    #self.txt_ubicacion.text=ubicacion
-    ubiGlobal = ubicacion
-    
-  def dd_sucursal_change(self, **event_args):
-    """This method is called when an item is selected"""
-    suc = self.dd_sucursal.selected_value
-    global sucursal,deposito,archivo,gaveta,seccion
-    sucursal=str(suc).zfill(3)
-    self.actUbicacion()
-    
-  def dd_deposito_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    dep = self.dd_deposito.selected_value
-    deposito=str(dep).zfill(2)
-    self.actUbicacion()
-    
-  def dd_archivo_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    arc = self.dd_archivo.selected_value
-    archivo=str(arc).zfill(2)
-    self.actUbicacion()
-    
-  def dd_gaveta_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    gav = self.dd_gaveta.selected_value
-    gaveta=str(gav).zfill(2)
-    self.actUbicacion()
-    
-  def dd_seccion_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    sec = self.dd_seccion.selected_value
-    seccion=str(sec).zfill(2)
-    self.actUbicacion()
-
