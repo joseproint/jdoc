@@ -13,18 +13,18 @@ class jdocTransfer(jdocTransferTemplate):
     #
     self.init_components(**properties)
     self.rowAF = rowAF
-    suc_rows = anvil.server.call('get_Sucursales')
-    suc_lista= [(s['sucNombre'],s) for s in suc_rows]
-    self.drop_down_loc.items = sorted(list(set(suc_lista)))
-    #self.drop_down_loc.items = suc_lista
+    #suc_rows = anvil.server.call('get_Sucursales')
+    #suc_lista= [(s['sucNombre'],s) for s in suc_rows]
+    #self.drop_down_loc.items = sorted(list(set(suc_lista)))
+    ##self.drop_down_loc.items = suc_lista
     
-    self.locname=''
-    self.depname=''
+    #self.locname=''
+    #self.depname=''
     
-    dep_rows = anvil.server.call('get_departamentos')
-    dep_lista= [(d['nombre'],d) for d in dep_rows]
-    #self.drop_down_loc.items = sorted(list(set(dep_lista)))
-    self.drop_down_dep.items = dep_lista
+    #dep_rows = anvil.server.call('get_departamentos')
+    #dep_lista= [(d['nombre'],d) for d in dep_rows]
+    ##self.drop_down_loc.items = sorted(list(set(dep_lista)))
+    #self.drop_down_dep.items = dep_lista
 
     status='T'
     emp_rows = anvil.server.call('get_Empleados',status)
@@ -37,24 +37,24 @@ class jdocTransfer(jdocTransferTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.expedientes')
 
-  def drop_down_loc_change(self, **event_args):
-    """This method is called when an item is selected"""
-    loc=self.drop_down_loc.selected_value
-    self.loc=loc['sucID']
-    self.locname=loc['sucNombre']
-    print(f"loc:{loc['sucID']} - {loc['sucNombre']}")
+  #def drop_down_loc_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  loc=self.drop_down_loc.selected_value
+  #  self.loc=loc['sucID']
+  #  self.locname=loc['sucNombre']
+  #  print(f"loc:{loc['sucID']} - {loc['sucNombre']}")
 
-  def drop_down_dep_change(self, **event_args):
-    """This method is called when an item is selected"""
-    depto=self.drop_down_dep.selected_value
-    self.depto=depto['depto'] #guardo el codigo del depto
-    self.depname=depto['nombre']
+  #def drop_down_dep_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  depto=self.drop_down_dep.selected_value
+  #  self.depto=depto['depto'] #guardo el codigo del depto
+  #  self.depname=depto['nombre']
 
-  def drop_down_responsible_change(self, **event_args):
-    """This method is called when an item is selected"""
-    empleado=self.drop_down_empleados.selected_value
-    self.empleado=empleado['empCodigo']
-    self.empname=empleado['empNombre']
+  #def drop_down_responsible_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  empleado=self.drop_down_empleados.selected_value
+  #  self.empleado=empleado['empCodigo']
+  #  self.empname=empleado['empNombre']
 
   def btn_guardar_click(self, **event_args):
     """This method is called when the button is clicked"""
