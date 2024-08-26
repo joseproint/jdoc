@@ -100,10 +100,10 @@ class jdocTransfer(jdocTransferTemplate):
     locname=''
     depname=''
         
-    if anvil.server.call('transfiereAF',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,lat,lng,firma,notas)==True:
+    if anvil.server.call('transfiereAF',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
       #transferencia Ok
       alert('transferencia realizada')
-      self.generaPDF(fecha,etiqueta,codigoaf,nombreemp,cia,locname,depname,lat,lng,firma,notas,descripcion)
+      self.generaPDF(fecha,etiqueta,codigoaf,nombreemp,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
     else:
       alert('transferencia no realizada')
 
