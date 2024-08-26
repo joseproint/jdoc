@@ -9,12 +9,12 @@ from ..logo import Globals
 import json
 
 class jdocTransfer(jdocTransferTemplate):
-  def __init__(self, **properties):
+  def __init__(self, rowAF, **properties):
     #def __init__(self, rowAF, **properties):
     # Set Form properties and Data Bindings.
     #
     self.init_components(**properties)
-    #self.rowAF = rowAF
+    self.rowAF = rowAF
     #suc_rows = anvil.server.call('get_Sucursales')
     #suc_lista= [(s['sucNombre'],s) for s in suc_rows]
     #self.drop_down_loc.items = sorted(list(set(suc_lista)))
@@ -30,7 +30,7 @@ class jdocTransfer(jdocTransferTemplate):
 
     status='T'
     emp_rows = anvil.server.call('get_Empleados',status)
-    emp_lista= [(r['empNombre'],r) for r in emp_rows]
+    emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
     #self.drop_down_empleados.items = sorted(list(set(emp_lista)))
     self.drop_down_empleados.items = emp_lista
     # Any code you write here will run before the form opens.

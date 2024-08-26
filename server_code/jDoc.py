@@ -481,14 +481,14 @@ def get_empleadosSql(status,coachID):
     queryStr=f"""
       SELECT empCodigo,empNombre,empCoachID, empTelefono, empStatus, empEmail, empDireccion,empCiudad,empSexo,empFrecPago,empTipoPago,empBirthday,empSueldo
       from empleados
-      order by empCodigo Asc
+      order by empNombre Asc
     """
   else: #solo los empleados con el status indicado
     queryStr=f"""
       SELECT empCodigo,empNombre,empCoachID, empTelefono, empStatus 
       from empleados where
         empStatus='{status}'
-        order by empCodigo Asc
+        order by empNombre Asc
     """
   print(queryStr)
   rowEmp = f_extDb(queryStr,False)
