@@ -10,6 +10,7 @@ import json
 class jdocTransfer(jdocTransferTemplate):
   def __init__(self, rowAF, **properties):
     # Set Form properties and Data Bindings.
+    #
     self.init_components(**properties)
     self.rowAF = rowAF
     suc_rows = anvil.server.call('get_Sucursales')

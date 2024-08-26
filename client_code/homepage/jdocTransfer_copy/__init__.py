@@ -10,6 +10,7 @@ import json
 class jdocTransfer_copy(jdocTransfer_copyTemplate):
   def __init__(self, fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion, **properties):
     # Set Form properties and Data Bindings.
+    #
     self.init_components(**properties)
     #self.rowAF = rowAF
     self.txt_date.text=fecha
