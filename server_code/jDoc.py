@@ -480,16 +480,14 @@ def get_empleadosSql(status,coachID):
   if status=='T': #todos los empleados
     queryStr=f"""
       SELECT empCodigo,empNombre,empCoachID, empTelefono, empStatus, empEmail, empDireccion,empCiudad,empSexo,empFrecPago,empTipoPago,empBirthday,empSueldo
-      from empleados where
-        empCoachID = '{coachID}'
-        order by empCodigo Asc
+      from empleados
+      order by empCodigo Asc
     """
   else: #solo los empleados con el status indicado
     queryStr=f"""
       SELECT empCodigo,empNombre,empCoachID, empTelefono, empStatus 
       from empleados where
-        empCoachID = '{coachID}'
-        and empStatus='{status}'
+        empStatus='{status}'
         order by empCodigo Asc
     """
   print(queryStr)
