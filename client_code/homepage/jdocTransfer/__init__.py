@@ -80,7 +80,8 @@ class jdocTransfer(jdocTransferTemplate):
     codemp=self.empleado
     ##self.nombreemp=empleado['empNombre']
     #nombreemp=self.empname
-    nombreemp = empleado['empNombre']
+    #nombreemp = empleado['empNombre']
+    nombreemp = empleado[1]
     alert(f"Nombre:{nombreemp}")
     
     #lat=hpGlobals.f_getLat()
