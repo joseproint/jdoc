@@ -38,3 +38,7 @@ class mainmenu(mainmenuTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.expedientes')
 
+  def link_transferencia_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.jdocTransfer')
+
