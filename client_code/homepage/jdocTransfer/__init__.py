@@ -81,9 +81,8 @@ class jdocTransfer(jdocTransferTemplate):
     ##self.nombreemp=empleado['empNombre']
     #nombreemp=self.empname
     #nombreemp = empleado['empNombre']
-    nombreemp = empleado[1]
-    alert(f"Nombre:{nombreemp}")
-    
+    nombreemp = empleado
+        
     #lat=hpGlobals.f_getLat()
     #lng=hpGlobals.f_getLng()
     notas=self.txt_notes.text
@@ -133,5 +132,5 @@ class jdocTransfer(jdocTransferTemplate):
 
   def drop_down_responsible_change(self, **event_args):
     """This method is called when an item is selected"""
-    alert(f"placeholder: {self.drop_down_empleados.placeholder}")
+    pass
   
