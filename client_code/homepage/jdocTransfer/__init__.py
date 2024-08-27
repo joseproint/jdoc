@@ -130,4 +130,8 @@ class jdocTransfer(jdocTransferTemplate):
     """
     task=anvil.server.call('fEmailTask',origen,destino,titulo,notas,pdf)
     print(task)
+
+  def drop_down_responsible_change(self, **event_args):
+    """This method is called when an item is selected"""
+    alert(f"placeholder: {self.drop_down_empleados.placeholder}")
   
