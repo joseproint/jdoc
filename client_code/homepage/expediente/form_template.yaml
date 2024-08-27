@@ -62,6 +62,7 @@ components:
       properties: {}
       type: DropDown
       layout_properties: {grid_position: 'KZYZLB,TCOYPA'}
+      event_bindings: {change: dd_clases_change}
     - name: lbl_ubicacion
       properties: {text: Ubicacion}
       type: Label

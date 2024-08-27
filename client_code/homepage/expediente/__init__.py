@@ -251,3 +251,9 @@ class expediente(expedienteTemplate):
         anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
+
+  def dd_clases_change(self, **event_args):
+    """This method is called when an item is selected"""
+    nombre=self.dd_clases.selected_value
+    alert(f"nombreClase:{nombre}")
+    id=self.dd_clases.items['id']

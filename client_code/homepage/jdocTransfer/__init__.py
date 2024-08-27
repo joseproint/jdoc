@@ -96,6 +96,7 @@ class jdocTransfer(jdocTransferTemplate):
     
     self.loc=0
     self.lat=0
+    self.lng=0
     self.depto=''
     locname=''
     depname=''
