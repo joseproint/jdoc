@@ -340,10 +340,10 @@ def fEmailTaskPdf(origen,destino,titulo,notas,pdf):
 @anvil.server.background_task
 def fEmailTaskExp(origen,destino,titulo,notas):
   print(f"enviando pdf por email a {destino} desde {origen} titulo {titulo} notas {notas}")
+  print(f"from_name:{origen} from_address:{origen} to:{destino} subject:{titulo} text:{notas}")
   anvil.email.send( from_name = origen,
           from_address=origen,         
           to=destino,
           subject = titulo,
           text= notas)
-  print(f"from_name:{origen} from_address:{origen} to:{destino} subject:{titulo} text:{notas}")
 
