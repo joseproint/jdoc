@@ -130,12 +130,13 @@ class jdocTransfer(jdocTransferTemplate):
     origen=Globals.f_getEmail()
     empDestino=self.drop_down_empleados.selected_value
     nombreEmp=anvil.server.call('f_nombreEmpleado',empDestino)
-    destino=anvil.server.call('f_emailEmpSql',empDestino)
+    #destino=anvil.server.call('f_emailEmpSql',empDestino)
+    destino=empDestino
     titulo='Transferencia de Expediente - Plataforma jDoc'
     notas=f"""
       
       Estimado {nombreEmp},
-      Por medio de la presente hacemos de su conocimiento la transferencia del Expediente No. {descripcion}, la fecha de retorno es {fecha}
+      Por medio de la presente hacemos de su conocimiento la transferencia del Expediente No. {etiqueta}, la fecha de retorno es {fecha}
       Saludos cordiales,
       
     """
