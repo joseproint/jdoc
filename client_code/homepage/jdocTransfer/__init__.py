@@ -120,7 +120,7 @@ class jdocTransfer(jdocTransferTemplate):
 
   def generaPDF(self,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion):
     import anvil.media
-    pantalla='Transferencia AF'
+    pantalla='Transferencia EXP'
     print("a generar pdf")
     pdf = anvil.server.call('createSend_pdf',pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
     anvil.media.download(pdf)

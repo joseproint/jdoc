@@ -820,8 +820,8 @@ def get_datosUsuarioSql(email):
 @anvil.server.callable
 def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion):
   pdfReport=None
-  if pantalla=='Transferencia AF':
-     pdfReport = PDFRenderer(filename=f'TransferenciaAF.pdf').render_form('homepage.jdocTransfer_copy',fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
+  if pantalla=='Transferencia EXP':
+     pdfReport = PDFRenderer(filename=f'TransferenciaEXP.pdf').render_form('homepage.jdocTransfer_copy',fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
   return pdfReport
 
 @anvil.server.callable
