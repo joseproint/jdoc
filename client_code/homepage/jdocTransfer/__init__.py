@@ -121,20 +121,21 @@ class jdocTransfer(jdocTransferTemplate):
   def generaPDF(self,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion):
     import anvil.media
     pantalla='Transferencia EXP'
-    print("a generar pdf")
-    pdf = anvil.server.call('createSend_pdf',pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
-    anvil.media.download(pdf)
+    #print("a generar pdf")
+    #pdf = anvil.server.call('createSend_pdf',pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
+    #anvil.media.download(pdf)
+    pdf=None
     #===============> envio el pdf por enail <===================
-    origen=anvil.server.call('f_CoachRowID')
+    #origen=anvil.server.call('f_CoachRowID')
     origen=Globals.f_getEmail()
     empDestino=self.drop_down_empleados.selected_value
     nombreEmp=empDestino['empNombre']
     destino=anvil.server.call('f_emailEmpSql',nombreEmp)
-    titulo='Transferencia AF - jdoc Platform'
+    titulo='Transferencia de Expediente - Plataforma jDoc'
     notas=f"""
       
       Estimado {nombreEmp},
-      Anexo enviamos formulario de transferencia del activo {descripcion}, la fecha de retorno es {fecha}
+      Por medio de la presente hacemos de su conocimiento la transferencia del Expediente No. {descripcion}, la fecha de retorno es {fecha}
       Saludos cordiales,
       
     """
