@@ -19,27 +19,9 @@ components:
       name: label_1
       properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Transferencia de Expediente, tooltip: '', underline: false, visible: true}
       type: Label
-    - layout_properties: {grid_position: 'QGVVEZ,SZEPAK'}
-      name: lbl_destination
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: To Location, tooltip: '', underline: false, visible: true}
-      type: Label
-    - event_bindings: {change: drop_down_loc_change}
-      layout_properties: {grid_position: 'RAOQXN,MPJZFP'}
-      name: drop_down_loc
-      properties: {}
-      type: DropDown
-    - layout_properties: {grid_position: 'YTAVKA,EABWRB'}
-      name: label_2
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: To Department of, tooltip: '', underline: false, visible: true}
-      type: Label
-    - event_bindings: {change: drop_down_dep_change}
-      layout_properties: {grid_position: 'NKJQIT,JYUBAB'}
-      name: drop_down_dep
-      properties: {}
-      type: DropDown
     - layout_properties: {grid_position: 'HNQUAO,YRPTFF'}
       name: label_3
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: To Responsible, tooltip: '', underline: false, visible: true}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Transferir a, tooltip: '', underline: false, visible: true}
       type: Label
     - event_bindings: {change: drop_down_responsible_change}
       layout_properties: {grid_position: 'LGGYZY,CIIPMO'}
@@ -48,7 +30,7 @@ components:
       type: DropDown
     - layout_properties: {grid_position: 'ZCNWPA,RPSADI'}
       name: label_4
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Return Date, tooltip: '', underline: false, visible: true}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Fecha de Retorno, tooltip: '', underline: false, visible: true}
       type: Label
     - layout_properties: {grid_position: 'BBOHZX,CKSJFJ'}
       name: fechaRetorno
@@ -56,7 +38,7 @@ components:
       type: DatePicker
     - layout_properties: {grid_position: 'GPVADO,RGDXJC'}
       name: label_5
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Notes, tooltip: '', underline: false, visible: true}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Notas, tooltip: '', underline: false, visible: true}
       type: Label
     - event_bindings: {change: text_area_1_change}
       layout_properties: {grid_position: 'WGQAJP,SDEBBA'}
@@ -65,12 +47,12 @@ components:
       type: TextArea
     - layout_properties: {grid_position: 'HQPVIE,XPDGMX'}
       name: label_6
-      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Sign by, tooltip: '', underline: false, visible: true}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Firmado por, tooltip: '', underline: false, visible: true}
       type: Label
     - event_bindings: {click: btn_guardar_click}
       layout_properties: {grid_position: 'HEOZAB,EEUBIY'}
       name: btn_guardar
-      properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: filled-button, spacing_above: small, spacing_below: small, text: Save, tooltip: '', underline: false, visible: true}
+      properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: filled-button, spacing_above: small, spacing_below: small, text: Salvar, tooltip: '', underline: false, visible: true}
       type: Button
     layout_properties: {grid_position: 'DFVHBU,BETGXC'}
     name: outlined_card_2
