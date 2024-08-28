@@ -829,7 +829,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
   tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
-    SELECT MAX(numtrans) into ultimo from EXPTRACK 
+    SELECT MAX(numtrans) as ultimo from EXPTRACK 
     WHERE tipotrans='{tipotrans}'
   """
   rowUltimo = f_extDb(queryStr,True)
