@@ -129,8 +129,8 @@ class jdocTransfer(jdocTransferTemplate):
     #origen=anvil.server.call('f_CoachRowID')
     origen=Globals.f_getEmail()
     empDestino=self.drop_down_empleados.selected_value
-    nombreEmp=empDestino['empNombre']
-    destino=anvil.server.call('f_emailEmpSql',nombreEmp)
+    #nombreEmp=empDestino['empNombre']
+    destino=anvil.server.call('f_emailEmpSql',empDestino)
     titulo='Transferencia de Expediente - Plataforma jDoc'
     notas=f"""
       
