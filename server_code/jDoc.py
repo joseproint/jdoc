@@ -825,27 +825,25 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas):
-  conn = connect()
-  with conn.cursor() as cur:
-    #queryStr=f"""
-    # INSERT INTO AFTRACK (fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,notas) 
-    #  VALUES ('{fecha}','{etiqueta}','{codigoaf}','{codemp}','{cia}','{loc}','{depto}',{lat},{lng},'{notas}');
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
+  tipotrans='TRANSFERENCIA'
+  transferenciaOk=True
+  queryStr=f"""
+    SELECT MAX(numtrans) into ultimo from EXPTRACK 
+    WHERE tipotrans='{tipotrans}'
+  """
+  rowUltimo = f_extDb(queryStr,True)
+  if rowUltimo is not None:
+    ultimo=rowUltimo['numtrans']
+    numtrans = ultimo + 1
+  else:
+    numtrans = 1
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas)
+  queryStr=f"""
+     INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas) 
+      VALUES (%s,%s,%s,%s,%s,%s,%s);
     """
-     INSERT INTO AFTRACK (fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,notas) 
-      VALUES ('{fecha}','{etiqueta}','{codigoaf}','{codemp}','{cia}','{loc}','{depto}',{lat},{lng},'{notas}');
-    """
-    #queryStr=f"select id,descripcion from activos where id='{id}'"
-    print(queryStr)
-    transferenciaOk=False
-    try:
-      cur.execute(queryStr)
-      conn.commit()
-      transferenciaOk=True
-    except pymysql.MySQLError as e:
-      print('Got error {!r}, errno is {}'.format(e, e.args[0]))
-      conn.rollback()
-    cur.close()
-    conn.close()
-    return transferenciaOk
+  print(queryStr)
+  comandoSql(queryStr,data)
+  return transferenciaOk
     

@@ -7,6 +7,9 @@ from anvil.tables import app_tables
 from .. import hpGlobals
 from ..logo import Globals
 import json
+import time
+import datetime
+global server_time
 
 class jdocTransfer(jdocTransferTemplate):
   def __init__(self, rowAF, **properties):
@@ -60,6 +63,7 @@ class jdocTransfer(jdocTransferTemplate):
 
   def btn_guardar_click(self, **event_args):
     """This method is called when the button is clicked"""
+    global server_time
     fecha=self.fechaRetorno.date
     etiqueta=self.rowAF.text_box_codigo.text
 
@@ -99,11 +103,18 @@ class jdocTransfer(jdocTransferTemplate):
     self.depto=''
     locname=''
     depname=''
-        
-    if anvil.server.call('transfiereAF',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
+    
+    server_time = anvil.server.call('ServerTimeZone')
+    fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+    codExpediente=etiqueta
+    empEntrega = Globals.f_getEmail()
+    empRecibe = empleado
+    
+    #if anvil.server.call('transfiereExp',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
+    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas)==True:
       #transferencia Ok
       alert('transferencia realizada')
-      self.generaPDF(fecha,etiqueta,codigoaf,nombreemp,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
+      self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
     else:
       alert('transferencia no realizada')
 
