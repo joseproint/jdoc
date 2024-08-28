@@ -835,7 +835,10 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
   rowUltimo = f_extDb(queryStr,True)
   if rowUltimo is not None:
     ultimo=rowUltimo['ultimo']
-    numtrans = ultimo + 1
+    if ultimo is not None:
+      numtrans = ultimo + 1
+    else:
+      numtrans = 1
   else:
     numtrans = 1
   data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas)
