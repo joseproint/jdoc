@@ -323,7 +323,8 @@ def f_emailEmpSql(nombre):
 @anvil.server.callable
 def fEmailTask(origen,destino,titulo,notas,pdf):
   #task=anvil.server.launch_background_task('fEmailTaskPdf',origen,destino,titulo,notas,pdf)
-  task=anvil.server.launch_background_task('fEmailTaskExp',origen,destino,titulo,notas)
+  #task=anvil.server.launch_background_task('fEmailTaskExp',origen,destino,titulo,notas)
+  f
   return task
   
 @anvil.server.background_task
