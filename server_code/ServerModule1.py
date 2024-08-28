@@ -322,7 +322,8 @@ def f_emailEmpSql(nombre):
 
 @anvil.server.callable
 def fEmailTask(origen,destino,titulo,notas,pdf):
-  task=anvil.server.launch_background_task('fEmailTaskPdf',origen,destino,titulo,notas,pdf)
+  #task=anvil.server.launch_background_task('fEmailTaskPdf',origen,destino,titulo,notas,pdf)
+  task=anvil.server.launch_background_task('fEmailTaskExp',origen,destino,titulo,notas)
   return task
   
 @anvil.server.background_task
@@ -334,4 +335,15 @@ def fEmailTaskPdf(origen,destino,titulo,notas,pdf):
           subject = titulo,
           text= notas,
           attachments=pdf)
-  print('correo enviado')
+  print(f"from_name:{origen} from_address:{origen} to:{destino} subject:{titulo} text:{notas}")
+
+@anvil.server.background_task
+def fEmailTaskExp(origen,destino,titulo,notas):
+  print(f"enviando pdf por email a {destino} desde {origen} titulo {titulo} notas {notas}")
+  anvil.email.send( from_name = origen,
+          from_address=origen,         
+          to=destino,
+          subject = titulo,
+          text= notas)
+  print(f"from_name:{origen} from_address:{origen} to:{destino} subject:{titulo} text:{notas}")
+
