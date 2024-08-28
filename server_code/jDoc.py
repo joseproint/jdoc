@@ -849,4 +849,17 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
   print(queryStr)
   comandoSql(queryStr,data)
   return transferenciaOk
-    
+
+@anvil.server.callable
+def f_nombreEmpleado(email):
+  nombre=None
+  queryStr=f"""
+  SELECT empNombre as nombre from empleados
+    WHERE empEmail='{email}'
+  """
+  rowEmp = f_extDb(queryStr,True)
+  if rowEmp is not None:
+    nombre=rowEmp['nombre']
+  else:
+    nombre=None
+  return nombre

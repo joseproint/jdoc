@@ -78,7 +78,7 @@ class jdocTransfer(jdocTransferTemplate):
     ##depname=depto['nombre']
     
     empleado=self.drop_down_empleados.selected_value
-    alert(f"Empleado:{empleado}")
+    #alert(f"Empleado:{empleado}")
     #self.empleado=empleado['empCodigo']
     self.empleado=empleado
     codemp=self.empleado
@@ -129,7 +129,7 @@ class jdocTransfer(jdocTransferTemplate):
     #origen=anvil.server.call('f_CoachRowID')
     origen=Globals.f_getEmail()
     empDestino=self.drop_down_empleados.selected_value
-    #nombreEmp=empDestino['empNombre']
+    nombreEmp=anvil.server.call('f_nombreEmpleado',empDestino)
     destino=anvil.server.call('f_emailEmpSql',empDestino)
     titulo='Transferencia de Expediente - Plataforma jDoc'
     notas=f"""
