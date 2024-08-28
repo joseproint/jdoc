@@ -346,13 +346,3 @@ def fEmailTaskExp(origen,destino,titulo,notas):
           to=destino,
           subject = titulo,
           text= notas)
-
-@anvil.server.callable
-def fEmailTaskExp2(origen,destino,titulo,notas):
-  #print(f"enviando pdf por email a {destino} desde {origen} titulo {titulo} notas {notas}")
-  #print(f"from_name:{origen} from_address:{origen} to:{destino} subject:{titulo} text:{notas}")
-  anvil.email.send( from_name = origen,
-          from_address=origen,         
-          to=destino,
-          subject = titulo,
-          text= notas)
