@@ -15,7 +15,7 @@ services:
   server_config: {}
   source: /runtime/services/google.yml
 - client_config: {}
-  server_config: {}
+  server_config: {custom_smtp: false, smtp_encryption: starttls, smtp_host: smtp.gmail.com, smtp_password: NXHdyplbh+Sko0McMVpKomUZe84nHp8QMkTdPINm5U7NZ2lOjsDFPZm5taUhgsY9CXLA7yk0SjfvtWHrUQbfwRPvP719fbFGSA2mI8876PDT9YxF7Q8JxkZGeAUkYOPypGoH1fCHcqxMnXkNc6Jp2k9w72g9ukL/3ltqonSsv1K3TQ==, smtp_port: 465, smtp_user: efelfoco105@gmail.com}
   source: /runtime/services/anvil/email.yml
 startup: {module: homepage, type: form}
 startup_form: null
