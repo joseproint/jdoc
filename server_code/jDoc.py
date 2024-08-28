@@ -823,3 +823,29 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   if pantalla=='Transferencia AF':
      pdfReport = PDFRenderer(filename=f'TransferenciaAF.pdf').render_form('homepage.jassetTransfer_copy',fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
   return pdfReport
+
+@anvil.server.callable
+def transfiereExp(fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas):
+  conn = connect()
+  with conn.cursor() as cur:
+    #queryStr=f"""
+    # INSERT INTO AFTRACK (fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,notas) 
+    #  VALUES ('{fecha}','{etiqueta}','{codigoaf}','{codemp}','{cia}','{loc}','{depto}',{lat},{lng},'{notas}');
+    """
+     INSERT INTO AFTRACK (fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,notas) 
+      VALUES ('{fecha}','{etiqueta}','{codigoaf}','{codemp}','{cia}','{loc}','{depto}',{lat},{lng},'{notas}');
+    """
+    #queryStr=f"select id,descripcion from activos where id='{id}'"
+    print(queryStr)
+    transferenciaOk=False
+    try:
+      cur.execute(queryStr)
+      conn.commit()
+      transferenciaOk=True
+    except pymysql.MySQLError as e:
+      print('Got error {!r}, errno is {}'.format(e, e.args[0]))
+      conn.rollback()
+    cur.close()
+    conn.close()
+    return transferenciaOk
+    

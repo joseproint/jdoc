@@ -1,49 +1,49 @@
-container:
-  type: DataRowPanel
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', auto_display_data: false, visible: true, font_size: null, font: '', spacing_above: none, spacing_below: none, italic: false, background: white, bold: false, underline: false}
-  data_bindings:
-  - {property: tag, code: 'self.item[''empNombre'']'}
-  - {property: tag, code: 'self.item[''empTelefono'']'}
-  - {property: tag, code: 'self.item[''empStatus'']'}
 components:
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
-  name: label_nombre
-  layout_properties: {column: ZSYRSV}
+- data_bindings:
+  - {code: 'self.item[''empNombre'']', property: text}
   event_bindings: {show: label_nombre_show}
-  data_bindings:
-  - {property: text, code: 'self.item[''empNombre'']'}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
-  name: label_Telefono
+  layout_properties: {column: ZSYRSV}
+  name: label_nombre
+  properties: {align: left, background: white, bold: false, border: '', font: '', font_size: null, foreground: black, icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''empTelefono'']', property: text}
   layout_properties: {column: MYFBMA}
-  data_bindings:
-  - {property: text, code: 'self.item[''empTelefono'']'}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: black, visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: white, bold: false, underline: false, icon: ''}
-  name: label_status
+  name: label_Telefono
+  properties: {align: left, background: white, bold: false, border: '', font: '', font_size: null, foreground: black, icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''empStatus'']', property: text}
   layout_properties: {column: QZTOJK}
-  data_bindings:
-  - {property: text, code: 'self.item[''empStatus'']'}
-- type: Link
-  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:trash'}
-  name: link_borrar
+  name: label_status
+  properties: {align: left, background: white, bold: false, border: '', font: '', font_size: null, foreground: black, icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: true}
+  type: Label
+- event_bindings: {click: link_borrar_click}
   layout_properties: {column: SXEIVP}
-  event_bindings: {click: link_borrar_click}
-- type: Link
-  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:pencil'}
-  name: link_editar
+  name: link_borrar
+  properties: {align: center, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:trash', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+  type: Link
+- event_bindings: {click: link_editar_click}
   layout_properties: {column: OKEQUO}
-  event_bindings: {click: link_editar_click}
-- type: Image
-  properties: {role: null, vertical_align: center, height: 40, tooltip: '', border: '', foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small, source: '', spacing_below: small, background: '', horizontal_align: center}
-  name: image_1
+  name: link_editar
+  properties: {align: center, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:pencil', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+  type: Link
+- data_bindings: []
   layout_properties: {column: EWRZLQ}
-  data_bindings: []
-- name: label_email
+  name: image_1
+  properties: {background: '', border: '', display_mode: shrink_to_fit, foreground: '', height: 40, horizontal_align: center, role: null, source: '', spacing_above: small, spacing_below: small, tooltip: '', vertical_align: center, visible: true}
+  type: Image
+- data_bindings:
+  - {code: 'self.item[''empEmail'']', property: text, writeback: false}
+  layout_properties: {column: MEFWFB}
+  name: label_email
   properties: {visible: false}
   type: Label
-  layout_properties: {column: MEFWFB}
+container:
   data_bindings:
-  - {property: text, code: 'self.item[''empEmail'']', writeback: false}
+  - {code: 'self.item[''empNombre'']', property: tag}
+  - {code: 'self.item[''empTelefono'']', property: tag}
+  - {code: 'self.item[''empStatus'']', property: tag}
+  properties: {align: left, auto_display_data: false, background: white, bold: false, border: '', font: '', font_size: null, foreground: '', italic: false, role: null, spacing_above: none, spacing_below: none, tooltip: '', underline: false, visible: true}
+  type: DataRowPanel
 is_package: true

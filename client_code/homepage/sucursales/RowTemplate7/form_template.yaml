@@ -1,25 +1,25 @@
-container: {type: DataRowPanel}
 components:
-- type: Label
-  properties: {}
-  name: label_1
+- data_bindings:
+  - {code: 'self.item[''sucNombre'']', property: text}
   layout_properties: {column: RATJHT}
-  data_bindings:
-  - {property: text, code: 'self.item[''sucNombre'']'}
-- type: Link
-  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:trash'}
-  name: link_delete
-  layout_properties: {column: DEAVIS}
-  event_bindings: {click: link_delete_click}
-- type: Link
-  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:pencil'}
-  name: link_edit
-  layout_properties: {column: UJBISM}
-  event_bindings: {click: link_edit_click}
-- type: Label
+  name: label_1
   properties: {}
-  name: label_2
+  type: Label
+- event_bindings: {click: link_delete_click}
+  layout_properties: {column: DEAVIS}
+  name: link_delete
+  properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:trash', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+  type: Link
+- event_bindings: {click: link_edit_click}
+  layout_properties: {column: UJBISM}
+  name: link_edit
+  properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:pencil', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+  type: Link
+- data_bindings:
+  - {code: 'self.item[''sucDireccion'']', property: text}
   layout_properties: {column: GFZRFD}
-  data_bindings:
-  - {property: text, code: 'self.item[''sucDireccion'']'}
+  name: label_2
+  properties: {}
+  type: Label
+container: {type: DataRowPanel}
 is_package: true
