@@ -762,7 +762,7 @@ def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, etiqueta, id):
       UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s, etiqueta=%s
         WHERE id=%s
       """
-      data=(nombre,ubicacion,tags,clase,id)
+      data=(nombre,ubicacion,tags,clase,etiqueta,id)
       print(f"queryStr {queryStr} datos {data}")
       comandoSql(queryStr,data)
   else:
