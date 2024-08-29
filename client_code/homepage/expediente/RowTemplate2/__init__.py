@@ -14,4 +14,4 @@ class RowTemplate2(RowTemplate2Template):
 
   def link_notas_click(self, **event_args):
     """This method is called when the link is clicked"""
-    alert(f"Nota: {self.item['nota']}")
+    alert(f"Nota: {self.item['notas']}")

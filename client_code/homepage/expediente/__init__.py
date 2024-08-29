@@ -259,3 +259,4 @@ class expediente(expedienteTemplate):
   def dd_clases_change(self, **event_args):
     """This method is called when an item is selected"""
     pass
+

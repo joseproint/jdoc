@@ -129,7 +129,8 @@ components:
         name: link_transferir
         properties: {align: center, font_size: 23, icon: 'fa:exchange', tooltip: Transferir}
         type: Link
-      - layout_properties: {grid_position: 'ILHMIE,UZFXUC'}
+      - event_bindings: {change: txt_nota_change}
+        layout_properties: {grid_position: 'ILHMIE,UZFXUC'}
         name: txt_nota
         properties: {}
         type: TextArea
