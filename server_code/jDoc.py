@@ -546,6 +546,7 @@ def get_expHistorySql(dato):
   queryStr=f"""
       SELECT * from exptrack
       where codexpediente ='{dato}'
+      order by ftransaccion desc
   """
   rowHist = f_extDb(queryStr,False)
   return rowHist

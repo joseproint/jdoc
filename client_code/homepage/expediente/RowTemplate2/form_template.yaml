@@ -24,7 +24,7 @@ components:
   properties: {}
   type: Label
 - data_bindings:
-  - {code: 'self.item[''empDestino'']', property: text, writeback: false}
+  - {code: 'self.item[''empRecibe'']', property: text, writeback: false}
   layout_properties: {column: HJDAPP}
   name: lbl_destino
   properties: {}
