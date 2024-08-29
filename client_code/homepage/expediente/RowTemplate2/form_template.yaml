@@ -29,5 +29,12 @@ components:
   name: lbl_destino
   properties: {}
   type: Label
-container: {type: DataRowPanel}
+- event_bindings: {click: link_notas_click}
+  layout_properties: {column: XKPOER}
+  name: link_notas
+  properties: {align: center, bold: false, font_size: 22, icon: 'fa:sticky-note-o', text: ''}
+  type: Link
+container:
+  properties: {visible: true}
+  type: DataRowPanel
 is_package: true

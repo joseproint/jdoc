@@ -11,3 +11,7 @@ class RowTemplate2(RowTemplate2Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  def link_notas_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    alert(f"Nota: {self.item['nota']}")
