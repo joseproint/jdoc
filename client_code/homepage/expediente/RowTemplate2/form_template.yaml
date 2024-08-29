@@ -1,0 +1,33 @@
+components:
+- data_bindings:
+  - {code: 'self.item[''tipotrans'']', property: text, writeback: false}
+  layout_properties: {column: JKSDUP}
+  name: lbl_transaccion
+  properties: {text: ''}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''numtrans'']', property: text, writeback: false}
+  layout_properties: {column: VJQQOR}
+  name: lbl_numero
+  properties: {text: ''}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''ftransaccion'']', property: text, writeback: false}
+  layout_properties: {column: OJLQEN}
+  name: lbl_fecha
+  properties: {text: ''}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''empEntrega'']', property: text, writeback: false}
+  layout_properties: {column: VQASTT}
+  name: lbl_origen
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''empDestino'']', property: text, writeback: false}
+  layout_properties: {column: HJDAPP}
+  name: lbl_destino
+  properties: {}
+  type: Label
+container: {type: DataRowPanel}
+is_package: true

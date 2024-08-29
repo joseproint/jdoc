@@ -12,15 +12,15 @@ global sucursal,deposito,archivo,gaveta,seccion
 global rowClases, server_time
 
 class expediente(expedienteTemplate):
-  def __init__(self, descripcion, clasRow, **properties):
+  def __init__(self, descripcion, expRow, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     global registrado
     global nombreAnt
-    global ClasRowGlobal, rowClases
+    global expRowGlobal, rowClases
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     
-    ClasRowGlobal=clasRow
+    expRowGlobal=expRow
     sucursal="001"
     deposito="01"
     archivo="01"
@@ -42,13 +42,13 @@ class expediente(expedienteTemplate):
     if descripcion is not None:
       registrado=True
       # anvil.alert("registrado")
-      self.f_llenaPantalla(nombreAnt,clasRow)
+      self.f_llenaPantalla(nombreAnt,expRow)
     else:
       registrado=False
       # anvil.alert("No registrado")
       self.llenaListas(rowClases)
 
-  def f_llenaPantalla(self, id, clasRow):
+  def f_llenaPantalla(self, id, expRow):
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     global rowClases
     self.llenaListas(rowClases)
@@ -56,13 +56,14 @@ class expediente(expedienteTemplate):
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
     #row_id = emp_row.get_id()
-    ubicacion=clasRow['ubicacion']
+    ubicacion=expRow['ubicacion']
     self.text_box_codigo.text=id
-    self.text_box_descripcion.text=clasRow['descripcion']
+    self.text_box_descripcion.text=expRow['descripcion']
     #self.txt_ubicacion.text=ubicacion
     ubiGlobal = ubicacion
-    self.txt_tags.text=clasRow['tags']
-    clase=clasRow['clase']
+    self.txt_tags.text=expRow['tags']
+    clase=expRow['clase']
+    self.txt_etiqueta.text=expRow['etiqueta']
     #alert(f"clase: {clase}")
     #self.dd_clases.selected_value=clase
     self.dd_clases.selected_value=clase
@@ -173,7 +174,9 @@ class expediente(expedienteTemplate):
 
   def link_historial_click(self, **event_args):
     """This method is called when the link is clicked"""
-    pass
+    self.repeating_panel_1.items = anvil.server.call(
+      'search_historial',
+      self.text_box_codigo.text 
 
   def link_borrar_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -189,7 +192,7 @@ class expediente(expedienteTemplate):
   def link_salvar_click(self, **event_args):
     """This method is called when the link is clicked"""
     global nombreAnt
-    global ClasRowGlobal
+    global expRowGlobal
     global ubiGlobal
     global server_time
 
@@ -198,6 +201,7 @@ class expediente(expedienteTemplate):
     
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
+    etiqueta=self.txt_etiqueta.text
     #ubicacion=self.txt_ubicacion.text
     ubicacion = ubiGlobal
     clase = self.dd_clases.selected_value
@@ -236,7 +240,7 @@ class expediente(expedienteTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, clase, codigo) 
+        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, clase, etiqueta, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -248,7 +252,7 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         email=Globals.f_getEmail()
-        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha)
+        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha, etiqueta)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
 

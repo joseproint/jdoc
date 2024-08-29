@@ -293,6 +293,11 @@ def search_Expedientes(dato):
   return result
 
 @anvil.server.callable
+def search_historial(dato):
+  result = anvil.server.call('get_expHistorySql',dato)
+  return result
+  
+@anvil.server.callable
 def ServerTimeZone():
     #from zoneinfo import ZoneInfo
     #import zoneinfo
