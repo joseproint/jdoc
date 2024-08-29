@@ -176,7 +176,7 @@ class expediente(expedienteTemplate):
     """This method is called when the link is clicked"""
     self.repeating_panel_1.items = anvil.server.call(
       'search_historial',
-      self.text_box_codigo.text 
+      self.text_box_codigo.text)
 
   def link_borrar_click(self, **event_args):
     """This method is called when the link is clicked"""
