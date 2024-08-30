@@ -142,7 +142,7 @@ components:
         name: data_grid_1
         properties:
           columns:
-          - {data_key: column_1, expand: false, id: JKSDUP, title: Transaccion, width: 88.4444580078125}
+          - {data_key: column_1, expand: false, id: JKSDUP, title: Transaccion, width: 107.66668701171875}
           - {data_key: column_2, expand: false, id: VJQQOR, title: Numero, width: 77.22222900390625}
           - {data_key: column_3, expand: false, id: OJLQEN, title: Fecha, width: 156.77777099609375}
           - {data_key: column_4, expand: false, id: VQASTT, title: Origen, width: 178.88885498046875}
