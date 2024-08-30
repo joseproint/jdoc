@@ -875,6 +875,7 @@ def f_nombreEmpleado(email):
     nombre=None
   return nombre
 
+@anvil.server.callable
 def f_contactoEmpleado(email):
   nombre=None
   queryStr=f"""
