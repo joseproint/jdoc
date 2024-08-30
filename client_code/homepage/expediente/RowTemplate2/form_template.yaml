@@ -36,6 +36,10 @@ components:
   name: link_destino
   properties: {font_size: 12, icon: 'fa:user'}
   type: Link
+- layout_properties: {column: HFIGGW}
+  name: link_nrecibo
+  properties: {bold: true, font_size: 12}
+  type: Link
 container:
   properties: {visible: true}
   type: DataRowPanel
