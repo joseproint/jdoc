@@ -19,8 +19,10 @@ class RowTemplate2(RowTemplate2Template):
   def link_origen_click(self, **event_args):
     """This method is called when the link is clicked"""
     emailOrigen=self.item['empEntrega']
+    telefono = self.item['empTelefono']
+    telefono = f"({telefono[:3]}) {telefono[4:6]}-{telefono[7:]}"
     nombre=anvil.server.call('f_nombreEmpleado',emailOrigen)
-    alert(f"Usuario Entregó:{nombre}")
+    alert(f"Usuario Entregó:{nombre} ({telefono})")
 
   def link_destino_click(self, **event_args):
     """This method is called when the link is clicked"""
