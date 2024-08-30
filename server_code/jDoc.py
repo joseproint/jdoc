@@ -874,3 +874,21 @@ def f_nombreEmpleado(email):
   else:
     nombre=None
   return nombre
+
+def f_contactoEmpleado(email):
+  nombre=None
+  queryStr=f"""
+  SELECT empNombre as nombre, empTelefono as telefono from empleados
+    WHERE empEmail='{email}'
+  """
+  rowEmp = f_extDb(queryStr,True)
+  if rowEmp is not None:
+    nombre=rowEmp['nombre']
+    telefono=rowEmp['telefono']
+    dato=(f"{nombre} {telefono[:3]}) {telefono[4:6]}-{telefono[7:]}")
+  else:
+    nombre=None
+    telefono=None
+    dato=None
+  return dato
+
