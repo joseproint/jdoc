@@ -138,10 +138,10 @@ components:
         properties:
           columns:
           - {data_key: column_1, id: JKSDUP, title: Transaccion}
-          - {data_key: column_2, id: VJQQOR, title: Numero}
-          - {data_key: column_3, id: OJLQEN, title: Fecha}
-          - {data_key: column_4, id: VQASTT, title: Origen}
-          - {data_key: column_5, id: HJDAPP, title: Destino}
+          - {data_key: column_2, expand: false, id: VJQQOR, title: Numero, width: 74.88885498046875}
+          - {data_key: column_3, expand: false, id: OJLQEN, title: Fecha, width: 156.77777099609375}
+          - {data_key: column_4, expand: false, id: VQASTT, title: Origen, width: 178.88885498046875}
+          - {data_key: column_5, expand: false, id: HJDAPP, title: Destino, width: 171.111083984375}
           - {data_key: column_6, id: XKPOER, title: Notas}
           rows_per_page: 5
         type: DataGrid

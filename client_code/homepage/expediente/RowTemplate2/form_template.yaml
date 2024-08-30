@@ -27,7 +27,7 @@ components:
   event_bindings: {click: link_origen_click}
   layout_properties: {column: VQASTT}
   name: link_origen
-  properties: {align: left, icon: 'fa:user'}
+  properties: {align: left, font_size: 14, icon: 'fa:user'}
   type: Link
 - data_bindings:
   - {code: 'self.item[''empRecibe'']', property: text, writeback: false}
