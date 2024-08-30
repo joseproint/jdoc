@@ -195,6 +195,7 @@ class expediente(expedienteTemplate):
     global expRowGlobal
     global ubiGlobal
     global server_time
+    global expediente
 
     server_time = anvil.server.call('ServerTimeZone')
     fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
@@ -202,6 +203,8 @@ class expediente(expedienteTemplate):
     nombre=self.text_box_descripcion.text
     codigo=self.text_box_codigo.text
     etiqueta=self.txt_etiqueta.text
+    Globals.f_setExpediente((codigo))
+    
     #ubicacion=self.txt_ubicacion.text
     ubicacion = ubiGlobal
     clase = self.dd_clases.selected_value

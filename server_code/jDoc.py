@@ -836,8 +836,8 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
-  tipotrans='TRANSFERENCIA'
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans):
+  #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 

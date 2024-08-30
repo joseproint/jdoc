@@ -22,6 +22,7 @@ global dictHoras
 global tablaStr
 global empresa
 global empEmail
+global expediente
 
 def say_hello():
   print("Hello, world")
@@ -53,6 +54,10 @@ def f_setEmail(uEmail):
 def f_setUsername(uName):
   global username
   username = uName
+
+def f_setExpediente(uExp):
+  global expediente
+  expediente = uExp
   
 def f_getUsername():
   global username
@@ -144,3 +149,7 @@ def f_getTablaStr():
 def f_setTablaStr(tabla):
   global tablaStr
   tablaStr=tabla
+
+def f_getExpediente():
+  global expediente
+  return expediente
