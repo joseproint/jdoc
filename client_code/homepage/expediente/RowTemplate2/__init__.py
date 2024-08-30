@@ -4,12 +4,14 @@ import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 from ...logo import Globals
+global expediente
 
 class RowTemplate2(RowTemplate2Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    global expediente
+    expediente = Globals.f_getExpediente()
     # Any code you write here will run before the form opens.
 
   def link_notas_click(self, **event_args):
@@ -32,6 +34,7 @@ class RowTemplate2(RowTemplate2Template):
 
   def link_nrecibo_click(self, **event_args):
     """This method is called when the link is clicked"""
+    global expediente
     emailDestino = self.item['empRecibe']
     emailUsuario = Globals.f_getEmail()
     alert(f"usuario:{emailUsuario} destino:{emailDestino}")
@@ -43,7 +46,8 @@ class RowTemplate2(RowTemplate2Template):
         alert('Generando el Acuse de Recibo..')
         server_time = anvil.server.call('ServerTimeZone')
         fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
-        codExpediente = Globals.f_getExpediente()
+        #codExpediente = Globals.f_getExpediente()
+        codExpediente = expediente
         empRecibe = emailDestino
         empEntrega = self.link_origen.text
         notas = f"Acuse de Recibo del Expediente: {codExpediente}"
