@@ -886,7 +886,7 @@ def f_contactoEmpleado(email):
   if rowEmp is not None:
     nombre=rowEmp['nombre']
     telefono=rowEmp['telefono']
-    dato=(f"{nombre} {telefono[:3]}) {telefono[4:6]}-{telefono[7:]}")
+    dato=(f"{nombre} ({telefono[:3]}) {telefono[3:6]}-{telefono[6:]}")
   else:
     nombre=None
     telefono=None
