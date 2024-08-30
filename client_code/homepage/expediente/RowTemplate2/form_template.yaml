@@ -17,18 +17,6 @@ components:
   name: lbl_fecha
   properties: {text: ''}
   type: Label
-- data_bindings:
-  - {code: 'self.item[''empEntrega'']', property: text, writeback: false}
-  layout_properties: {column: VQASTT}
-  name: lbl_origen
-  properties: {}
-  type: Label
-- data_bindings:
-  - {code: 'self.item[''empRecibe'']', property: text, writeback: false}
-  layout_properties: {column: HJDAPP}
-  name: lbl_destino
-  properties: {}
-  type: Label
 - event_bindings: {click: link_notas_click}
   layout_properties: {column: XKPOER}
   name: link_notas
@@ -40,6 +28,13 @@ components:
   layout_properties: {column: VQASTT}
   name: link_origen
   properties: {align: left, icon: 'fa:user'}
+  type: Link
+- data_bindings:
+  - {code: 'self.item[''empRecibe'']', property: text, writeback: false}
+  event_bindings: {click: link_destino_click}
+  layout_properties: {column: HJDAPP}
+  name: link_destino
+  properties: {icon: 'fa:user'}
   type: Link
 container:
   properties: {visible: true}

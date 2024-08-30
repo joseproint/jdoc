@@ -20,3 +20,8 @@ class RowTemplate2(RowTemplate2Template):
     """This method is called when the link is clicked"""
     userOrigen=self.item['empEntrega']
     alert(f"Usuario:{userOrigen}")
+
+  def link_destino_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    userDestino=self.item['empRecibe']
+    alert(f"Usuario:{userDestino}")
