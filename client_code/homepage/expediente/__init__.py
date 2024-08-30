@@ -26,7 +26,9 @@ class expediente(expedienteTemplate):
     archivo="01"
     gaveta="01"
     seccion="01"
-    
+
+    expediente = expRow['codigo']
+    Globals.f_setExpediente(expediente)
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
     rowClases =  anvil.server.call('get_ClasesExpSql')
