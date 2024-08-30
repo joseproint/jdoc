@@ -37,7 +37,7 @@ class RowTemplate2(RowTemplate2Template):
     global expediente
     emailDestino = self.item['empRecibe']
     emailUsuario = Globals.f_getEmail()
-    alert(f"usuario:{emailUsuario} destino:{emailDestino}")
+    #alert(f"usuario:{emailUsuario} destino:{emailDestino}")
     if emailUsuario != emailDestino:
       alert('Solo el usuario destino puede acusar recibo del expediente!')
     else:
@@ -48,10 +48,11 @@ class RowTemplate2(RowTemplate2Template):
         fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
         #codExpediente = Globals.f_getExpediente()
         codExpediente = expediente
-        empRecibe = emailDestino
-        empEntrega = self.link_origen.text
+        empRecibe = self.link_origen.text
+        empEntrega = emailDestino
         notas = f"Acuse de Recibo del Expediente: {codExpediente}"
         tipotrans='ACUSERECIBO'
+        numtrans = self.lbl_numero.text
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans) is True:
           alert('Acuse de Recibo generado..')
       else:
