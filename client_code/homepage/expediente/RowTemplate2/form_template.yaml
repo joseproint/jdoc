@@ -41,7 +41,7 @@ components:
   event_bindings: {click: link_nrecibo_click}
   layout_properties: {column: HFIGGW}
   name: link_nrecibo
-  properties: {bold: true, font_size: 12, text: ''}
+  properties: {bold: true, font_size: 12, icon: 'fa:handshake-o', text: ''}
   type: Link
 container:
   properties: {visible: true}
