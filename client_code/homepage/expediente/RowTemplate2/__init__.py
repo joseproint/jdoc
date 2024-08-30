@@ -3,7 +3,7 @@ from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
-from ..logo import Globals
+from ...logo import Globals
 
 class RowTemplate2(RowTemplate2Template):
   def __init__(self, **properties):
