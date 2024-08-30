@@ -34,6 +34,13 @@ components:
   name: link_notas
   properties: {align: left, bold: false, font_size: 22, icon: 'fa:sticky-note-o', text: ''}
   type: Link
+- data_bindings:
+  - {code: 'self.item[''empEntrega'']', property: text, writeback: false}
+  event_bindings: {click: link_origen_click}
+  layout_properties: {column: VQASTT}
+  name: link_origen
+  properties: {align: left, icon: 'fa:user'}
+  type: Link
 container:
   properties: {visible: true}
   type: DataRowPanel
