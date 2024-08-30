@@ -3,7 +3,7 @@ from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
-
+from ..logo import Globals
 
 class RowTemplate2(RowTemplate2Template):
   def __init__(self, **properties):
@@ -29,3 +29,15 @@ class RowTemplate2(RowTemplate2Template):
     emailDestino=self.item['empRecibe']
     contacto=anvil.server.call('f_contactoEmpleado',emailDestino)
     alert(f"Usuario Entrega:{contacto}")
+
+  def link_nrecibo_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    emailDestino = self.item['empRecibe']
+    emailUsuario = Globals.f_getEmail()
+    if emailUsuario != emailDestino:
+      alert('Solo el usuario destino puede acusar recibo del expediente!')
+    else:
+      numrecibo=self.link_nrecibo.text
+      if numrecibo is None:
+        alert('Generando el Acuse de Recibo..')
+      

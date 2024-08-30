@@ -3,19 +3,19 @@ components:
   - {code: 'self.item[''tipotrans'']', property: text, writeback: false}
   layout_properties: {column: JKSDUP}
   name: lbl_transaccion
-  properties: {text: ''}
+  properties: {font_size: 12, text: ''}
   type: Label
 - data_bindings:
   - {code: 'self.item[''numtrans'']', property: text, writeback: false}
   layout_properties: {column: VJQQOR}
   name: lbl_numero
-  properties: {text: ''}
+  properties: {font_size: 12, text: ''}
   type: Label
 - data_bindings:
   - {code: 'self.item[''ftransaccion'']', property: text, writeback: false}
   layout_properties: {column: OJLQEN}
   name: lbl_fecha
-  properties: {text: ''}
+  properties: {font_size: 12, text: ''}
   type: Label
 - event_bindings: {click: link_notas_click}
   layout_properties: {column: XKPOER}
@@ -36,9 +36,12 @@ components:
   name: link_destino
   properties: {font_size: 12, icon: 'fa:user'}
   type: Link
-- layout_properties: {column: HFIGGW}
+- data_bindings:
+  - {code: 'self.item[''numrecibo'']', property: text, writeback: false}
+  event_bindings: {click: link_nrecibo_click}
+  layout_properties: {column: HFIGGW}
   name: link_nrecibo
-  properties: {bold: true, font_size: 12}
+  properties: {bold: true, font_size: 12, text: ''}
   type: Link
 container:
   properties: {visible: true}
