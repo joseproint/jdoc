@@ -34,10 +34,12 @@ class RowTemplate2(RowTemplate2Template):
     """This method is called when the link is clicked"""
     emailDestino = self.item['empRecibe']
     emailUsuario = Globals.f_getEmail()
+    alert(f"usuario:{emailUsuario} destino:{emailDestino}")
     if emailUsuario != emailDestino:
       alert('Solo el usuario destino puede acusar recibo del expediente!')
     else:
       numrecibo=self.link_nrecibo.text
       if numrecibo is None:
         alert('Generando el Acuse de Recibo..')
-      
+      else:
+        alert('Acuse Recibo No.:')
