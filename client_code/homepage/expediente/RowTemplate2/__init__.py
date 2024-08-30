@@ -27,5 +27,5 @@ class RowTemplate2(RowTemplate2Template):
   def link_destino_click(self, **event_args):
     """This method is called when the link is clicked"""
     emailDestino=self.item['empRecibe']
-    nombre=anvil.server.call('f_nombreEmpleado',emailDestino)
-    alert(f"Usuario Recibe:{nombre}")
+    contacto=anvil.server.call('f_contactoEmpleado',emailDestino)
+    alert(f"Usuario Entrega:{contacto}")
