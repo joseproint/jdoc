@@ -60,7 +60,7 @@ components:
           type: Button
         layout_properties: {grid_position: 'FPCZCU,DWAOTE'}
         name: card_3
-        properties: {role: card}
+        properties: {role: card, wrap_on: never}
         type: ColumnPanel
       - components: []
         layout_properties: {grid_position: 'HDCIDY,QLROIH'}
