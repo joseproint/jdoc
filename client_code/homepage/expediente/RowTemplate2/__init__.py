@@ -35,26 +35,27 @@ class RowTemplate2(RowTemplate2Template):
   def link_nrecibo_click(self, **event_args):
     """This method is called when the link is clicked"""
     global expediente
-    emailDestino = self.item['empRecibe']
-    emailUsuario = Globals.f_getEmail()
-    #alert(f"usuario:{emailUsuario} destino:{emailDestino}")
-    if emailUsuario != emailDestino:
-      alert('Solo el usuario destino puede acusar recibo del expediente!')
-    else:
-      numrecibo=self.link_nrecibo.text
-      if numrecibo is None:
-        #alert('Generando el Acuse de Recibo..')
-        server_time = anvil.server.call('ServerTimeZone')
-        fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
-        #codExpediente = Globals.f_getExpediente()
-        codExpediente = expediente
-        empRecibe = self.link_origen.text
-        empEntrega = emailDestino
-        notas = f"Acuse de Recibo del Expediente: {codExpediente}"
-        tipotrans='ACUSERECIBO'
-        numtrans = self.lbl_numero.text
-        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
-          alert('Acuse de Recibo generado..')
+    if self.lbl_transaccion.text == 'TRANSFERENCIA':
+      emailDestino = self.item['empRecibe']
+      emailUsuario = Globals.f_getEmail()
+      #alert(f"usuario:{emailUsuario} destino:{emailDestino}")
+      if emailUsuario != emailDestino:
+        alert('Solo el usuario destino puede acusar recibo del expediente!')
       else:
-        #alert('Acuse Recibo No.:')
-        pass
+        numrecibo=self.link_nrecibo.text
+        if numrecibo is None:
+          #alert('Generando el Acuse de Recibo..')
+          server_time = anvil.server.call('ServerTimeZone')
+          fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+          #codExpediente = Globals.f_getExpediente()
+          codExpediente = expediente
+          empRecibe = self.link_origen.text
+          empEntrega = emailDestino
+          notas = f"Acuse de Recibo del Expediente: {codExpediente}"
+          tipotrans='ACUSERECIBO'
+          numtrans = self.lbl_numero.text
+          if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
+            alert('Acuse de Recibo generado..')
+        else:
+          #alert('Acuse Recibo No.:')
+          pass

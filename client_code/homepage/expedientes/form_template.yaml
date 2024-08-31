@@ -29,7 +29,8 @@ components:
     name: text_box_search
     properties: {placeholder: Buscar...}
     type: TextBox
-  - layout_properties: {grid_position: 'ODAMMH,RDQOCM'}
+  - event_bindings: {click: link_search_click}
+    layout_properties: {grid_position: 'ODAMMH,RDQOCM'}
     name: link_search
     properties: {font_size: 24, icon: 'fa:search', visible: true, wrap_on: never}
     type: Link

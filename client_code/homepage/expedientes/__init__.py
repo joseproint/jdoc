@@ -41,5 +41,9 @@ class expedientes(expedientesTemplate):
       self.text_box_search.text
     )
 
+  def link_search_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.search()
+
 
 
