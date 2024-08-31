@@ -110,7 +110,7 @@ class login(loginTemplate):
 
   def link_home_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.logo')
+    open_form('homepage')
 
   def deviceTokens(self,uEmail):
     try:
