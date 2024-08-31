@@ -51,12 +51,12 @@ components:
       event_bindings: {click: link_home_click}
       layout_properties: {grid_position: 'YCMTQL,IGZRYL', row_background: ''}
       name: link_home
-      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Home, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Home, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
       type: Link
     - event_bindings: {click: link_back_click}
-      layout_properties: {grid_position: 'QUWGSJ,ZPJPYN', row_background: ''}
+      layout_properties: {grid_position: 'YCMTQL,YQNWJE'}
       name: link_back
-      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
       type: Link
     - layout_properties: {grid_position: 'QUWGSJ,PJZMZC', row_background: ''}
       name: spacer_1
@@ -197,7 +197,7 @@ components:
         type: RadioButton
       layout_properties: {grid_position: 'MNHYFC,LVXCKB'}
       name: column_panel_2
-      properties: {col_widths: '{"ICFNHF":10,"HFZXYA":50}'}
+      properties: {col_widths: '{"ICFNHF":10,"HFZXYA":50}', wrap_on: never}
       type: ColumnPanel
     - layout_properties: {grid_position: 'GNNOFC,JWZPFV'}
       name: label_birthday
@@ -234,14 +234,9 @@ components:
         name: button_delete
         properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:trash', icon_align: left, italic: false, role: filled-button, spacing_above: small, spacing_below: small, text: Delete, tooltip: '', underline: false, visible: true}
         type: Button
-      - event_bindings: {click: button_cancel_click}
-        layout_properties: {grid_position: 'GYJWAD,ZZAMGY', row_background: ''}
-        name: button_cancel
-        properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: filled-button, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, visible: true}
-        type: Button
       layout_properties: {grid_position: 'HDCIDY,QLROIH'}
       name: column_panel_4
-      properties: {col_widths: '{}'}
+      properties: {col_widths: '{}', wrap_on: never}
       type: ColumnPanel
     layout_properties: {grid_position: 'TRVLPQ,KVFGQW', row_background: ''}
     name: column_panel_1
@@ -251,7 +246,7 @@ components:
     col_widths: {}
     grid_position: DRUFWE,SLAZBN
   name: outlined_card_1
-  properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: outlined-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+  properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: never}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true
