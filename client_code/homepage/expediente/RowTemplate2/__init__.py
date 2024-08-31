@@ -43,7 +43,7 @@ class RowTemplate2(RowTemplate2Template):
     else:
       numrecibo=self.link_nrecibo.text
       if numrecibo is None:
-        alert('Generando el Acuse de Recibo..')
+        #alert('Generando el Acuse de Recibo..')
         server_time = anvil.server.call('ServerTimeZone')
         fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
         #codExpediente = Globals.f_getExpediente()
@@ -56,4 +56,5 @@ class RowTemplate2(RowTemplate2Template):
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
           alert('Acuse de Recibo generado..')
       else:
-        alert('Acuse Recibo No.:')
+        #alert('Acuse Recibo No.:')
+        pass
