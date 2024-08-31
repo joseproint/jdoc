@@ -53,7 +53,7 @@ class RowTemplate2(RowTemplate2Template):
         notas = f"Acuse de Recibo del Expediente: {codExpediente}"
         tipotrans='ACUSERECIBO'
         numtrans = self.lbl_numero.text
-        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans) is True:
+        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
           alert('Acuse de Recibo generado..')
       else:
         alert('Acuse Recibo No.:')
