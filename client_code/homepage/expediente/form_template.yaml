@@ -19,12 +19,12 @@ components:
       event_bindings: {click: link_home_click}
       layout_properties: {grid_position: 'YKXKXB,JDEANB', row_background: ''}
       name: link_home
-      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Home, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:home', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Inicio, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
       type: Link
     - event_bindings: {click: link_back_click}
       layout_properties: {grid_position: 'YKXKXB,BCSUPD', row_background: ''}
       name: link_back
-      properties: {align: right, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+      properties: {align: right, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
       type: Link
     - layout_properties: {grid_position: 'RYVSDZ,IDOPYI'}
       name: label_2
@@ -108,31 +108,31 @@ components:
         - event_bindings: {click: link_salvar_click}
           layout_properties: {grid_position: 'GDUVNM,QXGWJB'}
           name: link_salvar
-          properties: {align: center, font_size: 23, icon: 'fa:floppy-o', text: '', tooltip: Salvar}
+          properties: {align: center, font_size: 23, icon: 'fa:floppy-o', text: '', tooltip: Salvar, wrap_on: never}
           type: Link
         - event_bindings: {click: link_borrar_click}
           layout_properties: {grid_position: 'GDUVNM,JJIHQV'}
           name: link_borrar
-          properties: {align: center, font_size: 23, icon: 'fa:trash', text: '', tooltip: Borrar}
+          properties: {align: center, font_size: 23, icon: 'fa:trash', text: '', tooltip: Borrar, wrap_on: never}
           type: Link
         - event_bindings: {click: link_etiqueta_click}
           layout_properties: {grid_position: 'GDUVNM,EAOGTK'}
           name: link_etiqueta
-          properties: {align: center, font_size: 23, icon: 'fa:barcode', tooltip: Etiqueta}
+          properties: {align: center, font_size: 23, icon: 'fa:barcode', tooltip: Etiqueta, wrap_on: never}
           type: Link
         - event_bindings: {click: link_historial_click}
           layout_properties: {grid_position: 'GDUVNM,ULOKGR'}
           name: link_historial
-          properties: {align: center, font_size: 23, icon: 'fa:header', icon_align: left, text: '', tooltip: Historial}
+          properties: {align: center, font_size: 23, icon: 'fa:header', icon_align: left, text: '', tooltip: Historial, wrap_on: never}
           type: Link
         - event_bindings: {click: link_transferir_click}
           layout_properties: {grid_position: 'GDUVNM,HZVUNV'}
           name: link_transferir
-          properties: {align: center, font_size: 23, icon: 'fa:exchange', tooltip: Transferir}
+          properties: {align: center, font_size: 23, icon: 'fa:exchange', tooltip: Transferir, wrap_on: never}
           type: Link
         layout_properties: {grid_position: 'YXYBBV,WJANJZ'}
         name: card_1
-        properties: {role: card}
+        properties: {role: card, wrap_on: never}
         type: ColumnPanel
       - components:
         - name: repeating_panel_1

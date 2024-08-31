@@ -135,7 +135,7 @@ class sucursal(sucursalTemplate):
 
   def link_home_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage')
+    open_form('homepage.mainmenu')
 
   #def link_geoloc_click(self, **event_args):
   #  """This method is called when the link is clicked"""
