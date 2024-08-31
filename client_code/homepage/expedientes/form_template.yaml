@@ -74,7 +74,7 @@ components:
     col_widths: {}
     grid_position: CNXITH,VWHKYT
   name: outlined_card_1
-  properties: {col_widths: '{}', role: outlined-card, wrap_on: never}
+  properties: {col_widths: '{}', role: card, wrap_on: never}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

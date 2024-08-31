@@ -163,7 +163,7 @@ components:
     col_widths: {}
     grid_position: KLDQDH,ALACJJ
   name: outlined_card_1
-  properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: outlined-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+  properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: never}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true
