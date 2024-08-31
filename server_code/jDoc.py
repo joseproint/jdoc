@@ -864,7 +864,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
     data = (numRecibo,numTransf)
     queryStr=f"""
       UPDATE EXPTRACK SET NUMRECIBO=%s 
-      WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%S;
+      WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
       """
     print(queryStr)
     comandoSql(queryStr,data)
