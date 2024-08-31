@@ -52,7 +52,7 @@ components:
       type: Label
     layout_properties: {grid_position: 'VXNLYP,UZWWEZ'}
     name: rich_text_1
-    properties: {align: left, background: '', border: '', content: 'Nuestra misión es ayudar a las empresas a ser mas productivas, ahorrar tiempo, llevar una mejor experiencia de servicio, y crecer.', data: null, enable_slots: true, font: '', font_size: 18, foreground: '', format: markdown, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+    properties: {align: left, background: '', border: '', content: 'Nuestra mision es ayudar a las empresas a ser mas productivas, ahorrar tiempo, llevar una mejor experiencia de servicio, y crecer.', data: null, enable_slots: true, font: '', font_size: 18, foreground: '', format: markdown, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
     type: RichText
   layout_properties: {grid_position: 'XWYZQE,IJITPU'}
   name: card_1
