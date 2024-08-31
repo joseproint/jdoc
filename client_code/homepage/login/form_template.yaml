@@ -21,11 +21,11 @@ components:
           type: Link
         - layout_properties: {grid_position: 'VRHQQD,WKDSGG'}
           name: label_2
-          properties: {align: left, background: white, bold: true, border: '', font: '', font_size: 20, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Log in, tooltip: '', underline: false, visible: true}
+          properties: {align: left, background: white, bold: false, border: '', font: '', font_size: 20, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Iniciar Sesion, tooltip: '', underline: false, visible: true}
           type: Label
         - layout_properties: {grid_position: 'BSUQEC,GXJGJI'}
           name: label_1
-          properties: {align: left, background: white, bold: true, border: '', font: '', font_size: null, foreground: 'theme:On Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: 'Email:', tooltip: '', underline: false, visible: true}
+          properties: {align: left, background: white, bold: true, border: '', font: '', font_size: null, foreground: 'theme:On Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: 'email:', tooltip: '', underline: false, visible: true}
           type: Label
         - layout_properties: {grid_position: 'BSUQEC,SSOMRE'}
           name: text_box_email
@@ -33,7 +33,7 @@ components:
           type: TextBox
         - layout_properties: {grid_position: 'SPYLTA,WEFZTC'}
           name: label_password
-          properties: {align: left, background: white, bold: true, border: '', font: '', font_size: null, foreground: 'theme:On Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Password, tooltip: '', underline: false, visible: true}
+          properties: {align: left, background: white, bold: true, border: '', font: '', font_size: null, foreground: 'theme:On Primary', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Clave, tooltip: '', underline: false, visible: true}
           type: Label
         - event_bindings: {pressed_enter: text_box_1_pressed_enter}
           layout_properties: {grid_position: 'SPYLTA,RYFXEX'}
@@ -47,7 +47,7 @@ components:
       - event_bindings: {click: link_forgot_click}
         layout_properties: {grid_position: 'TTTZYA,JBLFWW', row_background: white}
         name: link_forgot
-        properties: {align: center, background: 'theme:Background', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: 12, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: 'Forgot your password?', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+        properties: {align: center, background: 'theme:Background', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: 12, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: 'Olvido su clave?', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
         type: Link
       - components: []
         event_bindings: {click: link_signup_click}
@@ -58,19 +58,19 @@ components:
       - event_bindings: {click: link_login_click}
         layout_properties: {grid_position: 'GIZHID,VBLOUG'}
         name: link_login
-        properties: {align: center, background: 'theme:Background', bold: true, border: '', col_spacing: medium, col_widths: '', font: '', font_size: 14, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Log in, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+        properties: {align: center, background: 'theme:Background', bold: true, border: '', col_spacing: medium, col_widths: '', font: '', font_size: 14, foreground: 'theme:Accent 1', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Inicar Sesion, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
         type: Link
       layout_properties: {grid_position: 'YOPIDX,JPXEEK', row_background: white}
       name: column_panel_2
-      properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+      properties: {background: white, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: never}
       type: ColumnPanel
     layout_properties: {grid_position: 'TEROHY,BUJKOU'}
     name: outlined_card_1
-    properties: {col_widths: '{}', role: outlined-card}
+    properties: {col_widths: '{}', role: outlined-card, wrap_on: never}
     type: ColumnPanel
   layout_properties: {grid_position: 'JSJJTW,BSMMIJ'}
   name: column_panel_3
-  properties: {}
+  properties: {wrap_on: never}
   type: ColumnPanel
 - event_bindings: {click: button_1_click}
   layout_properties: {grid_position: 'PVNQKW,PAOVVU'}
