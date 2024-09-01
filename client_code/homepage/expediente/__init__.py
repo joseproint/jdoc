@@ -73,8 +73,8 @@ class expediente(expedienteTemplate):
     lng=expRow['lng']
     estBien=expRow['estadoBien']
     self.txt_etiqueta.text=expRow['etiqueta']
-    self.txt_lat=lat
-    self.txt_lng=lng
+    self.txt_lat.text=lat
+    self.txt_lng.text=lng
     #alert(f"clase: {clase}")
     #self.dd_clases.selected_value=clase
     self.dd_clases.selected_value=clase
