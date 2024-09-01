@@ -667,7 +667,7 @@ def deleteCBienFromGridSql(row,nombreExp):
     if row is not None:
       queryStr=f"""
         DELETE FROM CLASESBIENES 
-        WHERE sucNombre='{nombreExp}'
+        WHERE descripcion='{nombreExp}'
       """
       #data = (nombreSuc)
       print(f"{queryStr}")
