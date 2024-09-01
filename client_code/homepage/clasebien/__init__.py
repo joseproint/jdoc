@@ -116,7 +116,7 @@ class clasebien(clasebienTemplate):
                    buttons=[("yes", True), ("Cancel", False)])
     if save_clicked:
       #anvil.server.call('delete_Sucursal', self.text_box_email.text)
-      anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
+      anvil.server.call('deleteCBienFromGridSql', self.item, self.text_box_descripcion.text)
       #get_open_form().raise_event('x-refresh')
       open_form('homepage.clasesbienes')
 

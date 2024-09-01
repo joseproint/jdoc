@@ -340,6 +340,16 @@ def creaClaseExpSql(nombre, id):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
+def creaClaseBienSql(nombre, id):
+  data = (id, nombre)
+  queryStr = f"""
+    INSERT INTO CLASESBIEN (id, descripcion)
+    VALUES(%s, %s)
+  """
+  print(f"queryStr {queryStr} data {data}")
+  comandoSql(queryStr,data)
+  
+@anvil.server.callable
 def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion, etiqueta):
   data = (id, nombre, ubicacion, tags, clase, email, fcreacion, etiqueta)
   queryStr = f"""
@@ -521,6 +531,14 @@ def get_ClasesExpSql():
   return rowCExp
 
 @anvil.server.callable
+def get_ClasesBienesSql():
+  queryStr=f"""
+      SELECT * from clasesBienes
+  """
+  rowCBien = f_extDb(queryStr,False)
+  return rowCBien
+  
+@anvil.server.callable
 def get_ExpedientesSql():
   queryStr=f"""
       SELECT * from Expedientes
@@ -645,6 +663,17 @@ def deleteCExpFromGridSql(row,nombreExp):
       deleteSql(queryStr)
 
 @anvil.server.callable
+def deleteCBienFromGridSql(row,nombreExp):
+    if row is not None:
+      queryStr=f"""
+        DELETE FROM CLASESBIENES 
+        WHERE sucNombre='{nombreExp}'
+      """
+      #data = (nombreSuc)
+      print(f"{queryStr}")
+      deleteSql(queryStr)
+      
+@anvil.server.callable
 def deleteExpFromGridSql(row,id):
     if row is not None:
       queryStr=f"""
@@ -748,6 +777,19 @@ def f_claseExpActualizaSql(nombreAnt,nombre, id):
   if nombre is not None:
       queryStr=f"""
       UPDATE CLASESEXP SET descripcion=%s
+        WHERE id=%s
+      """
+      data=(nombre,id)
+      print(f"queryStr {queryStr} datos {data}")
+      comandoSql(queryStr,data)
+  else:
+    Notification('Nueva descripción está vacía..')
+
+@anvil.server.callable
+def f_claseBienActualizaSql(nombreAnt,nombre, id):
+  if nombre is not None:
+      queryStr=f"""
+      UPDATE CLASESBIENES SET descripcion=%s
         WHERE id=%s
       """
       data=(nombre,id)

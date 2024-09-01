@@ -28,6 +28,16 @@ components:
       properties: {role: card}
       type: ColumnPanel
     - components:
+      - event_bindings: {click: link_clasebien_click}
+        layout_properties: {grid_position: 'JIFYFC,EGUIMI'}
+        name: link_clasebien
+        properties: {align: center, bold: true, text: Clases Bienes}
+        type: Link
+      layout_properties: {grid_position: 'LPNTMS,UAZGVR'}
+      name: card_2
+      properties: {role: card}
+      type: ColumnPanel
+    - components:
       - event_bindings: {click: link_ubicaciones_click}
         layout_properties: {grid_position: 'FACQGK,QWEYNB'}
         name: link_ubicaciones
