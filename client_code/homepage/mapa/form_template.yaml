@@ -1,0 +1,37 @@
+components:
+- components:
+  - event_bindings: {click: link_back_click}
+    layout_properties: {grid_position: 'QGDQVA,NVXNUY'}
+    name: link_back
+    properties: {font_size: 14, icon: 'fa:mail-reply', italic: true, text: Back}
+    type: Link
+  - layout_properties: {grid_position: 'UDKKUE,EXTOOK'}
+    name: label_1
+    properties: {align: center, bold: true, foreground: 'theme:Accent 1', text: Mapa de Propiedades}
+    type: Label
+  - layout_properties: {grid_position: 'KMMDXZ,SIYAEW'}
+    name: label_2
+    properties: {text: Tipo de Propiedad}
+    type: Label
+  - layout_properties: {grid_position: 'GSOQXB,KYRSVP'}
+    name: dd_claseBien
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'GEGOCF,TBABTQ'}
+    name: label_3
+    properties: {text: Estado de la Propiedad}
+    type: Label
+  - layout_properties: {grid_position: 'ECTNHH,URAYZS'}
+    name: dd_estado
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'ZLODBR,DEHBGO'}
+    name: button_buscar
+    properties: {text: Buscar}
+    type: Button
+  layout_properties: {grid_position: 'VAQTHO,CLOQBB'}
+  name: card_1
+  properties: {role: card, wrap_on: never}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+is_package: true

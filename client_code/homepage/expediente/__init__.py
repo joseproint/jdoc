@@ -80,7 +80,8 @@ class expediente(expedienteTemplate):
     self.dd_clases.selected_value=clase
     if cBien is not None:
       self.dd_clasesBienes.selected_value=cBien
-    self.dd_estBien.selected_value=estBien
+    if estBien is not None:
+      self.dd_estBien.selected_value=estBien
     
     #ubicacion='00102030405'
     sucursal =ubicacion[0:3]
