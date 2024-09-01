@@ -16,8 +16,9 @@ class clasesbienes(clasesbienesTemplate):
 
   def refresh(self, **event_args):
     #self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_clasesbienes.items = anvil.server.call('get_clasesBienesSql')
-    self.repeating_panel_clasesbienes.items = anvil.server.call
+    #self.repeating_panel_clasesbienes.items = anvil.server.call('get_clasesBienesSql')
+    self.repeating_panel_clasesbienes.items = anvil.server.call('get_ClasesBienesSql')
+    
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('homepage.mainmenu')
