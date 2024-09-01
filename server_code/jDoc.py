@@ -343,7 +343,7 @@ def creaClaseExpSql(nombre, id):
 def creaClaseBienSql(nombre, id):
   data = (id, nombre)
   queryStr = f"""
-    INSERT INTO CLASESBIEN (id, descripcion)
+    INSERT INTO CLASESBIENES (id, descripcion)
     VALUES(%s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
