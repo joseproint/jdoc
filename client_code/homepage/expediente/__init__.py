@@ -9,7 +9,7 @@ from .. import hpGlobals
 import time
 import datetime
 global sucursal,deposito,archivo,gaveta,seccion
-global rowClases, server_time
+global rowClases, rowCbienes, server_time
 
 class expediente(expedienteTemplate):
   def __init__(self, descripcion, expRow, **properties):
@@ -17,7 +17,7 @@ class expediente(expedienteTemplate):
     self.init_components(**properties)
     global registrado
     global nombreAnt
-    global expRowGlobal, rowClases
+    global expRowGlobal, rowClases, rowCbienes
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     
     expRowGlobal=expRow
@@ -34,6 +34,7 @@ class expediente(expedienteTemplate):
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
     rowClases =  anvil.server.call('get_ClasesExpSql')
+    rowCbienes = anvil.server.call('get_ClasesBienesSql')
     #cf_rows = anvil.server.call('get_CFisicas')
     ##cf_lista= [(r['cfdescripcion'],r['cfdescripcion']) for r in cf_rows]
     #cf_lista= [(r['cfdescripcion'],r) for r in cf_rows]
@@ -50,12 +51,12 @@ class expediente(expedienteTemplate):
     else:
       registrado=False
       # anvil.alert("No registrado")
-      self.llenaListas(rowClases)
+      self.llenaListas(rowClases,rowCbienes)
 
   def f_llenaPantalla(self, id, expRow):
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
-    global rowClases
-    self.llenaListas(rowClases)
+    global rowClases, rowCbienes
+    self.llenaListas(rowClases,rowCbienes)
     #emp_row=app_tables.clientes.get(clteNombre=nombreBuscado)
     #global cfisicaRow
     #emp_row=anvil.server.call('getClienteRow',nombreBuscado)
@@ -67,10 +68,16 @@ class expediente(expedienteTemplate):
     ubiGlobal = ubicacion
     self.txt_tags.text=expRow['tags']
     clase=expRow['clase']
+    cBien=expRow['claseBien']
+    lat=self.txt_lat.text
+    lng=self.txt_lng
+    estBien=expRow['estadoBien']
     self.txt_etiqueta.text=expRow['etiqueta']
     #alert(f"clase: {clase}")
     #self.dd_clases.selected_value=clase
     self.dd_clases.selected_value=clase
+    self.dd_clasesBienes.selected_value=cBien
+    self.dd_estBien.selected_value=estBien
     
     #ubicacion='00102030405'
     sucursal =ubicacion[0:3]
@@ -107,14 +114,15 @@ class expediente(expedienteTemplate):
     #self.marcarMapa()
     # Any code you write here will run before the form opens.
 
-  def llenaListas(self, rowClases):
+  def llenaListas(self, rowClases, rowCbienes):
     self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,101)]
     self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
     self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
     self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
     self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,21)]
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
-
+    self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
+    
   def convert(self,time_string):
     date_var = time.strptime(time_string, '%H:%M')
     return date_var
@@ -212,6 +220,9 @@ class expediente(expedienteTemplate):
     #ubicacion=self.txt_ubicacion.text
     ubicacion = ubiGlobal
     clase = self.dd_clases.selected_value
+    cBien = self.dd_clasesBienes.selected_value
+    estBien = self.dd_estBien.selected_value
+    
     tags=self.txt_tags.text
     codigo=codigo.strip()
     nombre=nombre.strip()
@@ -219,9 +230,9 @@ class expediente(expedienteTemplate):
     tags=tags.strip()
     clase=clase.strip()
     
-    #lat=self.text_box_lat.text
+    lat=self.txt_lat.text
     #direccion=self.text_box_direccion.text
-    #lng=self.text_box_lng.text
+    lng=self.txt_lng.text
     nombreNuevo = self.text_box_descripcion.text
     #maxRadio=float(self.text_box_maxradio.text)
     #hini=self.drop_down_hini.selected_value
@@ -247,7 +258,7 @@ class expediente(expedienteTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, clase, etiqueta, codigo) 
+        anvil.server.call('f_ExpedienteActSql',nombreAnt, nombre, ubicacion, tags, clase, etiqueta, cBien, estBien, lat, lng, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -259,7 +270,7 @@ class expediente(expedienteTemplate):
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         email=Globals.f_getEmail()
-        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha, etiqueta)
+        anvil.server.call('creaExpedienteSql',nombre, codigo, ubicacion, tags, clase, email, fecha, etiqueta, cBien,estBien,lat,lng)
         anvil.alert(f"Expediente {nombre} creado!")
         open_form('homepage.expedientes')
 

@@ -350,11 +350,11 @@ def creaClaseBienSql(nombre, id):
   comandoSql(queryStr,data)
   
 @anvil.server.callable
-def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion, etiqueta):
-  data = (id, nombre, ubicacion, tags, clase, email, fcreacion, etiqueta)
+def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng):
+  data = (id, nombre, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng)
   queryStr = f"""
-    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion, etiqueta)
-    VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion, etiqueta, cBien,estBien,lat,lng)
+    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)
@@ -799,13 +799,13 @@ def f_claseBienActualizaSql(nombreAnt,nombre, id):
     Notification('Nueva descripción está vacía..')
 
 @anvil.server.callable
-def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, etiqueta, id):
+def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, etiqueta, cBien, estBien, lat, lng, id):
   if nombre is not None:
       queryStr=f"""
-      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s, etiqueta=%s
+      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s, etiqueta=%s, claseBien=%s, estadoBien=%s, lat=%s, lng=%s
         WHERE id=%s
       """
-      data=(nombre,ubicacion,tags,clase,etiqueta,id)
+      data=(nombre,ubicacion,tags,clase,etiqueta,cBien,estBien,lat,lng,id)
       print(f"queryStr {queryStr} datos {data}")
       comandoSql(queryStr,data)
   else:
