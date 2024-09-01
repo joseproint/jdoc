@@ -13,7 +13,7 @@ components:
       type: Spacer
     - layout_properties: {grid_position: 'UJEJAK,IXLGPT'}
       name: label_1
-      properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Clase de Expediente, tooltip: '', underline: false, visible: true}
+      properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Clase de Bien, tooltip: '', underline: false, visible: true}
       type: Label
     - components: []
       event_bindings: {click: link_home_click}

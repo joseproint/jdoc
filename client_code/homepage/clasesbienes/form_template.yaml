@@ -17,7 +17,7 @@ components:
     type: Link
   - layout_properties: {grid_position: 'JAPMJZ,IBHNUZ'}
     name: label_1
-    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Clases de Expedientes, tooltip: '', underline: false, visible: true}
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Clases de Bienes, tooltip: '', underline: false, visible: true}
     type: Label
   - components:
     - layout_properties: {}
