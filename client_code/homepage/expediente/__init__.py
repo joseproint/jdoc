@@ -69,14 +69,17 @@ class expediente(expedienteTemplate):
     self.txt_tags.text=expRow['tags']
     clase=expRow['clase']
     cBien=expRow['claseBien']
-    lat=self.txt_lat.text
-    lng=self.txt_lng
+    lat=expRow['lat']
+    lng=expRow['lng']
     estBien=expRow['estadoBien']
     self.txt_etiqueta.text=expRow['etiqueta']
+    self.txt_lat=lat
+    self.txt_lng=lng
     #alert(f"clase: {clase}")
     #self.dd_clases.selected_value=clase
     self.dd_clases.selected_value=clase
-    self.dd_clasesBienes.selected_value=cBien
+    if cBien is not None:
+      self.dd_clasesBienes.selected_value=cBien
     self.dd_estBien.selected_value=estBien
     
     #ubicacion='00102030405'
