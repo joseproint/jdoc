@@ -14,7 +14,7 @@ class RowTemplate10(RowTemplate10Template):
 
   def link_edit_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.claseexp',self.label_1.text, self.item )
+    open_form('homepage.clasebien',self.label_1.text, self.item )
     
 
   def link_delete_click(self, **event_args):
@@ -24,6 +24,6 @@ class RowTemplate10(RowTemplate10Template):
                    buttons=[("yes", True), ("Cancel", False)])
     if delete_clicked:
       nombreCexp = self.label_1.text #nombre
-      anvil.server.call('deleteCExpFromGridSql', self.item,nombreCexp)
+      anvil.server.call('deleteCBienFromGridSql', self.item,nombreCexp)
       #anvil.server.call('delete_Cliente', self.text_box_email.text)
       get_open_form().raise_event('x-refresh')
