@@ -32,8 +32,8 @@ components:
       border: ''
       columns:
       - {$$hashKey: 'object:33687', data_key: column_1, expand: false, id: RATJHT, title: Codigo, width: 115}
-      - {$$hashKey: 'object:33688', data_key: column_2, expand: false, id: GFZRFD, title: Descripcion, width: 435}
-      - {$$hashKey: 'object:33689', data_key: column_3, expand: false, id: DEAVIS, title: '', width: 38}
+      - {$$hashKey: 'object:33688', data_key: column_2, expand: false, id: GFZRFD, title: Descripcion, width: 339.3333740234375}
+      - {$$hashKey: 'object:33689', data_key: column_3, expand: false, id: DEAVIS, title: '', width: 27.111083984375}
       - {$$hashKey: 'object:33732', data_key: column_4, expand: false, id: UJBISM, title: '', width: 43}
       foreground: ''
       role: null
