@@ -1,4 +1,4 @@
-from ._anvil_designer import claseexpTemplate
+from ._anvil_designer import clasebienTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
@@ -6,7 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import time
 
-class claseexp(claseexpTemplate):
+class clasebien(clasebienTemplate):
   def __init__(self, descripcion, clasRow, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -90,20 +90,20 @@ class claseexp(claseexpTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_claseexpActualizaSql',nombreAnt, nombre, codigo) 
+        anvil.server.call('f_claseBienActualizaSql',nombreAnt, nombre, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
-        open_form('homepage.clasesexp')
+        open_form('homepage.clasesbienes')
         #get_open_form().raise_event('x-refresh')
       else:  
         #anvil.alert(" el nombre indicado no existe y lo creo")
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaclaseexpSql',nombre, codigo)
+        anvil.server.call('creaClaseBienSql',nombre, codigo)
         anvil.alert(f"Branch {nombre} created!")
-        open_form('homepage.clasesexp')
+        open_form('homepage.clasesbienes')
 
   def convert(self,time_string):
     date_var = time.strptime(time_string, '%H:%M')
@@ -116,18 +116,17 @@ class claseexp(claseexpTemplate):
                    buttons=[("yes", True), ("Cancel", False)])
     if save_clicked:
       #anvil.server.call('delete_Sucursal', self.text_box_email.text)
-      #anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
-      anvil.server.call('deleteCbienFromGridSql', self.item, self.text_box_descripcion.text)
+      anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
       #get_open_form().raise_event('x-refresh')
-      open_form('homepage.clasesexp')
+      open_form('homepage.clasesbienes')
 
   def button_cancel_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('homepage.clasesexp')
+    open_form('homepage.clasesbienes')
 
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
-    open_form('homepage.clasesexp')
+    open_form('homepage.clasesbienes')
 
   def link_home_click(self, **event_args):
     """This method is called when the link is clicked"""
