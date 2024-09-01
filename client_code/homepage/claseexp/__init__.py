@@ -101,7 +101,7 @@ class claseexp(claseexpTemplate):
         #emp_row=anvil.server.call('creaCliente',nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday)
         #emp_row=anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
         #anvil.server.call('creaEmpleado',codigo,nombre,email,estado,telefono,sueldo,frecPago,tipoPago,sexo,direccion,ciudad,foto,birthday)
-        anvil.server.call('creaclaseexpSql',nombre, codigo)
+        anvil.server.call('creaClaseExpSql',nombre, codigo)
         anvil.alert(f"Branch {nombre} created!")
         open_form('homepage.clasesexp')
 
