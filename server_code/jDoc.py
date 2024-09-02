@@ -949,3 +949,35 @@ def get_estadosBien():
   rowEstado = ['Disponible','Rentado','Vendido']
   return rowEstado
 
+
+@anvil.server.callable
+def get_ExpedientesAll(clase,estado):
+  conn = connect()
+  with conn.cursor() as cur:
+    queryStr=f"""
+     select id, descripcion, lat, lng, claseBien, estadoBien
+     from EXPEDIENTES
+     where claseBien = '{clase}'
+     and estadoBien = '{estado}'
+    """
+    cur.execute(queryStr)
+    rowAf =  cur.fetchall()
+    #rowAf=cur.fetchone()
+    cur.close()
+    conn.close()
+    #print(rowAf)
+    lista=datosAFAjson(rowAf)
+    return lista
+
+def datosAFAjson(dataRow):
+  cont=1
+  jsonData=''
+  for r in dataRow:
+    if cont>1:
+      dato=', {"id": "'+f"{r['id']}"+'", "descripcion": "'+f"{r['descripcion']}"+'", "lat": "'+f"{r['lat']}"+'", "lng": "'+f"{r['lng']}"+'", "claseBien": "'+f"{r['claseBien']}"+'", "estadoBien": "'+f"{r['estadoBien']}"+'"'+'}'
+    else:  
+      dato='{"id": "'+f"{r['id']}"+'", "descripcion": "'+f"{r['descripcion']}"+'", "lat": "'+f"{r['lat']}"+'", "lng": "'+f"{r['lng']}"+'", "claseBien": "'+f"{r['claseBien']}"+'", "estadoBien": "'+f"{r['estadoBien']}"+'"'+'}'
+    jsonData = jsonData + dato 
+    cont=cont+1
+  jsonData='['+jsonData+']'
+  return jsonData
