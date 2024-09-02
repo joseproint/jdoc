@@ -1,5 +1,5 @@
 allow_embedding: false
-metadata: {description: Document Finder, title: jDoc}
+metadata: {description: Document Finder, logo_img: 'asset:jDocLogo-logo.png', title: jDoc}
 name: jDoc
 package_name: jDoc
 runtime_options:
