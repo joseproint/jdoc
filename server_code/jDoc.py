@@ -353,7 +353,7 @@ def creaClaseBienSql(nombre, id):
 def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng):
   data = (id, nombre, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng)
   queryStr = f"""
-    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion, etiqueta, cBien,estBien,lat,lng)
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion, etiqueta, claseBien,estadoBien,lat,lng)
     VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
