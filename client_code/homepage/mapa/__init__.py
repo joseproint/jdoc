@@ -66,7 +66,7 @@ class mapa(mapaTemplate):
       icon=iconObj
     )
     marker.tag =notas
-    marker.add_event_handler("click", self.marker_click)
+    #marker.add_event_handler("click", self.marker_click)
     self.map_1.add_component(marker)
 
   def marker_click(self, sender, **event_args):
