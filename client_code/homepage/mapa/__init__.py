@@ -29,7 +29,7 @@ class mapa(mapaTemplate):
       rowAf=anvil.server.call('get_ExpedientesAll', clase, estado)
       if rowAf is not None:
         jsonObj=json.loads(rowAf)
-        self.repeating_panel_1.items=jsonObj
+        #self.repeating_panel_1.items=jsonObj
         self.ploteaAf(jsonObj)
     else:
       Notification("pls type what you're looking for...").show()
@@ -41,7 +41,7 @@ class mapa(mapaTemplate):
     for row in datos:
       lat=row['lat']
       lng=row['lng']
-      notas=f"ID:{row['id']}-{row['descripcion']} in {row['nombredep']}"
+      notas=f"ID:{row['id']}-{row['descripcion']} in {row}"
       #print(notas)
       self.marcador(lat,lng,urlYellowIcon,notas)
       #self.map_1.center = GoogleMap.LatLng(lat,lng)
