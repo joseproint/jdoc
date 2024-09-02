@@ -4,6 +4,7 @@ import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import json
+from ..logo import Globals
 
 class mapa(mapaTemplate):
   def __init__(self, **properties):
@@ -73,7 +74,7 @@ class mapa(mapaTemplate):
       icon=iconObj
     )
     marker.tag =notas
-    #marker.add_event_handler("click", self.marker_click)
+    marker.add_event_handler("click", self.marker_click)
     self.map_1.add_component(marker)
 
   def marker_click(self, sender, **event_args):
