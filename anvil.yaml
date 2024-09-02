@@ -11,7 +11,7 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-- client_config: {api_key: ''}
+- client_config: {api_key: AIzaSyAGQ1U5H45tQ3tsTuZrSHvujmW3XT9m8PU}
   server_config: {}
   source: /runtime/services/google.yml
 - client_config: {}
