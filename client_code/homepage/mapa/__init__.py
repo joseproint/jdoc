@@ -9,7 +9,10 @@ class mapa(mapaTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    rowCbienes = anvil.server.call('get_ClasesBienesSql')
+    rowEstado = anvil.server.call('get_estadosBien')
+    self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
+    self.dd_estado.items = [(r['descripcion']) for r in rowEstado]
     # Any code you write here will run before the form opens.
 
   def link_back_click(self, **event_args):

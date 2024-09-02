@@ -943,4 +943,9 @@ def f_contactoEmpleado(email):
     telefono=None
     dato=None
   return dato
+  
+@anvil.server.callable
+def get_estadosBien():
+  rowEstado = ['Disponible','Rentado','Vendido']
+  return rowEstado
 
