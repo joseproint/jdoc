@@ -27,6 +27,7 @@ class mapa(mapaTemplate):
     if clase!='' and clase is not None and estado!='' and estado is not None:
       #datoOk=dato.replace(' ','%')
       rowAf=anvil.server.call('get_ExpedientesAll', clase, estado)
+      print(f"rowAf:{rowAf}")
       if rowAf is not None:
         jsonObj=json.loads(rowAf)
         #self.repeating_panel_1.items=jsonObj
