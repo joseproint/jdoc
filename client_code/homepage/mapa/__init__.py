@@ -39,12 +39,19 @@ class mapa(mapaTemplate):
     #for row in self.repeating_panel_1.items:
     urlRedIcon="_/theme/redmarker.png"
     urlYellowIcon="_/theme/yellowmarker.png"
+    urlGreenIcon="_/theme/greenmarker.png"
     for row in datos:
       lat=row['lat']
       lng=row['lng']
       notas=f"ID:{row['id']}-{row['descripcion']} in {row}"
       #print(notas)
-      self.marcador(lat,lng,urlYellowIcon,notas)
+      estado=row['estadoBien']
+      if estado=='Disponible':
+        self.marcador(lat,lng,urlGreenIcon,notas)
+      elif estado=='Rentado':
+        self.marcador(lat,lng,urlYellowIcon,notas)
+      elif estado=='Vendido':
+        self.marcador(lat,lng,urlRedIcon,notas)
       #self.map_1.center = GoogleMap.LatLng(lat,lng)
       #self.map_1.zoom = 8
       #marker = GoogleMap.Marker(

@@ -954,11 +954,16 @@ def get_estadosBien():
 def get_ExpedientesAll(clase,estado):
   conn = connect()
   with conn.cursor() as cur:
+    #queryStr=f"""
+    # select id, descripcion, lat, lng, claseBien, estadoBien
+    # from EXPEDIENTES
+    # where claseBien = '{clase}'
+    # and estadoBien = '{estado}'
+    #"""
     queryStr=f"""
      select id, descripcion, lat, lng, claseBien, estadoBien
      from EXPEDIENTES
      where claseBien = '{clase}'
-     and estadoBien = '{estado}'
     """
     cur.execute(queryStr)
     rowAf =  cur.fetchall()
