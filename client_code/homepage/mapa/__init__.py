@@ -13,13 +13,15 @@ class mapa(mapaTemplate):
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
     
-    rowTodos = {"Todos":"Todos"}
-    rowCbienes.update(rowTodos)
-    rowEstado.update(rowTodos)
+    #rowTodos = {"Todos":"Todos"}
+    #rowCbienes.update(rowTodos)
+    #rowEstado.update(rowTodos)
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
     
-    #rowTodos = ['Todos','Todos']
+    rowTodos = ['Todos','Todos']
+    self.dd_clasesBienes.items.update(rowTodos)
+    
     #self.dd_clasesBienes.items.append(rowTodos)
     #self.dd_estado.items.append(rowTodos)
     # Any code you write here will run before the form opens.
