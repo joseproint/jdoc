@@ -970,12 +970,12 @@ def get_ExpedientesAll(clase,estado):
     from EXPEDIENTES
     """
     if clase=='zTodos':
-      if estado=='zTodos':
+      if estado=='Todos':
         whereStr=""
       else:
         whereStr=f" where estadoBien = '{estado}'"
     else:
-      if estado=='zTodos':
+      if estado=='Todos':
         whereStr=f" where claseBien = '{clase}'"
       else:
         whereStr=f" where claseBien = '{clase}' and estadoBien = '{estado}'"
