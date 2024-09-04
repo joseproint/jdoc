@@ -980,6 +980,7 @@ def get_ExpedientesAll(clase,estado):
       else:
         whereStr=f" where claseBien = '{clase}' and estadoBien = '{estado}'"
     queryStr=f"{queryStr} {whereStr}"    
+    print(f"queryStr:{queryStr}")
     cur.execute(queryStr)
     rowAf =  cur.fetchall()
     #rowAf=cur.fetchone()
