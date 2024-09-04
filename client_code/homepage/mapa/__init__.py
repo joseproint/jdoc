@@ -34,6 +34,7 @@ class mapa(mapaTemplate):
       if rowAf is not None:
         jsonObj=json.loads(rowAf)
         #self.repeating_panel_1.items=jsonObj
+        self.map_1.clear()
         self.ploteaAf(jsonObj)
     else:
       Notification("por favor digite lo que busca...").show()
