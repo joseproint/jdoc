@@ -4,6 +4,7 @@ import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import json
+from ..markertaginfo import markertaginfo
 from ..logo import Globals
 
 class mapa(mapaTemplate):

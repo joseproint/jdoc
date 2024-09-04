@@ -1,0 +1,11 @@
+components:
+- layout_properties: {grid_position: 'KOAVHF,ZXLKLH'}
+  name: image_1
+  properties: {}
+  type: Image
+- layout_properties: {grid_position: 'GZFQQH,QOAUET'}
+  name: label_1
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true
