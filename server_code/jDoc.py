@@ -946,7 +946,7 @@ def f_contactoEmpleado(email):
   
 @anvil.server.callable
 def get_estadosBien():
-  rowEstado = ['Disponible','Rentado','Vendido']
+  rowEstado = ['Disponible','Rentado','Vendido','Todos']
   return rowEstado
 
 
