@@ -12,8 +12,9 @@ class mapa(mapaTemplate):
     self.init_components(**properties)
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
-    rowCbienes.append('Todos')
-    rowEstado.append('Todos')
+    rowTodos = {"Todos":"Todos"}
+    rowCbienes.append(rowTodos)
+    rowEstado.append(rowTodos)
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
     

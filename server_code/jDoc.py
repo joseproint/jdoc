@@ -100,7 +100,7 @@ def f_extDb(queryStr,oneRecord):
   #cur=conn.cursor()
   cur=conn.cursor(as_dict=True)
   cur.execute(queryStr)
-  if oneRecord==True:
+  if oneRecord is True:
     rowAf=cur.fetchone()
   else:
     rowAf=cur.fetchall()
