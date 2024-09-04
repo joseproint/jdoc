@@ -19,8 +19,8 @@ class mapa(mapaTemplate):
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
 
-    #rowTodos = "Todos"
-    rowTodos = {"Todos","Todos"}
+    rowTodos = "Todos"
+    #rowTodos = {"Todos","Todos"}
     self.dd_clasesBienes.items.append(rowTodos)
     
     #self.dd_clasesBienes.items.append(rowTodos)
