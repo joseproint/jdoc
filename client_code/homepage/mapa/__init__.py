@@ -15,8 +15,9 @@ class mapa(mapaTemplate):
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
     
-    self.dd_clasesBienes.items.append('Todos')
-    self.dd_estado.items.append('Todos')
+    rowTodos = ['Todos','Todos']
+    self.dd_clasesBienes.items.append(rowTodos)
+    self.dd_estado.items.append(rowTodos)
     # Any code you write here will run before the form opens.
 
   def link_back_click(self, **event_args):
