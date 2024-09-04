@@ -969,7 +969,17 @@ def get_ExpedientesAll(clase,estado):
     select id, descripcion, lat, lng, claseBien, estadoBien
     from EXPEDIENTES
     """
-     
+    if clase=='Todos':
+      if estado=='Todos':
+        whereStr=" where claseBien = 'Todos' and estadoBien = 'Todos'"
+      else:
+        whereStr=f" where claseBien = 'Todos' and estadoBien = '{estado}'"
+    else:
+      if estado=='Todos':
+        whereStr=f" where claseBien = '{clase}' and estadoBien = 'Todos'"
+      else:
+        whereStr=f" where claseBien = '{clase}' and estadoBien = '{estado}'"
+    queryStr=f"{queryStr} {whereStr}"    
     cur.execute(queryStr)
     rowAf =  cur.fetchall()
     #rowAf=cur.fetchone()
