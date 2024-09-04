@@ -971,12 +971,12 @@ def get_ExpedientesAll(clase,estado):
     """
     if clase=='zTodos':
       if estado=='zTodos':
-        whereStr=" where claseBien = 'Todos' and estadoBien = 'Todos'"
+        whereStr=""
       else:
-        whereStr=f" where claseBien = 'Todos' and estadoBien = '{estado}'"
+        whereStr=f" where estadoBien = '{estado}'"
     else:
       if estado=='zTodos':
-        whereStr=f" where claseBien = '{clase}' and estadoBien = 'Todos'"
+        whereStr=f" where claseBien = '{clase}'"
       else:
         whereStr=f" where claseBien = '{clase}' and estadoBien = '{estado}'"
     queryStr=f"{queryStr} {whereStr}"    
