@@ -14,6 +14,9 @@ class mapa(mapaTemplate):
     rowEstado = anvil.server.call('get_estadosBien')
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
+    
+    self.dd_clasesBienes.items.append('Todos')
+    self.dd_estado.items.append('Todos')
     # Any code you write here will run before the form opens.
 
   def link_back_click(self, **event_args):
@@ -34,7 +37,7 @@ class mapa(mapaTemplate):
         #self.repeating_panel_1.items=jsonObj
         self.ploteaAf(jsonObj)
     else:
-      Notification("pls type what you're looking for...").show()
+      Notification("por favor digite lo que busca...").show()
 
   def ploteaAf(self,datos):
     #for row in self.repeating_panel_1.items:
