@@ -12,12 +12,14 @@ class mapa(mapaTemplate):
     self.init_components(**properties)
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
+    rowCbienes.items.append('Todos')
+    rowEstado.items.append('Todos')
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
     
-    rowTodos = ['Todos','Todos']
-    self.dd_clasesBienes.items.append(rowTodos)
-    self.dd_estado.items.append(rowTodos)
+    #rowTodos = ['Todos','Todos']
+    #self.dd_clasesBienes.items.append(rowTodos)
+    #self.dd_estado.items.append(rowTodos)
     # Any code you write here will run before the form opens.
 
   def link_back_click(self, **event_args):
