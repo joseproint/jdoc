@@ -960,11 +960,16 @@ def get_ExpedientesAll(clase,estado):
     # where claseBien = '{clase}'
     # and estadoBien = '{estado}'
     #"""
+    #  queryStr=f"""
+    #  select id, descripcion, lat, lng, claseBien, estadoBien
+    #  from EXPEDIENTES
+    #  where claseBien = '{clase}'
+    #  """
     queryStr=f"""
-     select id, descripcion, lat, lng, claseBien, estadoBien
-     from EXPEDIENTES
-     where claseBien = '{clase}'
+    select id, descripcion, lat, lng, claseBien, estadoBien
+    from EXPEDIENTES
     """
+     
     cur.execute(queryStr)
     rowAf =  cur.fetchall()
     #rowAf=cur.fetchone()
