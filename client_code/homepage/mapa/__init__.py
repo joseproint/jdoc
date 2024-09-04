@@ -87,12 +87,12 @@ class mapa(mapaTemplate):
     Globals.f_setLabel1(sender.tag)
     new_picture = {}
     # Open an alert displaying the 'ArticleEdit' Form
-    save_clicked = alert(
-      content=markertaginfo(item=new_picture),
-      title="",
-      large=False
-      #buttons=[("Save", True), ("Cancel", False)],
-    )
+    #save_clicked = alert(
+    #  content=markertaginfo(item=new_picture),
+    #  title="",
+    #  large=False
+    #  #buttons=[("Save", True), ("Cancel", False)],
+    #)
     # If the alert returned 'True', the save button was clicked.
     #if save_clicked:
     #  print("saved..")
