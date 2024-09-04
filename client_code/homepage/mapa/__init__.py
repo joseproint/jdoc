@@ -21,7 +21,7 @@ class mapa(mapaTemplate):
 
     rowTodos = "Todos"
     #rowTodos = {"Todos","Todos"}
-    self.dd_clasesBienes.items.append(rowTodos)
+    self.dd_clasesBienes.append(rowTodos)
     
     #self.dd_clasesBienes.items.append(rowTodos)
     #self.dd_estado.items.append(rowTodos)
