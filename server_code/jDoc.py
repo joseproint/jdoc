@@ -560,6 +560,16 @@ def get_expSearchSql(dato):
   return rowExp
 
 @anvil.server.callable
+def get_expSearchDeepSql(whereStr):
+  queryStr=f"""
+      SELECT * from Expedientes
+  """
+  queryStr = f"{queryStr} {whereStr}"
+  print(queryStr)
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
+  
+@anvil.server.callable
 def get_expHistorySql(dato):
   queryStr=f"""
       SELECT * from exptrack
