@@ -11,6 +11,7 @@ global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
 class deepsearch(deepsearchTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
+    global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     self.init_components(**properties)
     rowClases =  anvil.server.call('get_ClasesExpSql')
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
@@ -19,14 +20,14 @@ class deepsearch(deepsearchTemplate):
     emp_rows = anvil.server.call('get_Empleados',status)
     self.llenaListas(rowClases,rowCbienes,rowEstado,emp_rows)
 
-    self.refresh()
-    self.set_event_handler("x-refresh", self.refresh)
+    #self.refresh()
+    #self.set_event_handler("x-refresh", self.refresh)
 
     # Any code you write here will run before the form opens.
 
-  def refresh(self, **event_args):
+  #def refresh(self, **event_args):
     # self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_expedientes.items = anvil.server.call("get_ExpedientesSql")
+    #self.repeating_panel_expedientes.items = anvil.server.call("get_ExpedientesSql")
 
   def link_back_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -99,26 +100,27 @@ class deepsearch(deepsearchTemplate):
     claseXpediente = self.dd_clases.selected_value
     clasePropiedad = self.dd_clasesBienes.selected_value
     estadoPropiedad = self.dd_estado.selected_value
-    usuario=self.drop_down_empleados.selected_value
+    #usuario=self.drop_down_empleados.selected_value
     self.actUbicacion()
     ubicacion=ubiGlobal
     codigo=f"%{codigo}%"
-    descricion=f"%{descripcion}%"
-    if etiqueta!=None:
+    descripcion=f"%{descripcion}%"
+    if etiqueta is not None:
       whereStr = f" where etiqueta='{etiqueta}'"
-    elif ubicacion!=None:
+    elif ubicacion is not None:
       whereStr = f" where ubicacion='{ubicacion}'"
-    elif codigo!=None:
+    elif codigo is not None:
       whereStr = f" where id like {codigo}"
-    elif descripcion!=None:
+    elif descripcion is not None:
       whereStr = f" where decripcion like {descripcion}"
     else:
-      if claseXpediente!=None:
+      if claseXpediente is not None:
         whereStr = f" where clase='{claseXpediente}'"
-        if clasePropiedad!=None:
+        if clasePropiedad is not None:
           whereStr = f" and claseBien='{clasePropiedad}'"
-          if estadoPropiedad!=None:
+          if estadoPropiedad is not None:
             whereStr = f" and estadoBien='{estadoPropiedad}'"
+            
     self.repeating_panel_expedientes.items = anvil.server.call(
       "searchDeep_Expedientes", whereStr
     )
