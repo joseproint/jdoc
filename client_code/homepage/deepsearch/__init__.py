@@ -64,9 +64,9 @@ class deepsearch(deepsearchTemplate):
     ubiGlobal=f"{sucursal}%"
     sqlStr = self.lbl_sql.text
     if sqlStr is None or sqlStr=='':
-      sqlStr=f" where clase='{ubiGlobal}'"
+      sqlStr=f" where ubicacion='{ubiGlobal}'"
     else:
-      sqlStr=f" {sqlStr} and clase='{ubiGlobal}'"
+      sqlStr=f" {sqlStr} and ubicacion='{ubiGlobal}'"
     self.lbl_sql.text = sqlStr    
     
   def dd_deposito_change(self, **event_args):
