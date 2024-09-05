@@ -142,7 +142,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     claseExp = self.dd_clases.selected_value
     sqlStr = self.lbl_sql.text
-    if sqlStr is None or sqlStr!='':
+    if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{claseExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseExp}'"
@@ -152,7 +152,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     estadoExp = self.dd_estado.selected_value
     sqlStr = self.lbl_sql.text
-    if sqlStr is None or sqlStr!='':
+    if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{estadoExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{estadoExp}'"
@@ -162,7 +162,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     claseBien = self.dd_clasesBienes.selected_value
     sqlStr = self.lbl_sql.text
-    if sqlStr is None or sqlStr!='':
+    if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{claseBien}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseBien}'"
