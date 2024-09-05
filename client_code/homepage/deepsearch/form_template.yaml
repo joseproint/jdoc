@@ -75,41 +75,6 @@ components:
       name: dd_sucursal
       properties: {tooltip: Sucursal}
       type: DropDown
-    - event_bindings: {change: dd_deposito_change}
-      layout_properties: {grid_position: 'BRBDTF,PNNIXS'}
-      name: dd_deposito
-      properties:
-        items: []
-        tooltip: Deposito
-      type: DropDown
-    - event_bindings: {change: dd_archivo_change}
-      layout_properties: {grid_position: 'BRBDTF,QMAOMF'}
-      name: dd_archivo
-      properties: {tooltip: Archivo}
-      type: DropDown
-    - event_bindings: {change: dd_gaveta_change}
-      layout_properties: {grid_position: 'BRBDTF,FCGNTO'}
-      name: dd_gaveta
-      properties:
-        items: []
-        tooltip: Gaveta
-      type: DropDown
-    - event_bindings: {change: dd_seccion_change}
-      layout_properties: {grid_position: 'BRBDTF,NFEKKB'}
-      name: dd_seccion
-      properties:
-        items: []
-        tooltip: Seccion
-      type: DropDown
-    - layout_properties: {grid_position: 'ZAWFRJ,VUNLOV'}
-      name: label_usuario
-      properties: {text: Usuario}
-      type: Label
-    - event_bindings: {change: drop_down_responsible_change}
-      layout_properties: {grid_position: 'ZAWFRJ,SSVUKR'}
-      name: drop_down_empleados
-      properties: {}
-      type: DropDown
     - event_bindings: {click: link_search_click}
       layout_properties: {grid_position: 'LBTVJJ,UJAXDT'}
       name: link_search
@@ -117,7 +82,7 @@ components:
       type: Link
     layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
     name: card_2
-    properties: {col_widths: '{"BIVFVR":54,"SPEIDQ":54,"ZILMAH":62,"VUNLOV":12,"SSVUKR":48,"WAAQHO":12,"PNNIXS":5,"QMAOMF":11,"FCGNTO":10,"NFEKKB":10,"GRZPMB":16,"UBTKSW":14,"LAAMCQ":14,"GURWEP":12}', role: card, wrap_on: never}
+    properties: {col_widths: '{"BIVFVR":54,"SPEIDQ":54,"ZILMAH":62,"WAAQHO":26,"GRZPMB":16,"UBTKSW":14,"LAAMCQ":14,"GURWEP":6}', role: card, wrap_on: never}
     type: ColumnPanel
   - components:
     - layout_properties: {}
