@@ -116,7 +116,7 @@ class deepsearch(deepsearchTemplate):
     elif ubicacion is not None and ubicacion!='':
       whereStr = f" where ubicacion='{ubicacion}'"
     elif codigo is not None and codigo !='':
-      whereStr = f" where id like '{codigo}''"
+      whereStr = f" where id like '{codigo}'"
     elif descripcion is not None and descripcion!='':
       whereStr = f" where decripcion like '{descripcion}'"
     else:
