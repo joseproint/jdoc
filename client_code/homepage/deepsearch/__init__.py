@@ -111,6 +111,7 @@ class deepsearch(deepsearchTemplate):
     ubicacion=ubiGlobal
     #codigo=f"%{codigo}%"
     #descripcion=f"%{descripcion}%"
+    whereStr=''
     if etiqueta is not None and etiqueta!='':
       whereStr = f" where etiqueta='%{etiqueta}%'"
     elif ubicacion is not None and ubicacion!='':
@@ -123,9 +124,15 @@ class deepsearch(deepsearchTemplate):
       if claseXpediente is not None:
         whereStr = f" where clase='{claseXpediente}'"
         if clasePropiedad is not None:
-          whereStr = f" and claseBien='{clasePropiedad}'"
+          if whereStr!='':
+            whereStr = f" and claseBien='{clasePropiedad}'"
+          else:
+            whereStr = f" where claseBien='{clasePropiedad}'"
           if estadoPropiedad is not None:
-            whereStr = f" and estadoBien='{estadoPropiedad}'"
+            if whereStr!='':
+              whereStr = f" and estadoBien='{estadoPropiedad}'"
+            else:
+              whereStr = f" where estadoBien='{estadoPropiedad}'"
             
     self.repeating_panel_expedientes.items = anvil.server.call(
       "searchDeep_Expedientes", whereStr
