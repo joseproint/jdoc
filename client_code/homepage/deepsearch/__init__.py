@@ -68,7 +68,8 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where ubicacion like '{ubiGlobal}'"
     else:
       sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
-    self.lbl_sql.text = sqlStr    
+    self.lbl_sql.text = sqlStr
+    self.link_ubicacion.icon='fa:check'
     
   def dd_deposito_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -166,6 +167,7 @@ class deepsearch(deepsearchTemplate):
     else:
       sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
     self.lbl_sql.text = sqlStr
+    self.link_estadoBien.icon='fa:check'
 
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -176,9 +178,14 @@ class deepsearch(deepsearchTemplate):
     else:
       sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
     self.lbl_sql.text = sqlStr
+    self.link_clasePropiedad.icon='fa:check'
 
   def btn_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.lbl_sql.text=''
     self.repeating_panel_expedientes.items=[]
+    self.link_claseXp.icon=''
+    self.link_estadoBien.icon=''
+    self.link_clasePropiedad.icon=''
+    self.link_ubicacion.icon=''
     

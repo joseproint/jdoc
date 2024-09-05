@@ -48,28 +48,28 @@ components:
       name: dd_clases
       properties: {}
       type: DropDown
-    - layout_properties: {grid_position: 'OFAXQZ,IICBBH'}
-      name: label_3
-      properties: {text: Estado de la Propiedad}
-      type: Label
+    - layout_properties: {grid_position: 'OFAXQZ,UBTKSW'}
+      name: link_estadoBien
+      properties: {text: Estado Propiedad}
+      type: Link
     - event_bindings: {change: dd_estado_change}
       layout_properties: {grid_position: 'OFAXQZ,BIVFVR'}
       name: dd_estado
       properties: {}
       type: DropDown
-    - layout_properties: {grid_position: 'YBHWQL,OMHKWF'}
-      name: label_2
-      properties: {text: Tipo de Propiedad}
-      type: Label
+    - layout_properties: {grid_position: 'YBHWQL,LAAMCQ'}
+      name: link_clasePropiedad
+      properties: {text: Tipo Propiedad}
+      type: Link
     - event_bindings: {change: dd_clasesBienes_change}
       layout_properties: {grid_position: 'YBHWQL,SPEIDQ'}
       name: dd_clasesBienes
       properties: {}
       type: DropDown
-    - layout_properties: {grid_position: 'BRBDTF,ZEBXZW'}
-      name: lbl_ubicacion
+    - layout_properties: {grid_position: 'BRBDTF,GURWEP'}
+      name: link_ubicacion
       properties: {text: Ubicacion}
-      type: Label
+      type: Link
     - event_bindings: {change: dd_sucursal_change}
       layout_properties: {grid_position: 'BRBDTF,WAAQHO'}
       name: dd_sucursal
@@ -117,7 +117,7 @@ components:
       type: Link
     layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
     name: card_2
-    properties: {col_widths: '{"IICBBH":12,"BIVFVR":48,"OMHKWF":12,"SPEIDQ":48,"ZILMAH":62,"VUNLOV":12,"SSVUKR":48,"ZEBXZW":12,"WAAQHO":8,"PNNIXS":10,"QMAOMF":10,"FCGNTO":10,"NFEKKB":10,"GRZPMB":16}', role: card, wrap_on: never}
+    properties: {col_widths: '{"BIVFVR":54,"SPEIDQ":54,"ZILMAH":62,"VUNLOV":12,"SSVUKR":48,"WAAQHO":12,"PNNIXS":5,"QMAOMF":11,"FCGNTO":10,"NFEKKB":10,"GRZPMB":16,"UBTKSW":14,"LAAMCQ":14,"GURWEP":12}', role: card, wrap_on: never}
     type: ColumnPanel
   - components:
     - layout_properties: {}
