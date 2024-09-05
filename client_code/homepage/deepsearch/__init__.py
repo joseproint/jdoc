@@ -36,22 +36,6 @@ class deepsearch(deepsearchTemplate):
     """This method is called when the link is clicked"""
     open_form("homepage.mainmenu")
 
-  def text_box_search_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    pass
-
-  def search(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    # status = self.drop_down_status.selected_value
-    # status=self.realStatus(status)
-    self.repeating_panel_expedientes.items = anvil.server.call(
-      "search_Expedientes", self.text_box_search.text
-    )
-
-  def link_search_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    self.search()
-
   def llenaListas(self, rowClases, rowCbienes, rowEstado, emp_rows):
     self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,101)]
     self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
@@ -104,4 +88,21 @@ class deepsearch(deepsearchTemplate):
     ubicacion=f"{sucursal}{deposito}{archivo}{gaveta}{seccion}"  
     #self.txt_ubicacion.text=ubicacion
     ubiGlobal = ubicacion
+
+  def link_search_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    # status = self.drop_down_status.selected_value
+    # status=self.realStatus(status)
+    codigo=self.text_box_codigo.text
+    etiqueta=self.txt_etiqueta.text
+    ubicacion = ubiGlobal
+    claseXpediente = self.dd_clases.selected_value
+    clasePropiedad = self.dd_clasesBienes.selected_value
+    estadoPropiedad = self.dd_estado.selected_value
+    usuario=self.drop_down_empleados.selected_value
+    self.actUbicacion()
+    
+    self.repeating_panel_expedientes.items = anvil.server.call(
+      "search_Expedientes", self.text_box_search.text
+    )
 
