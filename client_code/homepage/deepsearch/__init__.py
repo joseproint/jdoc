@@ -125,12 +125,12 @@ class deepsearch(deepsearchTemplate):
         whereStr = f" where clase='{claseXpediente}'"
         if clasePropiedad is not None:
           if whereStr!='':
-            whereStr = f" and claseBien='{clasePropiedad}'"
+            whereStr = f" {whereStr} and claseBien='{clasePropiedad}'"
           else:
             whereStr = f" where claseBien='{clasePropiedad}'"
           if estadoPropiedad is not None:
             if whereStr!='':
-              whereStr = f" and estadoBien='{estadoPropiedad}'"
+              whereStr = f" {whereStr} and estadoBien='{estadoPropiedad}'"
             else:
               whereStr = f" where estadoBien='{estadoPropiedad}'"
             
