@@ -138,3 +138,30 @@ class deepsearch(deepsearchTemplate):
       "searchDeep_Expedientes", whereStr
     )
 
+  def dd_clases_change(self, **event_args):
+    """This method is called when an item is selected"""
+    claseExp = self.dd_clases.selected_value
+    sqlStr = self.lbl_sql.text
+    if sqlStr is not None and sqlStr!='':
+      sqlStr=f" where clase='{claseExp}'"
+    else:
+      sqlStr=f" {sqlStr} and clase='{claseExp}'"
+
+  def dd_estado_change(self, **event_args):
+    """This method is called when an item is selected"""
+    estadoExp = self.dd_estado.selected_value
+    sqlStr = self.lbl_sql.text
+    if sqlStr is not None and sqlStr!='':
+      sqlStr=f" where clase='{estadoExp}'"
+    else:
+      sqlStr=f" {sqlStr} and clase='{estadoExp}'"
+
+  def dd_clasesBienes_change(self, **event_args):
+    """This method is called when an item is selected"""
+    claseBien = self.dd_clasesBienes.selected_value
+    sqlStr = self.lbl_sql.text
+    if sqlStr is not None and sqlStr!='':
+      sqlStr=f" where clase='{claseBien}'"
+    else:
+      sqlStr=f" {sqlStr} and clase='{claseBien}'"
+    
