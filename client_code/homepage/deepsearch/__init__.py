@@ -109,16 +109,16 @@ class deepsearch(deepsearchTemplate):
     #usuario=self.drop_down_empleados.selected_value
     self.actUbicacion()
     ubicacion=ubiGlobal
-    codigo=f"%{codigo}%"
-    descripcion=f"%{descripcion}%"
-    if etiqueta is not None and etiqueta!='%%':
-      whereStr = f" where etiqueta='{etiqueta}'"
-    elif ubicacion is not None and ubicacion!='%%':
+    #codigo=f"%{codigo}%"
+    #descripcion=f"%{descripcion}%"
+    if etiqueta is not None and etiqueta!='':
+      whereStr = f" where etiqueta='%{etiqueta}%'"
+    elif ubicacion is not None and ubicacion!='':
       whereStr = f" where ubicacion='{ubicacion}'"
-    elif codigo is not None and codigo !='%%':
-      whereStr = f" where id like '{codigo}'"
-    elif descripcion is not None and descripcion!='%%':
-      whereStr = f" where decripcion like '{descripcion}'"
+    elif codigo is not None and codigo !='':
+      whereStr = f" where id like '%{codigo}%'"
+    elif descripcion is not None and descripcion!='':
+      whereStr = f" where decripcion like '%{descripcion}%'"
     else:
       if claseXpediente is not None:
         whereStr = f" where clase='{claseXpediente}'"
