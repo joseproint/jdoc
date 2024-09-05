@@ -1,0 +1,170 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'TZMQZI,KIFBKQ'}
+      name: image_1
+      properties: {background: '', border: '', display_mode: zoom_to_fill, foreground: '', height: '85', horizontal_align: center, role: null, source: _/theme/jDocLogo.png, spacing_above: small, spacing_below: small, tooltip: '', vertical_align: top, visible: true}
+      type: Image
+    - components:
+      - event_bindings: {click: link_Inicio_click}
+        layout_properties: {grid_position: 'EPTTFH,ZRDGJJ'}
+        name: link_Inicio
+        properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:plus-circle', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Inicio, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
+        type: Link
+      - components: []
+        event_bindings: {click: link_back_click}
+        layout_properties: {grid_position: 'EPTTFH,JGMDNR'}
+        name: link_back
+        properties: {align: right, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
+        type: Link
+      layout_properties: {grid_position: 'GZMOMP,YLQSXP'}
+      name: card_1
+      properties: {role: card, wrap_on: never}
+      type: ColumnPanel
+    - layout_properties: {grid_position: 'XICSIL,RGPTMM'}
+      name: label_1
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Busqueda Avanzada, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {grid_position: 'MEDAWO,SRRKEH'}
+    name: column_panel_1
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'GGCJDU,WSBFDM'}
+      name: label_2_copy
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Codigo Expediente, tooltip: '', underline: false, visible: true}
+      type: Label
+    - event_bindings: {pressed_enter: text_box_nombre_pressed_enter}
+      layout_properties: {grid_position: 'GGCJDU,YEFMGN'}
+      name: text_box_codigo
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
+      type: TextBox
+    - layout_properties: {grid_position: 'TWSWLO,LZWIGN'}
+      name: lbl_etiqueta
+      properties: {text: Etiqueta Expediente}
+      type: Label
+    - layout_properties: {grid_position: 'TWSWLO,BTGVTB'}
+      name: txt_etiqueta
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'WEWTTA,QNNEDJ'}
+      name: lbl_clase
+      properties: {text: Clase Expediente}
+      type: Label
+    - event_bindings: {change: dd_clases_change}
+      layout_properties: {grid_position: 'WEWTTA,ZILMAH'}
+      name: dd_clases
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'OFAXQZ,IICBBH'}
+      name: label_3
+      properties: {text: Estado de la Propiedad}
+      type: Label
+    - layout_properties: {grid_position: 'OFAXQZ,BIVFVR'}
+      name: dd_estado
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'YBHWQL,OMHKWF'}
+      name: label_2
+      properties: {text: Tipo de Propiedad}
+      type: Label
+    - layout_properties: {grid_position: 'YBHWQL,SPEIDQ'}
+      name: dd_clasesBienes
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'BRBDTF,ZEBXZW'}
+      name: lbl_ubicacion
+      properties: {text: Ubicacion}
+      type: Label
+    - event_bindings: {change: dd_sucursal_change}
+      layout_properties: {grid_position: 'BRBDTF,WAAQHO'}
+      name: dd_sucursal
+      properties: {tooltip: Sucursal}
+      type: DropDown
+    - event_bindings: {change: dd_deposito_change}
+      layout_properties: {grid_position: 'BRBDTF,PNNIXS'}
+      name: dd_deposito
+      properties:
+        items: []
+        tooltip: Deposito
+      type: DropDown
+    - event_bindings: {change: dd_archivo_change}
+      layout_properties: {grid_position: 'BRBDTF,QMAOMF'}
+      name: dd_archivo
+      properties: {tooltip: Archivo}
+      type: DropDown
+    - event_bindings: {change: dd_gaveta_change}
+      layout_properties: {grid_position: 'BRBDTF,FCGNTO'}
+      name: dd_gaveta
+      properties:
+        items: []
+        tooltip: Gaveta
+      type: DropDown
+    - event_bindings: {change: dd_seccion_change}
+      layout_properties: {grid_position: 'BRBDTF,NFEKKB'}
+      name: dd_seccion
+      properties:
+        items: []
+        tooltip: Seccion
+      type: DropDown
+    - layout_properties: {grid_position: 'ZAWFRJ,VUNLOV'}
+      name: label_usuario
+      properties: {text: Usuario}
+      type: Label
+    - event_bindings: {change: drop_down_responsible_change}
+      layout_properties: {grid_position: 'ZAWFRJ,SSVUKR'}
+      name: drop_down_empleados
+      properties: {}
+      type: DropDown
+    - event_bindings: {pressed_enter: search}
+      layout_properties: {grid_position: 'ULGHHZ,ZYIGIR'}
+      name: text_box_search
+      properties: {placeholder: Buscar..., text: Digite el texto a buscar aqui...}
+      type: TextBox
+    - event_bindings: {click: link_search_click}
+      layout_properties: {grid_position: 'ULGHHZ,AAFJOC'}
+      name: link_search
+      properties: {font_size: 24, icon: 'fa:search', tooltip: Buscar, visible: true, wrap_on: never}
+      type: Link
+    - layout_properties: {grid_position: 'ULGHHZ,WPBHGR'}
+      name: link_deepsearch
+      properties: {font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Busqueda Avanzada, wrap_on: never}
+      type: Link
+    layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
+    name: card_2
+    properties: {col_widths: '{"IICBBH":12,"BIVFVR":48,"OMHKWF":12,"SPEIDQ":48,"QNNEDJ":12,"ZILMAH":48,"WSBFDM":12,"YEFMGN":48,"LZWIGN":12,"BTGVTB":48,"VUNLOV":12,"SSVUKR":48,"ZEBXZW":12,"WAAQHO":8,"PNNIXS":10,"QMAOMF":10,"FCGNTO":10,"NFEKKB":10,"ZYIGIR":46,"AAFJOC":7,"WPBHGR":7}', role: card, wrap_on: never}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {}
+      name: repeating_panel_expedientes
+      properties: {item_template: homepage.expedientes.RowTemplate9, spacing_above: none, spacing_below: none}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'BNSMTN,CFRQYY'}
+    name: data_grid_1
+    properties:
+      auto_header: true
+      background: ''
+      border: ''
+      columns:
+      - {$$hashKey: 'object:33687', data_key: column_1, expand: false, id: RATJHT, title: Codigo, width: 115}
+      - {$$hashKey: 'object:33688', data_key: column_2, expand: false, id: GFZRFD, title: Descripcion, width: 435}
+      - {$$hashKey: 'object:33689', data_key: column_3, expand: false, id: DEAVIS, title: '', width: 38}
+      - {$$hashKey: 'object:33732', data_key: column_4, expand: false, id: UJBISM, title: '', width: 43}
+      foreground: ''
+      role: null
+      rows_per_page: 20
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      tooltip: ''
+      visible: true
+      wrap_on: never
+    type: DataGrid
+  layout_properties:
+    col_widths: {}
+    grid_position: CNXITH,VWHKYT
+  name: outlined_card_1
+  properties: {col_widths: '{}', role: card, wrap_on: never}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+is_package: true

@@ -45,5 +45,9 @@ class expedientes(expedientesTemplate):
     """This method is called when the link is clicked"""
     self.search()
 
+  def link_deepsearch_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.deepsearch')
+
 
 

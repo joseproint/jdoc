@@ -33,16 +33,21 @@ components:
     - event_bindings: {pressed_enter: search}
       layout_properties: {grid_position: 'PTKUGQ,NNSSIY'}
       name: text_box_search
-      properties: {placeholder: Buscar...}
+      properties: {placeholder: Buscar..., text: Digite el texto a buscar aqui...}
       type: TextBox
     - event_bindings: {click: link_search_click}
       layout_properties: {grid_position: 'PTKUGQ,DUQQZP'}
       name: link_search
-      properties: {font_size: 24, icon: 'fa:search', visible: true, wrap_on: never}
+      properties: {font_size: 24, icon: 'fa:search', tooltip: Buscar, visible: true, wrap_on: never}
+      type: Link
+    - event_bindings: {click: link_deepsearch_click}
+      layout_properties: {grid_position: 'PTKUGQ,YSLPCO'}
+      name: link_deepsearch
+      properties: {font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Busqueda Avanzada, wrap_on: never}
       type: Link
     layout_properties: {grid_position: 'BRMWDB,EULAKQ'}
     name: card_2
-    properties: {col_widths: '{"NNSSIY":51,"DUQQZP":9}', role: card, wrap_on: never}
+    properties: {col_widths: '{"NNSSIY":64,"DUQQZP":8,"YSLPCO":8}', role: card, wrap_on: never}
     type: ColumnPanel
   - components:
     - layout_properties: {}
