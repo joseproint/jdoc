@@ -30,13 +30,21 @@ components:
     properties: {col_widths: '{}'}
     type: ColumnPanel
   - components:
-    - layout_properties: {grid_position: 'GGCJDU,WSBFDM'}
+    - layout_properties: {grid_position: 'GGCJDU,WSBFDM MJBKDA,NXYHND'}
       name: label_2_copy
       properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Codigo Expediente, tooltip: '', underline: false, visible: true}
       type: Label
+    - layout_properties: {grid_position: 'GGCJDU,WSBFDM WBHPDE,RZIZSA'}
+      name: label_descripcion
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Descripcion, tooltip: '', underline: false, visible: true}
+      type: Label
     - event_bindings: {pressed_enter: text_box_nombre_pressed_enter}
-      layout_properties: {grid_position: 'GGCJDU,YEFMGN'}
+      layout_properties: {grid_position: 'GGCJDU,YEFMGN RTDOWV,PKNENU'}
       name: text_box_codigo
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
+      type: TextBox
+    - layout_properties: {grid_position: 'GGCJDU,YEFMGN FXSMOY,YNTYAL'}
+      name: text_box_descripcion
       properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
       type: TextBox
     - layout_properties: {grid_position: 'TWSWLO,LZWIGN'}

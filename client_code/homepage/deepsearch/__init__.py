@@ -95,13 +95,21 @@ class deepsearch(deepsearchTemplate):
     # status=self.realStatus(status)
     codigo=self.text_box_codigo.text
     etiqueta=self.txt_etiqueta.text
-    ubicacion = ubiGlobal
+    descripcion=self.text_box_descripcion.text
     claseXpediente = self.dd_clases.selected_value
     clasePropiedad = self.dd_clasesBienes.selected_value
     estadoPropiedad = self.dd_estado.selected_value
     usuario=self.drop_down_empleados.selected_value
     self.actUbicacion()
-    
+    ubicacion=ubiGlobal
+    codigo=f"%{codigo}%"
+    descricion=f"%{descripcion}%"
+    if etiqueta!=None:
+      whereStr = f" where etiqueta='{etiqueta}'"
+    elif ubicacion!=None:
+      whereStr = f" where ubicacion='{ubicacion}'"
+    else:
+      whereStr = f" where id like {codigo}"
     self.repeating_panel_expedientes.items = anvil.server.call(
       "search_Expedientes", self.text_box_search.text
     )
