@@ -13,6 +13,12 @@ class deepsearch(deepsearchTemplate):
     # Set Form properties and Data Bindings.
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     self.init_components(**properties)
+    sucursal=''
+    deposito=''
+    archivo=''
+    gaveta=''
+    seccion=''
+    ubiGlobal=''
     rowClases =  anvil.server.call('get_ClasesExpSql')
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
