@@ -155,6 +155,7 @@ class deepsearch(deepsearchTemplate):
     else:
       sqlStr=f" {sqlStr} and clase='{claseExp}'"
     self.lbl_sql.text = sqlStr
+    self.link_claseXp.icon='fa:check'
     
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -179,4 +180,5 @@ class deepsearch(deepsearchTemplate):
   def btn_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.lbl_sql.text=''
+    self.repeating_panel_expedientes.items=[]
     

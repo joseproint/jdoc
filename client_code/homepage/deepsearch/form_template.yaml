@@ -39,10 +39,10 @@ components:
     properties: {text: Limpiar}
     type: Button
   - components:
-    - layout_properties: {grid_position: 'WEWTTA,QNNEDJ'}
-      name: lbl_clase
-      properties: {text: Clase Expediente}
-      type: Label
+    - layout_properties: {grid_position: 'WEWTTA,GRZPMB'}
+      name: link_claseXp
+      properties: {icon: '', text: Clase Expediente}
+      type: Link
     - event_bindings: {change: dd_clases_change}
       layout_properties: {grid_position: 'WEWTTA,ZILMAH'}
       name: dd_clases
@@ -117,7 +117,7 @@ components:
       type: Link
     layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
     name: card_2
-    properties: {col_widths: '{"IICBBH":12,"BIVFVR":48,"OMHKWF":12,"SPEIDQ":48,"QNNEDJ":12,"ZILMAH":48,"VUNLOV":12,"SSVUKR":48,"ZEBXZW":12,"WAAQHO":8,"PNNIXS":10,"QMAOMF":10,"FCGNTO":10,"NFEKKB":10}', role: card, wrap_on: never}
+    properties: {col_widths: '{"IICBBH":12,"BIVFVR":48,"OMHKWF":12,"SPEIDQ":48,"ZILMAH":62,"VUNLOV":12,"SSVUKR":48,"ZEBXZW":12,"WAAQHO":8,"PNNIXS":10,"QMAOMF":10,"FCGNTO":10,"NFEKKB":10,"GRZPMB":16}', role: card, wrap_on: never}
     type: ColumnPanel
   - components:
     - layout_properties: {}
