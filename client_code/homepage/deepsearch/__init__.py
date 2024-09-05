@@ -188,4 +188,8 @@ class deepsearch(deepsearchTemplate):
     self.link_estadoBien.icon=''
     self.link_clasePropiedad.icon=''
     self.link_ubicacion.icon=''
+    self.dd_clases.selected_value='Cdeposito'
+    self.dd_clasesBienes.selected_value='Apartamento'
+    self.dd_estado.selected_value='Disponible'
+    self.dd_sucursal.selected_value='001%'
     
