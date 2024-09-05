@@ -58,9 +58,16 @@ class deepsearch(deepsearchTemplate):
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
     suc = self.dd_sucursal.selected_value
-    global sucursal,deposito,archivo,gaveta,seccion
+    global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     sucursal=str(suc).zfill(3)
-    self.actUbicacion()
+    #self.actUbicacion()
+    ubiGlobal=f"{sucursal}%"
+    sqlStr = self.lbl_sql.text
+    if sqlStr is None or sqlStr=='':
+      sqlStr=f" where clase='{ubiGlobal}'"
+    else:
+      sqlStr=f" {sqlStr} and clase='{ubiGlobal}'"
+    self.lbl_sql.text = sqlStr    
     
   def dd_deposito_change(self, **event_args):
     """This method is called when an item is selected"""
