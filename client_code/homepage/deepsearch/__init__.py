@@ -153,9 +153,9 @@ class deepsearch(deepsearchTemplate):
     estadoExp = self.dd_estado.selected_value
     sqlStr = self.lbl_sql.text
     if sqlStr is None or sqlStr=='':
-      sqlStr=f" where clase='{estadoExp}'"
+      sqlStr=f" where estadoBien='{estadoExp}'"
     else:
-      sqlStr=f" {sqlStr} and clase='{estadoExp}'"
+      sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
     self.lbl_sql.text = sqlStr
 
   def dd_clasesBienes_change(self, **event_args):
@@ -163,8 +163,8 @@ class deepsearch(deepsearchTemplate):
     claseBien = self.dd_clasesBienes.selected_value
     sqlStr = self.lbl_sql.text
     if sqlStr is None or sqlStr=='':
-      sqlStr=f" where clase='{claseBien}'"
+      sqlStr=f" where claseBien='{claseBien}'"
     else:
-      sqlStr=f" {sqlStr} and clase='{claseBien}'"
+      sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
     self.lbl_sql.text = sqlStr
     
