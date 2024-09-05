@@ -146,7 +146,8 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where clase='{claseExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseExp}'"
-
+    self.lbl_sql.text = sqlStr
+    
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
     estadoExp = self.dd_estado.selected_value
@@ -155,6 +156,7 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where clase='{estadoExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{estadoExp}'"
+    self.lbl_sql.text = sqlStr
 
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -164,4 +166,5 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where clase='{claseBien}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseBien}'"
+    self.lbl_sql.text = sqlStr
     
