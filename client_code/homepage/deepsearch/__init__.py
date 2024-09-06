@@ -64,7 +64,7 @@ class deepsearch(deepsearchTemplate):
     self.dd_clases.selected_value='zTodos'
     self.dd_estado.selected_value='Todos'
     self.dd_clasesBienes.selected_value='zTodos'
-    self.dd_sucursal.selected_value=99
+    self.dd_sucursal.selected_value='Todos'
 
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
