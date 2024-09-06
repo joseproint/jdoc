@@ -47,7 +47,7 @@ class deepsearch(deepsearchTemplate):
 
   def llenaListas(self, rowClases, rowCbienes, rowEstado, emp_rows):
     self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,101)]
-    self.dd_sucursal.items.append["zTodos","Todos"]
+    self.dd_sucursal.items.append["zTodos",102]
     #self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
     #self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
     #self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
