@@ -67,10 +67,10 @@ class deepsearch(deepsearchTemplate):
     comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where ubicacion like '{ubiGlobal}'"
-      comandoStr=f" donde la Ubicacion sea como '{ubiGlobal}'"
+      comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
     else:
       sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
-      comandoStr=f" {comandoStr} y la Ubicacion sea como '{ubiGlobal}'"
+      comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_ubicacion.icon='fa:check'
@@ -188,10 +188,10 @@ class deepsearch(deepsearchTemplate):
     comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where claseBien='{claseBien}'"
-      comandoStr = f" donde el tipo de Propiedad igual a '{claseBien}'"
+      comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
     else:
       sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
-      comandoStr=f" {claseBien} y el tipo de Propiedad igual a '{claseBien}'"
+      comandoStr=f" {claseBien} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_clasePropiedad.icon='fa:check'
