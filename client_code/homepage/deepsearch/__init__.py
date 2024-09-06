@@ -50,6 +50,8 @@ class deepsearch(deepsearchTemplate):
     #self.dd_sucursal.items.append["zTodos"]
     for todos in ['zTodos']:
       self.dd_sucursal.items.append(todos)
+    self.dd_sucursal.items = self.dd_sucursal.items
+    
     #self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
     #self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
     #self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
