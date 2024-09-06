@@ -180,7 +180,7 @@ class deepsearch(deepsearchTemplate):
     self.lbl_sql.text = sqlStr
     self.link_clasePropiedad.icon='fa:check'
 
-  def btn_limpiar_click(self, **event_args):
+  def link_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.lbl_sql.text=''
     self.repeating_panel_expedientes.items=[]
@@ -191,5 +191,5 @@ class deepsearch(deepsearchTemplate):
     self.dd_clases.selected_value='Cdeposito'
     self.dd_clasesBienes.selected_value='Apartamento'
     self.dd_estado.selected_value='Disponible'
-    self.dd_sucursal.selected_value='001'
+    self.dd_sucursal.selected_value='1'
     
