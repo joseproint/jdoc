@@ -64,11 +64,15 @@ class deepsearch(deepsearchTemplate):
     #self.actUbicacion()
     ubiGlobal=f"{sucursal}%"
     sqlStr = self.lbl_sql.text
+    comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where ubicacion like '{ubiGlobal}'"
+      comandoStr=f" donde la Ubicacion sea como '{ubiGlobal}'"
     else:
       sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
+      comandoStr=f" {comandoStr} y la Ubicacion sea como '{ubiGlobal}'"
     self.lbl_sql.text = sqlStr
+    self.txt_comando.text = comandoStr
     self.link_ubicacion.icon='fa:check'
     
   #def dd_deposito_change(self, **event_args):
@@ -151,38 +155,51 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     claseExp = self.dd_clases.selected_value
     sqlStr = self.lbl_sql.text
+    comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{claseExp}'"
+      comandoStr=f" donde la clase del Expediente sea igual a '{claseExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseExp}'"
+      comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
     self.lbl_sql.text = sqlStr
+    self.txt_comando.text = comandoStr
     self.link_claseXp.icon='fa:check'
     
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
     estadoExp = self.dd_estado.selected_value
     sqlStr = self.lbl_sql.text
+    comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where estadoBien='{estadoExp}'"
+      comandoStr=f" donde el estado de la Propiedad igual a '{estadoExp}'"
     else:
       sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
+      comandoStr=f" {comandoStr} y el estado de la Propiedad igual a '{estadoExp}'"
     self.lbl_sql.text = sqlStr
+    self.txt_comando.text = comandoStr
     self.link_estadoBien.icon='fa:check'
 
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
     claseBien = self.dd_clasesBienes.selected_value
     sqlStr = self.lbl_sql.text
+    comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where claseBien='{claseBien}'"
+      comandoStr = f" donde el tipo de Propiedad igual a '{claseBien}'"
     else:
       sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
+      comandoStr=f" {claseBien} y el tipo de Propiedad igual a '{claseBien}'"
     self.lbl_sql.text = sqlStr
+    self.txt_comando.text = comandoStr
     self.link_clasePropiedad.icon='fa:check'
 
   def link_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.lbl_sql.text=''
+    self.txt_comando.text=''
     self.repeating_panel_expedientes.items=[]
     self.link_claseXp.icon=''
     self.link_estadoBien.icon=''

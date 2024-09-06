@@ -33,11 +33,10 @@ components:
     name: lbl_sql
     properties: {}
     type: Label
-  - event_bindings: {click: btn_limpiar_click}
-    layout_properties: {grid_position: 'FNXJTR,VPGLKD'}
-    name: btn_limpiar
-    properties: {text: Limpiar}
-    type: Button
+  - layout_properties: {grid_position: 'LIXZYX,OOJEPQ'}
+    name: txt_comando
+    properties: {bold: true, font_size: 10}
+    type: TextArea
   - components:
     - layout_properties: {grid_position: 'WEWTTA,GRZPMB'}
       name: link_claseXp
@@ -78,12 +77,12 @@ components:
     - event_bindings: {click: link_search_click}
       layout_properties: {grid_position: 'LBTVJJ,UJAXDT'}
       name: link_search
-      properties: {align: center, font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Busqueda Avanzada, wrap_on: never}
+      properties: {align: center, font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Buscar, wrap_on: never}
       type: Link
     - event_bindings: {click: link_limpiar_click}
       layout_properties: {grid_position: 'LBTVJJ,BZREZG'}
       name: link_limpiar
-      properties: {align: center, icon: '', tooltip: Blanquear, wrap_on: never}
+      properties: {align: center, font_size: 24, icon: 'fa:eraser', text: '', tooltip: Blanquear, wrap_on: never}
       type: Link
     layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
     name: card_2
@@ -119,7 +118,7 @@ components:
     col_widths: {}
     grid_position: CNXITH,VWHKYT
   name: outlined_card_1
-  properties: {col_widths: '{"OKIWKW":50,"VPGLKD":10}', role: card, wrap_on: never}
+  properties: {col_widths: '{"OKIWKW":50}', role: card, wrap_on: never}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true
