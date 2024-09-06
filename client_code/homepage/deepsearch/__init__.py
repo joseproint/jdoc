@@ -45,10 +45,10 @@ class deepsearch(deepsearchTemplate):
 
   def llenaListas(self, rowClases, rowCbienes, rowEstado, emp_rows):
     self.dd_sucursal.items = [(f"Sucursal {r}",r) for r in range(1,101)]
-    self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
-    self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
-    self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
-    self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,21)]
+    #self.dd_deposito.items = [(f"Deposito {r}",r) for r in range(1,11)]
+    #self.dd_archivo.items = [(f"Archivo {r}",r) for r in range(1,21)]
+    #self.dd_gaveta.items = [(f"Gaveta {r}",r) for r in range(1,9)]
+    #self.dd_seccion.items = [(f"Seccion {r}", r) for r in range(1,21)]
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
@@ -71,33 +71,33 @@ class deepsearch(deepsearchTemplate):
     self.lbl_sql.text = sqlStr
     self.link_ubicacion.icon='fa:check'
     
-  def dd_deposito_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    dep = self.dd_deposito.selected_value
-    deposito=str(dep).zfill(2)
-    self.actUbicacion()
+  #def dd_deposito_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  global sucursal,deposito,archivo,gaveta,seccion
+  #  dep = self.dd_deposito.selected_value
+  #  deposito=str(dep).zfill(2)
+  #  self.actUbicacion()
     
-  def dd_archivo_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    arc = self.dd_archivo.selected_value
-    archivo=str(arc).zfill(2)
-    self.actUbicacion()
+  #def dd_archivo_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  global sucursal,deposito,archivo,gaveta,seccion
+  #  arc = self.dd_archivo.selected_value
+  #  archivo=str(arc).zfill(2)
+  #  self.actUbicacion()
     
-  def dd_gaveta_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    gav = self.dd_gaveta.selected_value
-    gaveta=str(gav).zfill(2)
-    self.actUbicacion()
+  #def dd_gaveta_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  global sucursal,deposito,archivo,gaveta,seccion
+  #  gav = self.dd_gaveta.selected_value
+  #  gaveta=str(gav).zfill(2)
+  #  self.actUbicacion()
     
-  def dd_seccion_change(self, **event_args):
-    """This method is called when an item is selected"""
-    global sucursal,deposito,archivo,gaveta,seccion
-    sec = self.dd_seccion.selected_value
-    seccion=str(sec).zfill(2)
-    self.actUbicacion()
+  #def dd_seccion_change(self, **event_args):
+  #  """This method is called when an item is selected"""
+  #  global sucursal,deposito,archivo,gaveta,seccion
+  #  sec = self.dd_seccion.selected_value
+  #  seccion=str(sec).zfill(2)
+  #  self.actUbicacion()
 
   def actUbicacion(self):
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
