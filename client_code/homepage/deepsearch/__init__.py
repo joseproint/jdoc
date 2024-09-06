@@ -54,9 +54,9 @@ class deepsearch(deepsearchTemplate):
     self.dd_estado.items = [r for r in rowEstado]
     #emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
     #self.drop_down_empleados.items = emp_lista
-    self.dd_clases.selected_value='Todos'
+    self.dd_clases.selected_value='zTodos'
     self.dd_estado.selected_value='Todos'
-    self.dd_clasesBienes.selected_value='Todos'
+    self.dd_clasesBienes.selected_value='zTodos'
     self.dd_sucursal.selected_value=99
 
   def dd_sucursal_change(self, **event_args):
