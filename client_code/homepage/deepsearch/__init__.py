@@ -7,11 +7,13 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
+global rowClases,rowCbienes,rowEstado,emp_rows
 
 class deepsearch(deepsearchTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
+    global rowClases,rowCbienes,rowEstado,emp_rows
     self.init_components(**properties)
     sucursal=''
     deposito=''
@@ -203,6 +205,7 @@ class deepsearch(deepsearchTemplate):
 
   def link_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
+    global rowClases,rowCbienes,rowEstado,emp_rows
     self.lbl_sql.text=''
     self.txt_comando.text=''
     self.repeating_panel_expedientes.items=[]
@@ -210,8 +213,9 @@ class deepsearch(deepsearchTemplate):
     self.link_estadoBien.icon=''
     self.link_clasePropiedad.icon=''
     self.link_ubicacion.icon=''
-    self.dd_clases.selected_value='Cdeposito'
-    self.dd_clasesBienes.selected_value='Apartamento'
-    self.dd_estado.selected_value='Disponible'
-    self.dd_sucursal.selected_value=50
+    self.llenaListas(rowClases,rowCbienes,rowEstado,emp_rows)
+    #self.dd_clases.selected_value='Cdeposito'
+    #self.dd_clasesBienes.selected_value='Apartamento'
+    #self.dd_estado.selected_value='Disponible'
+    #self.dd_sucursal.selected_value=50
     
