@@ -57,8 +57,9 @@ class deepsearch(deepsearchTemplate):
 
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
-    suc="001"
+    #suc="001"
     suc = self.dd_sucursal.selected_value
+    print(f"Sucursal seleccionada:{suc}")
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     sucursal=str(suc).zfill(3)
     #self.actUbicacion()
