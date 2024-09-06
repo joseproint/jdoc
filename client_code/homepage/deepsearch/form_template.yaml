@@ -77,12 +77,12 @@ components:
     - event_bindings: {click: link_search_click}
       layout_properties: {grid_position: 'LBTVJJ,UJAXDT'}
       name: link_search
-      properties: {align: center, font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Buscar, wrap_on: never}
+      properties: {align: right, font_size: 24, icon: 'fa:binoculars', text: '', tooltip: Buscar, wrap_on: never}
       type: Link
     - event_bindings: {click: link_limpiar_click}
       layout_properties: {grid_position: 'LBTVJJ,BZREZG'}
       name: link_limpiar
-      properties: {align: center, font_size: 24, icon: 'fa:eraser', text: '', tooltip: Blanquear, wrap_on: never}
+      properties: {align: left, font_size: 24, icon: 'fa:eraser', text: '', tooltip: Blanquear, wrap_on: never}
       type: Link
     layout_properties: {grid_position: 'GQUXPI,LKSKEA'}
     name: card_2
