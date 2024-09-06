@@ -55,6 +55,8 @@ class deepsearch(deepsearchTemplate):
     #emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
     #self.drop_down_empleados.items = emp_lista
     self.dd_estado.selected_value='Todos'
+    self.dd_clasesBienes.selected_value='Todos'
+    self.dd_sucursal.selected_value=100
 
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
