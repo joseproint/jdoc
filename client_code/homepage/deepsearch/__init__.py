@@ -191,7 +191,7 @@ class deepsearch(deepsearchTemplate):
       comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
     else:
       sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
-      comandoStr=f" {claseBien} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+      comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_clasePropiedad.icon='fa:check'
