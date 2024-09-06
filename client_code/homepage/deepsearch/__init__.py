@@ -208,5 +208,5 @@ class deepsearch(deepsearchTemplate):
     self.dd_clases.selected_value='Cdeposito'
     self.dd_clasesBienes.selected_value='Apartamento'
     self.dd_estado.selected_value='Disponible'
-    self.dd_sucursal.selected_value='Sucursal 1'
+    self.dd_sucursal.selected_value=50
     
