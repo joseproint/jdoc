@@ -54,7 +54,7 @@ class deepsearch(deepsearchTemplate):
     self.dd_estado.items = [r for r in rowEstado]
     #emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
     #self.drop_down_empleados.items = emp_lista
-    self.dd_estado.selected_value=4
+    self.dd_estado.selected_value='Todos'
 
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
