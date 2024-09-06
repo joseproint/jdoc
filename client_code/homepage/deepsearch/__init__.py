@@ -52,8 +52,8 @@ class deepsearch(deepsearchTemplate):
     self.dd_clases.items = [(r['descripcion'], r['id'].strip()) for r in rowClases]
     self.dd_clasesBienes.items = [(r['descripcion'], r['id'].strip()) for r in rowCbienes]
     self.dd_estado.items = [r for r in rowEstado]
-    emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
-    self.drop_down_empleados.items = emp_lista
+    #emp_lista= [(r['empNombre'],r['empEmail']) for r in emp_rows]
+    #self.drop_down_empleados.items = emp_lista
 
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
