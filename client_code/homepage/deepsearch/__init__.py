@@ -158,7 +158,7 @@ class deepsearch(deepsearchTemplate):
     comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{claseExp}'"
-      comandoStr=f" donde la clase del Expediente sea igual a '{claseExp}'"
+      comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
     else:
       sqlStr=f" {sqlStr} and clase='{claseExp}'"
       comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
@@ -173,10 +173,10 @@ class deepsearch(deepsearchTemplate):
     comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where estadoBien='{estadoExp}'"
-      comandoStr=f" donde el estado de la Propiedad igual a '{estadoExp}'"
+      comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
     else:
       sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
-      comandoStr=f" {comandoStr} y el estado de la Propiedad igual a '{estadoExp}'"
+      comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_estadoBien.icon='fa:check'
