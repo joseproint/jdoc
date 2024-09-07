@@ -167,11 +167,6 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     claseExp = self.dd_clases.selected_value
     sqlStr = self.lbl_sql.text
-    #cmdStr = 'clase='
-    sqlStrAnt = sqlStr
-    if 'clase=' in sqlStr:
-      sqlStr = 
-      self.link_limpiar_click()
     comandoStr = self.txt_comando.text
     if sqlStr is None or sqlStr=='':
       sqlStr=f" where clase='{claseExp}'"
