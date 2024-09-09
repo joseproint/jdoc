@@ -237,7 +237,7 @@ class deepsearch(deepsearchTemplate):
     #self.dd_sucursal.selected_value=50
     
   def reCreaSql(self):
-    alert('recreando...')
+    anvil.alert('recreando el comando...')
     if self.link_claseXp.icon!='':
       alert('clase expediente marcado')
     if self.link_estadoBien.icon!='':
