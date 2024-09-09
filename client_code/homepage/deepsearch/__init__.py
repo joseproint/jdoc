@@ -70,7 +70,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     #suc="001"
     suc = self.dd_sucursal.selected_value
-    anvil.alert(f"Sucursal seleccionada:{suc}")
+    #anvil.alert(f"Sucursal seleccionada:{suc}")
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
     sucursal=str(suc).zfill(3)
     #self.actUbicacion()
@@ -237,6 +237,7 @@ class deepsearch(deepsearchTemplate):
     #self.dd_sucursal.selected_value=50
     
   def reCreaSql(self):
+    alert('recreando...')
     if self.link_claseXp.icon!='':
       alert('clase expediente marcado')
     if self.link_estadoBien.icon!='':
