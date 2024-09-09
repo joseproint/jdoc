@@ -293,4 +293,4 @@ class deepsearch(deepsearchTemplate):
       print(sqlStr)
       self.lbl_sql.text = f"{sqlStr}"
       self.txt_comando.text = f"{comandoStr}"
-      print(self.lbl_sql.text)
+      print(f" el label sql tiene: {self.lbl_sql.text}")
