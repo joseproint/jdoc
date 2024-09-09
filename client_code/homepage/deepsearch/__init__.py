@@ -224,3 +224,12 @@ class deepsearch(deepsearchTemplate):
     #self.dd_estado.selected_value='Disponible'
     #self.dd_sucursal.selected_value=50
     
+def reCreaSql():
+  if self.link_claseXp.icon<>'':
+    alert('clase expediente marcado')
+  if self.link_estadoBien.icon<>'':
+    alert('Estado Propiedad marcada')
+  if self.link_clasePropiedad.icon<>'':
+    alert('Clase Propiedad marcada')
+  if self.link_ubicacion.icon<>'':
+    alert('Ubicacion marcada')
