@@ -287,6 +287,6 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text=""
       self.txt_comando.text=""
       anvil.alert(f"aquivoy 2: {sqlStr}")
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
+      self.lbl_sql.text = f"{sqlStr}"
+      self.txt_comando.text = f"{comandoStr}"
       
