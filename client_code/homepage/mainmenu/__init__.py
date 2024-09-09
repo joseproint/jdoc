@@ -42,3 +42,12 @@ class mainmenu(mainmenuTemplate):
     """This method is called when the link is clicked"""
     open_form('homepage.jdocTransfer', self)
 
+  def link_clasebien_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.clasesbienes')
+
+  def link_mapa_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    #alert('en construccion..')
+    open_form('homepage.mapa')
+

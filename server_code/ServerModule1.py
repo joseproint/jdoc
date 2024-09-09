@@ -293,6 +293,16 @@ def search_Expedientes(dato):
   return result
 
 @anvil.server.callable
+def searchDeep_Expedientes(whereStr):
+  result = anvil.server.call('get_expSearchDeepSql', whereStr)
+  return result
+  
+@anvil.server.callable
+def search_historial(dato):
+  result = anvil.server.call('get_expHistorySql',dato)
+  return result
+  
+@anvil.server.callable
 def ServerTimeZone():
     #from zoneinfo import ZoneInfo
     #import zoneinfo
@@ -347,4 +357,3 @@ def fEmailTaskExp(origen,destino,titulo,notas):
           to=destino,
           subject = titulo,
           text= notas)
-

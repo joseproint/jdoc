@@ -90,7 +90,7 @@ class claseexp(claseexpTemplate):
         #anvil.alert(f" el nombre {nombreAnt} existe y lo actualizo a {nombreNuevo}")
         # * * * ojo: <===== debo revisar como manejar esta parte * * * 
         #anvil.server.call('f_clteActualiza',SucRowGlobal, nombreAnt,nombre,email,estado,telefono,sueldo,sexo,cfisicaRow,dieta,direccion,ciudad,objetivo,diasVisita,horaVisita,horaVisita24,foto,birthday) 
-        anvil.server.call('f_claseExpActualizaSql',nombreAnt, nombre, codigo) 
+        anvil.server.call('f_claseexpActualizaSql',nombreAnt, nombre, codigo) 
         password="123" #temporal
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password,foto)
         #emp_row=anvil.server.call('creaUsuarioEmp',nombre,email,password)
@@ -116,7 +116,8 @@ class claseexp(claseexpTemplate):
                    buttons=[("yes", True), ("Cancel", False)])
     if save_clicked:
       #anvil.server.call('delete_Sucursal', self.text_box_email.text)
-      anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
+      #anvil.server.call('deleteSucFromGridSql', self.item, self.text_box_descripcion.text)
+      anvil.server.call('deleteCbienFromGridSql', self.item, self.text_box_descripcion.text)
       #get_open_form().raise_event('x-refresh')
       open_form('homepage.clasesexp')
 

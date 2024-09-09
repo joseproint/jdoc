@@ -100,7 +100,7 @@ def f_extDb(queryStr,oneRecord):
   #cur=conn.cursor()
   cur=conn.cursor(as_dict=True)
   cur.execute(queryStr)
-  if oneRecord==True:
+  if oneRecord is True:
     rowAf=cur.fetchone()
   else:
     rowAf=cur.fetchall()
@@ -340,11 +340,21 @@ def creaClaseExpSql(nombre, id):
   comandoSql(queryStr,data)
 
 @anvil.server.callable
-def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion):
-  data = (id, nombre, ubicacion, tags, clase, email, fcreacion)
+def creaClaseBienSql(nombre, id):
+  data = (id, nombre)
   queryStr = f"""
-    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion)
-    VALUES(%s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO CLASESBIENES (id, descripcion)
+    VALUES(%s, %s)
+  """
+  print(f"queryStr {queryStr} data {data}")
+  comandoSql(queryStr,data)
+  
+@anvil.server.callable
+def creaExpedienteSql(nombre, id, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng):
+  data = (id, nombre, ubicacion, tags, clase, email, fcreacion, etiqueta, cBien,estBien,lat,lng)
+  queryStr = f"""
+    INSERT INTO EXPEDIENTES (id, descripcion, ubicacion, tags, clase, creadopor, fcreacion, etiqueta, claseBien,estadoBien,lat,lng)
+    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
   """
   print(f"queryStr {queryStr} data {data}")
   comandoSql(queryStr,data)
@@ -521,6 +531,14 @@ def get_ClasesExpSql():
   return rowCExp
 
 @anvil.server.callable
+def get_ClasesBienesSql():
+  queryStr=f"""
+      SELECT * from clasesBienes
+  """
+  rowCBien = f_extDb(queryStr,False)
+  return rowCBien
+  
+@anvil.server.callable
 def get_ExpedientesSql():
   queryStr=f"""
       SELECT * from Expedientes
@@ -536,9 +554,30 @@ def get_expSearchSql(dato):
       or descripcion like '%{dato}%'
       or tags like '%{dato}%'
       or clase like '%{dato}%'
+      or etiqueta like '%{dato}%'
   """
   rowExp = f_extDb(queryStr,False)
   return rowExp
+
+@anvil.server.callable
+def get_expSearchDeepSql(whereStr):
+  queryStr=f"""
+      SELECT * from Expedientes
+  """
+  queryStr = f"{queryStr} {whereStr}"
+  print(queryStr)
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
+  
+@anvil.server.callable
+def get_expHistorySql(dato):
+  queryStr=f"""
+      SELECT * from exptrack
+      where codexpediente ='{dato}'
+      order by ftransaccion desc
+  """
+  rowHist = f_extDb(queryStr,False)
+  return rowHist
   
 @anvil.server.callable
 def actualizaPoncheSQL(row,fechaOriginal,poncheIni,poncheFin,email,empresa,fechaEntrada):
@@ -633,6 +672,17 @@ def deleteCExpFromGridSql(row,nombreExp):
       print(f"{queryStr}")
       deleteSql(queryStr)
 
+@anvil.server.callable
+def deleteCBienFromGridSql(row,nombreExp):
+    if row is not None:
+      queryStr=f"""
+        DELETE FROM CLASESBIENES 
+        WHERE descripcion='{nombreExp}'
+      """
+      #data = (nombreSuc)
+      print(f"{queryStr}")
+      deleteSql(queryStr)
+      
 @anvil.server.callable
 def deleteExpFromGridSql(row,id):
     if row is not None:
@@ -746,13 +796,26 @@ def f_claseExpActualizaSql(nombreAnt,nombre, id):
     Notification('Nueva descripción está vacía..')
 
 @anvil.server.callable
-def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, id):
+def f_claseBienActualizaSql(nombreAnt,nombre, id):
   if nombre is not None:
       queryStr=f"""
-      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s
+      UPDATE CLASESBIENES SET descripcion=%s
         WHERE id=%s
       """
-      data=(nombre,ubicacion,tags,clase,id)
+      data=(nombre,id)
+      print(f"queryStr {queryStr} datos {data}")
+      comandoSql(queryStr,data)
+  else:
+    Notification('Nueva descripción está vacía..')
+
+@anvil.server.callable
+def f_ExpedienteActSql(nombreAnt,nombre, ubicacion, tags, clase, etiqueta, cBien, estBien, lat, lng, id):
+  if nombre is not None:
+      queryStr=f"""
+      UPDATE EXPEDIENTES SET descripcion=%s, ubicacion=%s, tags=%s, clase=%s, etiqueta=%s, claseBien=%s, estadoBien=%s, lat=%s, lng=%s
+        WHERE id=%s
+      """
+      data=(nombre,ubicacion,tags,clase,etiqueta,cBien,estBien,lat,lng,id)
       print(f"queryStr {queryStr} datos {data}")
       comandoSql(queryStr,data)
   else:
@@ -825,8 +888,8 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
-  tipotrans='TRANSFERENCIA'
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf):
+  #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 
@@ -848,6 +911,15 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas):
     """
   print(queryStr)
   comandoSql(queryStr,data)
+  if tipotrans=='ACUSERECIBO':
+    numRecibo=numtrans
+    data = (numRecibo,numTransf)
+    queryStr=f"""
+      UPDATE EXPTRACK SET NUMRECIBO=%s 
+      WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+      """
+    print(queryStr)
+    comandoSql(queryStr,data)
   return transferenciaOk
 
 @anvil.server.callable
@@ -863,3 +935,80 @@ def f_nombreEmpleado(email):
   else:
     nombre=None
   return nombre
+
+@anvil.server.callable
+def f_contactoEmpleado(email):
+  nombre=None
+  queryStr=f"""
+  SELECT empNombre as nombre, empTelefono as telefono from empleados
+    WHERE empEmail='{email}'
+  """
+  rowEmp = f_extDb(queryStr,True)
+  if rowEmp is not None:
+    nombre=rowEmp['nombre']
+    telefono=rowEmp['telefono']
+    dato=(f"{nombre} ({telefono[:3]}) {telefono[3:6]}-{telefono[6:]}")
+  else:
+    nombre=None
+    telefono=None
+    dato=None
+  return dato
+  
+@anvil.server.callable
+def get_estadosBien():
+  rowEstado = ['Disponible','Rentado','Vendido','Todos']
+  return rowEstado
+
+
+@anvil.server.callable
+def get_ExpedientesAll(clase,estado):
+  conn = connect()
+  with conn.cursor() as cur:
+    #queryStr=f"""
+    # select id, descripcion, lat, lng, claseBien, estadoBien
+    # from EXPEDIENTES
+    # where claseBien = '{clase}'
+    # and estadoBien = '{estado}'
+    #"""
+    #  queryStr=f"""
+    #  select id, descripcion, lat, lng, claseBien, estadoBien
+    #  from EXPEDIENTES
+    #  where claseBien = '{clase}'
+    #  """
+    queryStr=f"""
+    select id, descripcion, lat, lng, claseBien, estadoBien
+    from EXPEDIENTES
+    """
+    if clase=='zTodos':
+      if estado=='Todos':
+        whereStr=""
+      else:
+        whereStr=f" where estadoBien = '{estado}'"
+    else:
+      if estado=='Todos':
+        whereStr=f" where claseBien = '{clase}'"
+      else:
+        whereStr=f" where claseBien = '{clase}' and estadoBien = '{estado}'"
+    queryStr=f"{queryStr} {whereStr}"    
+    print(f"queryStr:{queryStr}")
+    cur.execute(queryStr)
+    rowAf =  cur.fetchall()
+    #rowAf=cur.fetchone()
+    cur.close()
+    conn.close()
+    #print(rowAf)
+    lista=datosAFAjson(rowAf)
+    return lista
+
+def datosAFAjson(dataRow):
+  cont=1
+  jsonData=''
+  for r in dataRow:
+    if cont>1:
+      dato=', {"id": "'+f"{r['id']}"+'", "descripcion": "'+f"{r['descripcion']}"+'", "lat": "'+f"{r['lat']}"+'", "lng": "'+f"{r['lng']}"+'", "claseBien": "'+f"{r['claseBien']}"+'", "estadoBien": "'+f"{r['estadoBien']}"+'"'+'}'
+    else:  
+      dato='{"id": "'+f"{r['id']}"+'", "descripcion": "'+f"{r['descripcion']}"+'", "lat": "'+f"{r['lat']}"+'", "lng": "'+f"{r['lng']}"+'", "claseBien": "'+f"{r['claseBien']}"+'", "estadoBien": "'+f"{r['estadoBien']}"+'"'+'}'
+    jsonData = jsonData + dato 
+    cont=cont+1
+  jsonData='['+jsonData+']'
+  return jsonData

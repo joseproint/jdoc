@@ -111,10 +111,13 @@ class jdocTransfer(jdocTransferTemplate):
     empRecibe = empleado
     
     #if anvil.server.call('transfiereExp',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
-    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas)==True:
+    tipotrans='TRANSFERENCIA'
+    numtrans=None
+    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
       #transferencia Ok
-      alert('transferencia realizada')
       self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
+      alert('transferencia realizada')
+      open_form('homepage.expedientes')
     else:
       alert('transferencia no realizada')
 
@@ -143,7 +146,7 @@ class jdocTransfer(jdocTransferTemplate):
       {nombreOrigen}
     """
     task=anvil.server.call('fEmailTask',origen,destino,titulo,notas,pdf)
-    print(task)
+    #print(task)
 
   def drop_down_responsible_change(self, **event_args):
     """This method is called when an item is selected"""
