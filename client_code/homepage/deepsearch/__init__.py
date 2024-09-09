@@ -241,6 +241,8 @@ class deepsearch(deepsearchTemplate):
     anvil.alert('recreando el comando...')
     self.lbl_sql.text = ''
     self.txt_comando.text = ''
+    sqlStr=""
+    comandoStr=""
     if self.link_claseXp.icon!='':
       alert('clase expediente marcado')
       claseExp = self.dd_clases.selected_value
