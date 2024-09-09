@@ -286,9 +286,11 @@ class deepsearch(deepsearchTemplate):
         sqlStr=f" {sqlStr} and ubicacion like '{ubiGlob}'"
         comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlob}'"
         anvil.alert(f"aquivoy 1: {sqlStr}")
+        print(sqlStr)
       self.lbl_sql.text=""
       self.txt_comando.text=""
       anvil.alert(f"aquivoy 2: {sqlStr}")
+      print(sqlStr)
       self.lbl_sql.text = f"{sqlStr}"
       self.txt_comando.text = f"{comandoStr}"
-      
+      print(self.lbl_sql.text)
