@@ -216,7 +216,7 @@ class deepsearch(deepsearchTemplate):
         comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
       else:
         objeto='clase'
-        self.reCreaSql(objeto)
+        self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_clasePropiedad.icon='fa:check'
