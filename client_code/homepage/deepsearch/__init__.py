@@ -273,7 +273,7 @@ class deepsearch(deepsearchTemplate):
     if self.link_ubicacion.icon!='':
       alert('Ubicacion marcada')
       suc = self.dd_sucursal.selected_value
-      global sucursal,ubiGlobal
+      #global sucursal,ubiGlobal
       sucursal=str(suc).zfill(3)
       ubiGlobal=f"{sucursal}%"
       if sqlStr is None or sqlStr=='':
