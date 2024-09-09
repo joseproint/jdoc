@@ -275,14 +275,14 @@ class deepsearch(deepsearchTemplate):
       suc = self.dd_sucursal.selected_value
       #global sucursal,ubiGlobal
       sucursal=str(suc).zfill(3)
-      ubiGlobal=f"{sucursal}%"
-      alert(f"suc:{suc} sucursal:{sucursal} ubiGlobal:{ubiGlobal}")
+      ubiGlob=f"{sucursal}%"
+      alert(f"suc:{suc} sucursal:{sucursal} ubiGlobal:{ubiGlob}")
       if sqlStr is None or sqlStr=='':
-        sqlStr=f" where ubicacion like '{ubiGlobal}'"
-        comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
+        sqlStr=f" where ubicacion like '{ubiGlob}'"
+        comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlob}'"
       else:
-        sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
-        comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
+        sqlStr=f" {sqlStr} and ubicacion like '{ubiGlob}'"
+        comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlob}'"
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
       
