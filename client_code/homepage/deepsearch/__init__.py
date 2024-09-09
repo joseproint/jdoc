@@ -276,6 +276,7 @@ class deepsearch(deepsearchTemplate):
       #global sucursal,ubiGlobal
       sucursal=str(suc).zfill(3)
       ubiGlobal=f"{sucursal}%"
+      alert(f"suc:{suc} sucursal:{sucursal} ubiGlobal:{ubiGlobal}")
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where ubicacion like '{ubiGlobal}'"
         comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
