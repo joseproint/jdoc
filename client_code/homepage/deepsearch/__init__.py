@@ -81,8 +81,11 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where ubicacion like '{ubiGlobal}'"
       comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
     else:
-      sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
-      comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
+      if 'ubicacion like' not in sqlStr:
+        sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
+        comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
+      else:
+        self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_ubicacion.icon='fa:check'
@@ -172,8 +175,11 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where clase='{claseExp}'"
       comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
     else:
-      sqlStr=f" {sqlStr} and clase='{claseExp}'"
-      comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
+      if 'clase=' not in sqlStr:
+        sqlStr=f" {sqlStr} and clase='{claseExp}'"
+        comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
+      else:
+        self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_claseXp.icon='fa:check'
@@ -187,8 +193,11 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where estadoBien='{estadoExp}'"
       comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
     else:
-      sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
-      comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
+      if 'estadoBien=' not in sqlStr:
+        sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
+        comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
+      else:
+        self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_estadoBien.icon='fa:check'
@@ -202,8 +211,11 @@ class deepsearch(deepsearchTemplate):
       sqlStr=f" where claseBien='{claseBien}'"
       comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
     else:
-      sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
-      comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+      if 'claseBien=' not in sqlStr:
+        sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
+        comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+      else:
+        self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
     self.link_clasePropiedad.icon='fa:check'
@@ -224,12 +236,12 @@ class deepsearch(deepsearchTemplate):
     #self.dd_estado.selected_value='Disponible'
     #self.dd_sucursal.selected_value=50
     
-def reCreaSql():
-  if self.link_claseXp.icon<>'':
-    alert('clase expediente marcado')
-  if self.link_estadoBien.icon<>'':
-    alert('Estado Propiedad marcada')
-  if self.link_clasePropiedad.icon<>'':
-    alert('Clase Propiedad marcada')
-  if self.link_ubicacion.icon<>'':
-    alert('Ubicacion marcada')
+  def reCreaSql(self):
+    if self.link_claseXp.icon!='':
+      alert('clase expediente marcado')
+    if self.link_estadoBien.icon!='':
+      alert('Estado Propiedad marcada')
+    if self.link_clasePropiedad.icon!='':
+      alert('Clase Propiedad marcada')
+    if self.link_ubicacion.icon!='':
+      alert('Ubicacion marcada')
