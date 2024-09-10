@@ -178,7 +178,8 @@ class deepsearch(deepsearchTemplate):
 
   def dd_clases_change(self, **event_args):
     """This method is called when an item is selected"""
-    global sqlStr,comandoStr
+    global sqlStr,comandoStr,reCreando
+    reCreando = False
     claseExp = self.dd_clases.selected_value
     alert(f"claseExp en evento:{claseExp}")
     if claseExp != 'zTodos':
@@ -193,9 +194,10 @@ class deepsearch(deepsearchTemplate):
           comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
         else:
           self.reCreaSql()
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
-      self.link_claseXp.icon='fa:check'
+      if not reCreando:    
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
+        self.link_claseXp.icon='fa:check'
     else:
       self.reCreaSql()
       
