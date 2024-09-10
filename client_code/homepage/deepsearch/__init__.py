@@ -98,7 +98,6 @@ class deepsearch(deepsearchTemplate):
         self.txt_comando.text = comandoStr
         self.link_ubicacion.icon='fa:check'
     else:
-      alert(f"suc:{suc}")
       self.reCreaSql()
     
   #def dd_deposito_change(self, **event_args):
@@ -196,7 +195,9 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
       self.link_claseXp.icon='fa:check'
-    
+    else:
+      self.reCreaSql()
+      
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
@@ -216,7 +217,9 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
       self.link_estadoBien.icon='fa:check'
-
+    else:
+      self.reCreaSql()
+      
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
@@ -236,7 +239,9 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
       self.link_clasePropiedad.icon='fa:check'
-
+    else:
+      self.reCreaSql()
+      
   def link_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
     global rowClases,rowCbienes,rowEstado,emp_rows
@@ -248,10 +253,6 @@ class deepsearch(deepsearchTemplate):
     self.link_clasePropiedad.icon=''
     self.link_ubicacion.icon=''
     self.llenaListas(rowClases,rowCbienes,rowEstado,emp_rows)
-    #self.dd_clases.selected_value='Cdeposito'
-    #self.dd_clasesBienes.selected_value='Apartamento'
-    #self.dd_estado.selected_value='Disponible'
-    #self.dd_sucursal.selected_value=50
     
   def reCreaSql(self):
     global reCreando
@@ -262,12 +263,16 @@ class deepsearch(deepsearchTemplate):
     comandoStr=""
     if self.link_claseXp.icon!='':
       claseExp = self.dd_clases.selected_value
+      if claseExp=='Todos':
+        claseExp='%'
       sqlStr=f" where clase='{claseExp}'"
       comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
     if self.link_estadoBien.icon!='':
       estadoExp = self.dd_estado.selected_value
+      if estadoExp=='Todos':
+        estadoExp='%'
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where estadoBien='{estadoExp}'"
         comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
@@ -278,6 +283,8 @@ class deepsearch(deepsearchTemplate):
       self.txt_comando.text = comandoStr
     if self.link_clasePropiedad.icon!='':
       claseBien = self.dd_clasesBienes.selected_value
+      if claseBien=='Todos':
+        claseBien='%'
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where claseBien='{claseBien}'"
         comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
