@@ -277,7 +277,7 @@ class deepsearch(deepsearchTemplate):
         comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
-    if self.link_ubicacion.icon!='':
+    if self.link_ubicacion.icon != '':
       alert('Ubicacion marcada')
       suc = self.dd_sucursal.selected_value
       #global sucursal,ubiGlobal
@@ -297,5 +297,6 @@ class deepsearch(deepsearchTemplate):
       anvil.alert(f"aquivoy 2: {sqlStr}")
       print(sqlStr)
       self.lbl_sql.text = f"{sqlStr}"
+      self.lbl_sql.text = 'me vas a poner loco????'
       self.txt_comando.text = f"{comandoStr}"
       print(f" el label sql tiene: {self.lbl_sql.text}")
