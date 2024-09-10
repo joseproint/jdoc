@@ -180,6 +180,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     claseExp = self.dd_clases.selected_value
+    alert(f"claseExp en evento:{claseExp}")
     if claseExp != 'zTodos':
       sqlStr = self.lbl_sql.text
       comandoStr = self.txt_comando.text
