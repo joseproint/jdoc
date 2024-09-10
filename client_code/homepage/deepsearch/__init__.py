@@ -8,14 +8,14 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
 global rowClases,rowCbienes,rowEstado,emp_rows
-global sqlStr, comandoStr
+global reCreando
 
 class deepsearch(deepsearchTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     global rowClases,rowCbienes,rowEstado,emp_rows
-    global sqlStr,comandoStr
+    global reCreando
     self.init_components(**properties)
     sucursal=''
     deposito=''
@@ -23,8 +23,7 @@ class deepsearch(deepsearchTemplate):
     gaveta=''
     seccion=''
     ubiGlobal=''
-    sqlStr=''
-    comandoStr=''
+    reCreando=False
     rowClases =  anvil.server.call('get_ClasesExpSql')
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
@@ -73,10 +72,11 @@ class deepsearch(deepsearchTemplate):
   def dd_sucursal_change(self, **event_args):
     """This method is called when an item is selected"""
     #suc="001"
+    global reCreando
+    reCreando=False
     suc = self.dd_sucursal.selected_value
     #anvil.alert(f"Sucursal seleccionada:{suc}")
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
-    global sqlStr,comandoStr
     sucursal=str(suc).zfill(3)
     #self.actUbicacion()
     ubiGlobal=f"{sucursal}%"
@@ -96,9 +96,10 @@ class deepsearch(deepsearchTemplate):
         alert('paso 4')
         anvil.alert('recreando desde dd_sucursal_change...')
         self.reCreaSql()
-    self.lbl_sql.text = sqlStr
-    self.txt_comando.text = comandoStr
-    self.link_ubicacion.icon='fa:check'
+    if not reCreando:    
+      self.lbl_sql.text = sqlStr
+      self.txt_comando.text = comandoStr
+      self.link_ubicacion.icon='fa:check'
     
   #def dd_deposito_change(self, **event_args):
   #  """This method is called when an item is selected"""
@@ -250,7 +251,8 @@ class deepsearch(deepsearchTemplate):
     #self.dd_sucursal.selected_value=50
     
   def reCreaSql(self):
-    global sqlStr,comandoStr
+    global reCreando
+    reCreando = True
     anvil.alert('recreando el comando...')
     self.lbl_sql.text = ''
     self.txt_comando.text = ''
@@ -303,8 +305,5 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text=""
       self.txt_comando.text=""
       anvil.alert(f"aquivoy 2: {sqlStr}")
-      print(sqlStr)
       self.lbl_sql.text = f"{sqlStr}"
-      self.lbl_sql.text = 'me vas a poner loco????'
       self.txt_comando.text = f"{comandoStr}"
-      print(f" el label sql tiene: {self.lbl_sql.text}")
