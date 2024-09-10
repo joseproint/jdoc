@@ -99,6 +99,7 @@ class deepsearch(deepsearchTemplate):
         self.link_ubicacion.icon='fa:check'
     else:
       alert(f"suc:{suc}")
+      self.reCreaSql()
     
   #def dd_deposito_change(self, **event_args):
   #  """This method is called when an item is selected"""
@@ -289,6 +290,10 @@ class deepsearch(deepsearchTemplate):
       suc = self.dd_sucursal.selected_value
       sucursal=str(suc).zfill(3)
       ubiGlob=f"{sucursal}%"
+      if suc=='Todos':
+        suc='%'
+        sucursal=suc
+        ubiGlob=suc
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where ubicacion like '{ubiGlob}'"
         comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlob}'"
