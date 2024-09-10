@@ -181,7 +181,7 @@ class deepsearch(deepsearchTemplate):
     global sqlStr,comandoStr,reCreando
     reCreando = False
     claseExp = self.dd_clases.selected_value
-    alert(f"claseExp en evento:{claseExp}")
+    #alert(f"claseExp en evento:{claseExp}")
     if claseExp != 'zTodos':
       sqlStr = self.lbl_sql.text
       comandoStr = self.txt_comando.text
@@ -270,7 +270,7 @@ class deepsearch(deepsearchTemplate):
     comandoStr=""
     if self.link_claseXp.icon!='':
       claseExp = self.dd_clases.selected_value
-      alert(f"claseExp:{claseExp}")
+      #alert(f"claseExp:{claseExp}")
       if claseExp!='zTodos':
         sqlStr=f" where clase='{claseExp}'"
         comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
@@ -289,7 +289,7 @@ class deepsearch(deepsearchTemplate):
         self.txt_comando.text = comandoStr
     if self.link_clasePropiedad.icon!='':
       claseBien = self.dd_clasesBienes.selected_value
-      alert(f"claseBien:{claseBien}")
+      #alert(f"claseBien:{claseBien}")
       if claseBien!='zTodos':
         if sqlStr is None or sqlStr=='':
           sqlStr=f" where claseBien='{claseBien}'"
