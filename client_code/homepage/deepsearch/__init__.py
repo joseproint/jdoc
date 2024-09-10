@@ -8,12 +8,14 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
 global rowClases,rowCbienes,rowEstado,emp_rows
+global sqlStr, comandoStr
 
 class deepsearch(deepsearchTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     global sucursal,deposito,archivo,gaveta,seccion, ubiGlobal
     global rowClases,rowCbienes,rowEstado,emp_rows
+    global sqlStr,comandoStr
     self.init_components(**properties)
     sucursal=''
     deposito=''
@@ -21,6 +23,8 @@ class deepsearch(deepsearchTemplate):
     gaveta=''
     seccion=''
     ubiGlobal=''
+    sqlStr=''
+    comandoStr=''
     rowClases =  anvil.server.call('get_ClasesExpSql')
     rowCbienes = anvil.server.call('get_ClasesBienesSql')
     rowEstado = anvil.server.call('get_estadosBien')
@@ -72,6 +76,7 @@ class deepsearch(deepsearchTemplate):
     suc = self.dd_sucursal.selected_value
     #anvil.alert(f"Sucursal seleccionada:{suc}")
     global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
+    global sqlStr,comandoStr
     sucursal=str(suc).zfill(3)
     #self.actUbicacion()
     ubiGlobal=f"{sucursal}%"
@@ -173,6 +178,7 @@ class deepsearch(deepsearchTemplate):
 
   def dd_clases_change(self, **event_args):
     """This method is called when an item is selected"""
+    global sqlStr,comandoStr
     claseExp = self.dd_clases.selected_value
     sqlStr = self.lbl_sql.text
     comandoStr = self.txt_comando.text
@@ -191,6 +197,7 @@ class deepsearch(deepsearchTemplate):
     
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
+    global sqlStr,comandoStr
     estadoExp = self.dd_estado.selected_value
     sqlStr = self.lbl_sql.text
     comandoStr = self.txt_comando.text
@@ -209,6 +216,7 @@ class deepsearch(deepsearchTemplate):
 
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
+    global sqlStr,comandoStr
     claseBien = self.dd_clasesBienes.selected_value
     sqlStr = self.lbl_sql.text
     comandoStr = self.txt_comando.text
@@ -220,7 +228,6 @@ class deepsearch(deepsearchTemplate):
         sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
         comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
       else:
-        objeto='clase'
         self.reCreaSql()
     self.lbl_sql.text = sqlStr
     self.txt_comando.text = comandoStr
@@ -243,6 +250,7 @@ class deepsearch(deepsearchTemplate):
     #self.dd_sucursal.selected_value=50
     
   def reCreaSql(self):
+    global sqlStr,comandoStr
     anvil.alert('recreando el comando...')
     self.lbl_sql.text = ''
     self.txt_comando.text = ''
