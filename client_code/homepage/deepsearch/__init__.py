@@ -263,7 +263,7 @@ class deepsearch(deepsearchTemplate):
     comandoStr=""
     if self.link_claseXp.icon!='':
       claseExp = self.dd_clases.selected_value
-      if claseExp!='Todos':
+      if claseExp!='zTodos':
         sqlStr=f" where clase='{claseExp}'"
         comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
         self.lbl_sql.text = sqlStr
@@ -281,7 +281,7 @@ class deepsearch(deepsearchTemplate):
         self.txt_comando.text = comandoStr
     if self.link_clasePropiedad.icon!='':
       claseBien = self.dd_clasesBienes.selected_value
-      if claseBien!='Todos':
+      if claseBien!='zTodos':
         if sqlStr is None or sqlStr=='':
           sqlStr=f" where claseBien='{claseBien}'"
           comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
