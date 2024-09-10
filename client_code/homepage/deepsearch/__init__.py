@@ -77,14 +77,18 @@ class deepsearch(deepsearchTemplate):
     ubiGlobal=f"{sucursal}%"
     sqlStr = self.lbl_sql.text
     comandoStr = self.txt_comando.text
+    alert('paso 1')
     if sqlStr is None or sqlStr=='':
+      alert('paso 2')
       sqlStr=f" where ubicacion like '{ubiGlobal}'"
       comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
     else:
       if 'ubicacion like' not in sqlStr:
+        alert('paso 3')
         sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
         comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
       else:
+        alert('paso 4')
         anvil.alert('recreando desde dd_sucursal_change...')
         self.reCreaSql()
     self.lbl_sql.text = sqlStr
