@@ -97,6 +97,8 @@ class deepsearch(deepsearchTemplate):
         self.lbl_sql.text = sqlStr
         self.txt_comando.text = comandoStr
         self.link_ubicacion.icon='fa:check'
+    else:
+      alert(f"suc:{suc}")
     
   #def dd_deposito_change(self, **event_args):
   #  """This method is called when an item is selected"""
