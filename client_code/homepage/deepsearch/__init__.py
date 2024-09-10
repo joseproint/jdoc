@@ -263,36 +263,33 @@ class deepsearch(deepsearchTemplate):
     comandoStr=""
     if self.link_claseXp.icon!='':
       claseExp = self.dd_clases.selected_value
-      if claseExp=='Todos':
-        claseExp='%'
-      sqlStr=f" where clase='{claseExp}'"
-      comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
+      if claseExp!='Todos':
+        sqlStr=f" where clase='{claseExp}'"
+        comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
     if self.link_estadoBien.icon!='':
       estadoExp = self.dd_estado.selected_value
-      if estadoExp=='Todos':
-        estadoExp='%'
-      if sqlStr is None or sqlStr=='':
-        sqlStr=f" where estadoBien='{estadoExp}'"
-        comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
-      else:
-        sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
-        comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
+      if estadoExp!='Todos':
+        if sqlStr is None or sqlStr=='':
+          sqlStr=f" where estadoBien='{estadoExp}'"
+          comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
+        else:
+          sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
+          comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
     if self.link_clasePropiedad.icon!='':
       claseBien = self.dd_clasesBienes.selected_value
-      if claseBien=='Todos':
-        claseBien='%'
-      if sqlStr is None or sqlStr=='':
-        sqlStr=f" where claseBien='{claseBien}'"
-        comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
-      else:
-        sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
-        comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
+      if claseBien!='Todos':
+        if sqlStr is None or sqlStr=='':
+          sqlStr=f" where claseBien='{claseBien}'"
+          comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
+        else:
+          sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
+          comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
     if self.link_ubicacion.icon != '':
       suc = self.dd_sucursal.selected_value
       sucursal=str(suc).zfill(3)
