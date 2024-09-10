@@ -75,31 +75,28 @@ class deepsearch(deepsearchTemplate):
     global reCreando
     reCreando=False
     suc = self.dd_sucursal.selected_value
-    #anvil.alert(f"Sucursal seleccionada:{suc}")
-    global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
-    sucursal=str(suc).zfill(3)
-    #self.actUbicacion()
-    ubiGlobal=f"{sucursal}%"
-    sqlStr = self.lbl_sql.text
-    comandoStr = self.txt_comando.text
-    alert('paso 1')
-    if sqlStr is None or sqlStr=='':
-      alert('paso 2')
-      sqlStr=f" where ubicacion like '{ubiGlobal}'"
-      comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
-    else:
-      if 'ubicacion like' not in sqlStr:
-        alert('paso 3')
-        sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
-        comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
+    if suc != 'Todos':
+      #anvil.alert(f"Sucursal seleccionada:{suc}")
+      global sucursal,deposito,archivo,gaveta,seccion,ubiGlobal
+      sucursal=str(suc).zfill(3)
+      #self.actUbicacion()
+      ubiGlobal=f"{sucursal}%"
+      sqlStr = self.lbl_sql.text
+      comandoStr = self.txt_comando.text
+      if sqlStr is None or sqlStr=='':
+        sqlStr=f" where ubicacion like '{ubiGlobal}'"
+        comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlobal}'"
       else:
-        alert('paso 4')
-        anvil.alert('recreando desde dd_sucursal_change...')
-        self.reCreaSql()
-    if not reCreando:    
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
-      self.link_ubicacion.icon='fa:check'
+        if 'ubicacion like' not in sqlStr:
+          sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
+          comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
+        else:
+          anvil.alert('recreando desde dd_sucursal_change...')
+          self.reCreaSql()
+      if not reCreando:    
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
+        self.link_ubicacion.icon='fa:check'
     
   #def dd_deposito_change(self, **event_args):
   #  """This method is called when an item is selected"""
@@ -181,58 +178,61 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     claseExp = self.dd_clases.selected_value
-    sqlStr = self.lbl_sql.text
-    comandoStr = self.txt_comando.text
-    if sqlStr is None or sqlStr=='':
-      sqlStr=f" where clase='{claseExp}'"
-      comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
-    else:
-      if 'clase=' not in sqlStr:
-        sqlStr=f" {sqlStr} and clase='{claseExp}'"
-        comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
+    if claseExp != 'Todos':
+      sqlStr = self.lbl_sql.text
+      comandoStr = self.txt_comando.text
+      if sqlStr is None or sqlStr=='':
+        sqlStr=f" where clase='{claseExp}'"
+        comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
       else:
-        self.reCreaSql()
-    self.lbl_sql.text = sqlStr
-    self.txt_comando.text = comandoStr
-    self.link_claseXp.icon='fa:check'
+        if 'clase=' not in sqlStr:
+          sqlStr=f" {sqlStr} and clase='{claseExp}'"
+          comandoStr=f" {comandoStr} y la clase del Expediente sea igual a '{claseExp}'"
+        else:
+          self.reCreaSql()
+      self.lbl_sql.text = sqlStr
+      self.txt_comando.text = comandoStr
+      self.link_claseXp.icon='fa:check'
     
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     estadoExp = self.dd_estado.selected_value
-    sqlStr = self.lbl_sql.text
-    comandoStr = self.txt_comando.text
-    if sqlStr is None or sqlStr=='':
-      sqlStr=f" where estadoBien='{estadoExp}'"
-      comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
-    else:
-      if 'estadoBien=' not in sqlStr:
-        sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
-        comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
+    if estadoExp != 'Todos':
+      sqlStr = self.lbl_sql.text
+      comandoStr = self.txt_comando.text
+      if sqlStr is None or sqlStr=='':
+        sqlStr=f" where estadoBien='{estadoExp}'"
+        comandoStr=f" Buscar los Expedientes donde el estado de la Propiedad que representa sea igual a '{estadoExp}'"
       else:
-        self.reCreaSql()
-    self.lbl_sql.text = sqlStr
-    self.txt_comando.text = comandoStr
-    self.link_estadoBien.icon='fa:check'
+        if 'estadoBien=' not in sqlStr:
+          sqlStr=f" {sqlStr} and estadoBien='{estadoExp}'"
+          comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
+        else:
+          self.reCreaSql()
+      self.lbl_sql.text = sqlStr
+      self.txt_comando.text = comandoStr
+      self.link_estadoBien.icon='fa:check'
 
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     claseBien = self.dd_clasesBienes.selected_value
-    sqlStr = self.lbl_sql.text
-    comandoStr = self.txt_comando.text
-    if sqlStr is None or sqlStr=='':
-      sqlStr=f" where claseBien='{claseBien}'"
-      comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
-    else:
-      if 'claseBien=' not in sqlStr:
-        sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
-        comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+    if claseBien != 'Todos':
+      sqlStr = self.lbl_sql.text
+      comandoStr = self.txt_comando.text
+      if sqlStr is None or sqlStr=='':
+        sqlStr=f" where claseBien='{claseBien}'"
+        comandoStr = f" Buscar los Expedientes donde el tipo de Propiedad que representa sea igual a '{claseBien}'"
       else:
-        self.reCreaSql()
-    self.lbl_sql.text = sqlStr
-    self.txt_comando.text = comandoStr
-    self.link_clasePropiedad.icon='fa:check'
+        if 'claseBien=' not in sqlStr:
+          sqlStr=f" {sqlStr} and claseBien='{claseBien}'"
+          comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
+        else:
+          self.reCreaSql()
+      self.lbl_sql.text = sqlStr
+      self.txt_comando.text = comandoStr
+      self.link_clasePropiedad.icon='fa:check'
 
   def link_limpiar_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -253,20 +253,17 @@ class deepsearch(deepsearchTemplate):
   def reCreaSql(self):
     global reCreando
     reCreando = True
-    anvil.alert('recreando el comando...')
     self.lbl_sql.text = ''
     self.txt_comando.text = ''
     sqlStr=""
     comandoStr=""
     if self.link_claseXp.icon!='':
-      alert('clase expediente marcado')
       claseExp = self.dd_clases.selected_value
       sqlStr=f" where clase='{claseExp}'"
       comandoStr=f" Buscar los Expedientes donde la clase del Expediente sea igual a '{claseExp}'"
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
     if self.link_estadoBien.icon!='':
-      alert('Estado Propiedad marcada')
       estadoExp = self.dd_estado.selected_value
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where estadoBien='{estadoExp}'"
@@ -277,7 +274,6 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
     if self.link_clasePropiedad.icon!='':
-      alert('Clase Propiedad marcada')
       claseBien = self.dd_clasesBienes.selected_value
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where claseBien='{claseBien}'"
@@ -288,22 +284,15 @@ class deepsearch(deepsearchTemplate):
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
     if self.link_ubicacion.icon != '':
-      alert('Ubicacion marcada')
       suc = self.dd_sucursal.selected_value
-      #global sucursal,ubiGlobal
       sucursal=str(suc).zfill(3)
       ubiGlob=f"{sucursal}%"
-      alert(f"suc:{suc} sucursal:{sucursal} ubiGlobal:{ubiGlob}")
       if sqlStr is None or sqlStr=='':
         sqlStr=f" where ubicacion like '{ubiGlob}'"
         comandoStr=f" Buscar los Expedientes donde la Ubicacion comienze con '{ubiGlob}'"
       else:
         sqlStr=f" {sqlStr} and ubicacion like '{ubiGlob}'"
         comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlob}'"
-        alert(f"aquivoy 1:{sqlStr}")
-        print(f"aquivoy 1:{sqlStr}")
-      #self.lbl_sql.text=""
-      #self.txt_comando.text=""
-      anvil.alert(f"aquivoy 2: {sqlStr}")
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
+
