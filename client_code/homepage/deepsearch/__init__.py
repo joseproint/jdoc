@@ -203,7 +203,8 @@ class deepsearch(deepsearchTemplate):
       
   def dd_estado_change(self, **event_args):
     """This method is called when an item is selected"""
-    global sqlStr,comandoStr
+    global sqlStr,comandoStr,reCreando
+    reCreando=False
     estadoExp = self.dd_estado.selected_value
     if estadoExp != 'Todos':
       sqlStr = self.lbl_sql.text
@@ -217,15 +218,17 @@ class deepsearch(deepsearchTemplate):
           comandoStr=f" {comandoStr} y el estado de la Propiedad sea igual a '{estadoExp}'"
         else:
           self.reCreaSql()
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
-      self.link_estadoBien.icon='fa:check'
+      if not reCreando:    
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
+        self.link_estadoBien.icon='fa:check'
     else:
       self.reCreaSql()
       
   def dd_clasesBienes_change(self, **event_args):
     """This method is called when an item is selected"""
-    global sqlStr,comandoStr
+    global sqlStr,comandoStr,reCreando
+    reCreando=False
     claseBien = self.dd_clasesBienes.selected_value
     if claseBien != 'zTodos':
       sqlStr = self.lbl_sql.text
@@ -239,9 +242,10 @@ class deepsearch(deepsearchTemplate):
           comandoStr=f" {comandoStr} y el tipo de Propiedad que representa sea igual a '{claseBien}'"
         else:
           self.reCreaSql()
-      self.lbl_sql.text = sqlStr
-      self.txt_comando.text = comandoStr
-      self.link_clasePropiedad.icon='fa:check'
+      if not reCreando:
+        self.lbl_sql.text = sqlStr
+        self.txt_comando.text = comandoStr
+        self.link_clasePropiedad.icon='fa:check'
     else:
       self.reCreaSql()
       
@@ -311,4 +315,3 @@ class deepsearch(deepsearchTemplate):
         comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlob}'"
       self.lbl_sql.text = sqlStr
       self.txt_comando.text = comandoStr
-
