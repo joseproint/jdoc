@@ -180,7 +180,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     claseExp = self.dd_clases.selected_value
-    if claseExp != 'Todos':
+    if claseExp != 'zTodos':
       sqlStr = self.lbl_sql.text
       comandoStr = self.txt_comando.text
       if sqlStr is None or sqlStr=='':
@@ -224,7 +224,7 @@ class deepsearch(deepsearchTemplate):
     """This method is called when an item is selected"""
     global sqlStr,comandoStr
     claseBien = self.dd_clasesBienes.selected_value
-    if claseBien != 'Todos':
+    if claseBien != 'zTodos':
       sqlStr = self.lbl_sql.text
       comandoStr = self.txt_comando.text
       if sqlStr is None or sqlStr=='':
