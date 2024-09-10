@@ -91,7 +91,7 @@ class deepsearch(deepsearchTemplate):
           sqlStr=f" {sqlStr} and ubicacion like '{ubiGlobal}'"
           comandoStr=f" {comandoStr} y la Ubicacion comienze con '{ubiGlobal}'"
         else:
-          anvil.alert('recreando desde dd_sucursal_change...')
+          #anvil.alert('recreando desde dd_sucursal_change...')
           self.reCreaSql()
       if not reCreando:    
         self.lbl_sql.text = sqlStr
