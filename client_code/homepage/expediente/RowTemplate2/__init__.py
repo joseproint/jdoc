@@ -54,12 +54,13 @@ class RowTemplate2(RowTemplate2Template):
           notas = f"Acuse de Recibo del Expediente: {codExpediente}"
           tipotrans='ACUSERECIBO'
           numtrans = self.lbl_numero.text
-          esDevolucion = alert(f"Está acusando recibo de la devolución del documento? {codExpediente}?",
+          esDevolucion = alert(f"Esta recibiendo la devolución del documento {codExpediente}?",
                    large=True,
                    buttons=[("Si", True), ("No", False)])
           if esDevolucion:
             alert('confirmado que es una devolución..')
-          if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,esDevolucion) is True:
+          fRetorno=None #el acuse de recibo no guarda fecha de retorno
+          if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
             alert('Acuse de Recibo generado..')
         else:
           #alert('Acuse Recibo No.:')
