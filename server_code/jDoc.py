@@ -889,7 +889,7 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno):
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion):
   #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
@@ -914,11 +914,18 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   comandoSql(queryStr,data)
   if tipotrans=='ACUSERECIBO':
     numRecibo=numtrans
-    data = (numRecibo,fecha,numTransf)
-    queryStr=f"""
-      UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTA=%s 
-      WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
-      """
+    if esDevolucion:
+      data = (numRecibo,fecha,numTransf)
+      queryStr=f"""
+        UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTA=%s 
+        WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+        """
+    else:
+      data = (numRecibo,numTransf)
+      queryStr=f"""
+        UPDATE EXPTRACK SET NUMRECIBO=%s 
+        WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+        """
     print(queryStr)
     comandoSql(queryStr,data)
   return transferenciaOk
