@@ -905,8 +905,8 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-    data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
-    queryStr=f"""
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
+  queryStr=f"""
       INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
       """
