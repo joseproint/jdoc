@@ -905,18 +905,18 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
-  queryStr=f"""
-     INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
-      VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
-    """
+    data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
+    queryStr=f"""
+      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
+      """
   print(queryStr)
   comandoSql(queryStr,data)
   if tipotrans=='ACUSERECIBO':
     numRecibo=numtrans
-    data = (numRecibo,numTransf)
+    data = (numRecibo,fecha,numTransf)
     queryStr=f"""
-      UPDATE EXPTRACK SET NUMRECIBO=%s 
+      UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTA=%s 
       WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
       """
     print(queryStr)
