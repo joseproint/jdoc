@@ -12,6 +12,7 @@ import anvil.http
 import urllib.request
 import time
 
+
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -888,7 +889,7 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf):
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno):
   #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
@@ -904,10 +905,10 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas)
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
   queryStr=f"""
-     INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas) 
-      VALUES (%s,%s,%s,%s,%s,%s,%s);
+     INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
+      VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
     """
   print(queryStr)
   comandoSql(queryStr,data)

@@ -7,7 +7,9 @@ from anvil.tables import app_tables
 from ..logo import Globals
 from .. import hpGlobals
 import time
-import datetime
+
+from datetime import datetime, timedelta
+from datetime import date
 global sucursal,deposito,archivo,gaveta,seccion
 global rowClases, rowCbienes, server_time
 
@@ -282,3 +284,24 @@ class expediente(expedienteTemplate):
     """This method is called when an item is selected"""
     pass
 
+  def fDiasVencido(self,fRetorno):
+    fLimite=datetime.today() + timedelta(days=-31)
+    y0 = fRetorno.year
+    m0 = fRetorno.month
+    d0 = fRetorno.day
+    #print(f"y0: {y0} m0: {m0} d0: {d0}")
+    y1 = fLimite.year
+    m1 = fLimite.month
+    d1 = fLimite.day
+    #print(f"y1: {y1} m1: {m1} d1: {d1}")
+    d0 = date(y0, m0, d0)
+    d1 = date(y1, m1, d1)
+    dias = d1 - d0
+    #print(f"Dias: {dias.days}")
+    diasVencido=dias.days
+    #print(f"diasfinal: {diasfinal}")
+    #if diasfinal>30:
+    #  return True
+    #else:
+    #  return False
+    return diasVencido
