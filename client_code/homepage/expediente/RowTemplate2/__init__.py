@@ -43,28 +43,36 @@ class RowTemplate2(RowTemplate2Template):
         alert('Solo el usuario destino puede acusar recibo del expediente!')
       else:
         numrecibo=self.link_nrecibo.text
+        server_time = anvil.server.call('ServerTimeZone')
+        fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+        #codExpediente = Globals.f_getExpediente()
+        codExpediente = expediente
+        empRecibe = self.link_origen.text
+        empEntrega = emailDestino
+        notas = f"Acuse de Recibo del Expediente: {codExpediente}"
+        tipotrans='ACUSERECIBO'
+        numtrans = self.lbl_numero.text
+        #esDevolucion = alert(f"Esta recibiendo la devolucion del documento {codExpediente}?",
+        #         large=True,
+        #         buttons=[("Si", True), ("No", False)])
+        #if esDevolucion:
+        #  alert('confirmado que es una devolución..')
         if numrecibo is None:
           #alert('Generando el Acuse de Recibo..')
-          server_time = anvil.server.call('ServerTimeZone')
-          fecha = server_time.strftime('%Y-%m-%d %H:%M:%S.%f')
-          #codExpediente = Globals.f_getExpediente()
-          codExpediente = expediente
-          empRecibe = self.link_origen.text
-          empEntrega = emailDestino
-          notas = f"Acuse de Recibo del Expediente: {codExpediente}"
-          tipotrans='ACUSERECIBO'
-          numtrans = self.lbl_numero.text
-          esDevolucion = alert(f"Esta recibiendo la devolucion del documento {codExpediente}?",
+          esDevolucion=False
+          fRetorno=None #el acuse de recibo no guarda fecha de retorno
+          #if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
+          #  alert('Acuse de Recibo generado..')
+        else:
+          alert(f"Acuse Recibo confirmado No.:{numrecibo}, parece que va a devolver el expediente")
+          esDevolucion = alert(f"Esta devolviendo el documento {codExpediente}?",
                    large=True,
                    buttons=[("Si", True), ("No", False)])
           if esDevolucion:
             alert('confirmado que es una devolución..')
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
-          if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
-            alert('Acuse de Recibo generado..')
-        else:
-          #alert('Acuse Recibo No.:')
-          pass
+        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
+          alert('Acuse de Recibo generado..')
 
   def link_nrecibo_show(self, **event_args):
     """This method is called when the Link is shown on the screen"""
