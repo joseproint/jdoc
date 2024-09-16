@@ -35,8 +35,8 @@ class RowTemplate2(RowTemplate2Template):
   def link_nrecibo_click(self, **event_args):
     """This method is called when the link is clicked"""
     global expediente
-    tipotransOri
-    if self.lbl_transaccion.text == 'TRANSFERENCIA' or self.lbl_transaccion.text == 'DEVOLUCION':
+    tTransOrigen=self.lbl_transaccion.text
+    if tTransOrigen == 'TRANSFERENCIA' or tTransOrigen == 'DEVOLUCION':
       emailDestino = self.item['empRecibe']
       emailUsuario = Globals.f_getEmail()
       #alert(f"usuario:{emailUsuario} destino:{emailDestino}")
@@ -74,7 +74,7 @@ class RowTemplate2(RowTemplate2Template):
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
           tipotrans='DEVOLUCION'
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
-          alert(f"{tipotrans} generado..")
+          alert(f"{tipotrans} generado para una {tTransOrigen}..")
 
   def link_nrecibo_show(self, **event_args):
     """This method is called when the Link is shown on the screen"""
