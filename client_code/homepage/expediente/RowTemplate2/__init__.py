@@ -65,3 +65,10 @@ class RowTemplate2(RowTemplate2Template):
         else:
           #alert('Acuse Recibo No.:')
           pass
+
+  def link_nrecibo_show(self, **event_args):
+    """This method is called when the Link is shown on the screen"""
+    if self.item['numrecibo'] is None:
+      self.link_nrecibo.icon='fa:clock-o'
+    else:
+      self.link_nrecibo.icon='fa:handshake-o'
