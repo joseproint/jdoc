@@ -35,6 +35,7 @@ class RowTemplate2(RowTemplate2Template):
   def link_nrecibo_click(self, **event_args):
     """This method is called when the link is clicked"""
     global expediente
+    tipotransOri
     if self.lbl_transaccion.text == 'TRANSFERENCIA' or self.lbl_transaccion.text == 'DEVOLUCION':
       emailDestino = self.item['empRecibe']
       emailUsuario = Globals.f_getEmail()
