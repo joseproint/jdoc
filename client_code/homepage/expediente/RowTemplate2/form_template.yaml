@@ -38,10 +38,11 @@ components:
   type: Link
 - data_bindings:
   - {code: 'self.item[''numrecibo'']', property: text, writeback: false}
+  - {code: 'if self.item[''numrecibo''] is None: fa:clock-o', property: icon, writeback: false}
   event_bindings: {click: link_nrecibo_click}
   layout_properties: {column: HFIGGW}
   name: link_nrecibo
-  properties: {bold: true, font_size: 12, icon: 'fa:handshake-o', text: ''}
+  properties: {bold: true, font_size: 12, icon: if, text: ''}
   type: Link
 container:
   properties: {visible: true}

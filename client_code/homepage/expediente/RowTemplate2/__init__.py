@@ -54,7 +54,7 @@ class RowTemplate2(RowTemplate2Template):
           notas = f"Acuse de Recibo del Expediente: {codExpediente}"
           tipotrans='ACUSERECIBO'
           numtrans = self.lbl_numero.text
-          esDevolucion = alert(f"Esta recibiendo la devolución del documento {codExpediente}?",
+          esDevolucion = alert(f"Esta recibiendo la devolucion del documento {codExpediente}?",
                    large=True,
                    buttons=[("Si", True), ("No", False)])
           if esDevolucion:

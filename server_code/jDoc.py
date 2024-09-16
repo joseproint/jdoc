@@ -917,7 +917,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
     if esDevolucion:
       data = (numRecibo,fecha,numTransf)
       queryStr=f"""
-        UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTA=%s 
+        UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTO=%s 
         WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
         """
     else:
