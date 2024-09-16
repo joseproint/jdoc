@@ -912,7 +912,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       """
   print(queryStr)
   comandoSql(queryStr,data)
-  if tipotrans=='ACUSERECIBO':
+  if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
     if esDevolucion:
       data = (numRecibo,fecha,numTransf)
