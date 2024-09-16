@@ -38,7 +38,7 @@ components:
   type: Link
 - data_bindings:
   - {code: 'self.item[''numrecibo'']', property: text, writeback: false}
-  - {code: 'if self.item[''numrecibo''] is None: fa:clock-o', property: icon, writeback: false}
+  - {code: 'fa:clock-o', property: icon, writeback: false}
   event_bindings: {click: link_nrecibo_click}
   layout_properties: {column: HFIGGW}
   name: link_nrecibo
