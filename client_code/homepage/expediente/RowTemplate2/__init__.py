@@ -50,7 +50,7 @@ class RowTemplate2(RowTemplate2Template):
         codExpediente = expediente
         empRecibe = self.link_origen.text
         empEntrega = emailDestino
-        notas = f"Acuse de Recibo del Expediente: {codExpediente}"
+        #notas = f"Acuse de Recibo del Expediente: {codExpediente}"
         tipotrans='ACUSERECIBO'
         numtrans = self.lbl_numero.text
         #esDevolucion = alert(f"Esta recibiendo la devolucion del documento {codExpediente}?",
@@ -70,9 +70,12 @@ class RowTemplate2(RowTemplate2Template):
                    buttons=[("Si", True), ("No", False)])
           if esDevolucion:
             #alert('confirmado que es una devolucion..')
-            alert(f"Devolucion confirmada de la Transferencia No.:{numrecibo}, parece que va a devolver el expediente")
+            alert(f"Devolucion confirmada de la Transferencia No.:{numtrans}")
+            notas = f"Devolucion de la Transferencia No.{numtrans} y el Expediente: {codExpediente}"
           else:
-            alert(f"Acuse Recibo confirmado No.:{numrecibo}, parece que va a devolver el expediente")
+            alert(f"Acuse Recibo confirmado No.:{numrecibo}")
+            notas = f"Acuse de Recibo del Expediente: {codExpediente}"
+
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
           tipotrans='DEVOLUCION'
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
