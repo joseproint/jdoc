@@ -8,7 +8,7 @@ components:
 - data_bindings:
   - {code: 'self.item[''codexpediente'']', property: text, writeback: false}
   layout_properties: {column: VJQQOR}
-  name: lbl_descripcion
+  name: lbl_transaccion
   properties: {}
   type: Label
 - data_bindings:
