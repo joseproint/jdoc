@@ -98,8 +98,8 @@ class RowTemplate2(RowTemplate2Template):
     if operacion=='TRANSFERENCIA':
       if fRet is not None:
         ano=fRet[:4]
-        mes=fRet[6:2]
-        dia=fRet[9:2]
+        mes=fRet[6:7]
+        dia=fRet[9:10]
         alert(f"ano:{ano} mes:{mes} dia:{dia}")
         fRetorno = datetime.datetime(ano,mes,dia)
         fHoy=datetime.today()
