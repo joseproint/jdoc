@@ -95,7 +95,7 @@ class RowTemplate2(RowTemplate2Template):
     fRet=self.item['fRetorno']
     operacion=self.lbl_transaccion.text
     alert(f"operacion:{operacion} fRet={fRet}")
-    if operacion=='Transferencia':
+    if operacion=='TRANSFERENCIA':
       if fRet is not None:
         ano=fRet[:4]
         mes=fRet[6:1]
