@@ -65,12 +65,14 @@ class RowTemplate2(RowTemplate2Template):
           #if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
           #  alert('Acuse de Recibo generado..')
         else:
-          alert(f"Acuse Recibo confirmado No.:{numrecibo}, parece que va a devolver el expediente")
           esDevolucion = alert(f"Esta devolviendo el documento {codExpediente}?",
                    large=True,
                    buttons=[("Si", True), ("No", False)])
           if esDevolucion:
-            alert('confirmado que es una devolucion..')
+            #alert('confirmado que es una devolucion..')
+            alert(f"Devolucion confirmada de la Transferencia No.:{numrecibo}, parece que va a devolver el expediente")
+          else:
+            alert(f"Acuse Recibo confirmado No.:{numrecibo}, parece que va a devolver el expediente")
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
           tipotrans='DEVOLUCION'
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:

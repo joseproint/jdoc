@@ -916,10 +916,16 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
     numRecibo=numtrans
     if esDevolucion:
       data = (numRecibo,fecha,numTransf)
-      queryStr=f"""
-        UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTO=%s 
-        WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
-        """
+      if tipotrans=='DEVOLUCION':
+        queryStr=f"""
+          UPDATE EXPTRACK SET NUMDEVOLUCION=%s, FDEVUELTO=%s 
+          WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+          """
+      else:
+        queryStr=f"""
+          UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTO=%s 
+          WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+          """
     else:
       data = (numRecibo,numTransf)
       queryStr=f"""
