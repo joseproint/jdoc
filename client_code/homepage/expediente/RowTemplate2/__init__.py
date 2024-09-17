@@ -99,7 +99,7 @@ class RowTemplate2(RowTemplate2Template):
       if fRet is not None:
         ano=fRet[:4]
         mes=fRet[6:7]
-        dia=fRet[9:10]
+        dia=fRet[8:9]
         alert(f"ano:{ano} mes:{mes} dia:{dia}")
         fRetorno = datetime.datetime(ano,mes,dia)
         fHoy=datetime.today()
