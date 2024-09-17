@@ -16,7 +16,7 @@ class retVencidos(retVencidosTemplate):
 
   def refresh(self, **event_args):
     #self.repeating_panel_sucursales.items = anvil.server.call('get_Sucursales')
-    self.repeating_panel_retVencidos.items = anvil.server.call('get_ExpedientesSql')
+    self.repeating_panel_retVencidos.items = anvil.server.call('get_RetVencidosSql')
 
   def link_home_click(self, **event_args):
     """This method is called when the link is clicked"""
