@@ -756,9 +756,9 @@ def f_empActualizaSql(empRow, nombreViejo,cNombre,cEmail,cEstado,cTelefono,cSuel
       if cTipoPago=='Hour':
         cFrecPago = 'Hourly'
 
-      from . import Nomina
-      tasaHora = Nomina.f_tasaHora(cSueldo,cFrecPago)
-      
+      #from . import Nomina
+      #tasaHora = Nomina.f_tasaHora(cSueldo,cFrecPago)
+      tasaHora = f_tasaHora(cSueldo,cFrecPago)
       queryStr=f"""
       UPDATE EMPLEADOS SET empCodigo=%s,empNombre=%s,empEmail=%s,empStatus=%s,empTelefono=%s,empSueldo=%s,empFrecPago=%s,empTipoPago=%s,
         empSexo=%s,empBirthday=%s,empDireccion=%s,empCiudad=%s,empTasaHora=%s
@@ -1026,3 +1026,19 @@ def datosAFAjson(dataRow):
     cont=cont+1
   jsonData='['+jsonData+']'
   return jsonData
+
+@anvil.server.callable
+def f_tasaHora(monto,frecuencia):
+  tasaHora=0
+  if frecuencia=='Monthly':
+    tasaHora = ((monto*12)/52)/44
+  elif frecuencia=='Weekly':
+    tasaHora = monto/44
+  elif frecuencia=='BiWeekly':
+    #quincenal
+    tasaHora = ((monto*24)/52)/44
+  elif frecuencia=='Daily':
+    tasaHora = monto/8
+  elif frecuencia=='Hourly':
+    tasaHora = monto
+  return tasaHora
