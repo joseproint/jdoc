@@ -94,13 +94,13 @@ class RowTemplate2(RowTemplate2Template):
     """This method is called when the Link is shown on the screen"""
     fRet=self.item['fRetorno']
     operacion=self.lbl_transaccion.text
-    alert(f"operacion:{operacion} fRet={fRet}")
+    #alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
       if fRet is not None:
         ano=fRet[:4]
         mes=fRet[5:7]
         dia=fRet[8:10]
-        alert(f"ano:{ano} mes:{mes} dia:{dia}")
+        #alert(f"ano:{ano} mes:{mes} dia:{dia}")
         #fRetorno = datetime(ano,mes,dia)
         fRetorno=datetime.strptime(fRet[:19], '%Y-%m-%d %H:%M:%S')
         fHoy=datetime.today()

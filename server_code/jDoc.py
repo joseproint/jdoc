@@ -548,6 +548,15 @@ def get_ExpedientesSql():
   return rowExp
 
 @anvil.server.callable
+def get_RetVencidosSql():
+  queryStr=f"""
+      SELECT * from exptrack
+      where fDevuelto is Null
+  """
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
+  
+@anvil.server.callable
 def get_expSearchSql(dato):
   queryStr=f"""
       SELECT * from Expedientes
