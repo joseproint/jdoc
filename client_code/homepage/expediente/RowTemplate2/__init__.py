@@ -75,7 +75,6 @@ class RowTemplate2(RowTemplate2Template):
           else:
             alert(f"Acuse Recibo confirmado No.:{numrecibo}")
             notas = f"Acuse de Recibo del Expediente: {codExpediente}"
-
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
           tipotrans='DEVOLUCION'
         if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
