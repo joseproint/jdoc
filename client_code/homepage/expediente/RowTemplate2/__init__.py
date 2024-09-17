@@ -114,7 +114,7 @@ class RowTemplate2(RowTemplate2Template):
         #print(f"y1: {y1} m1: {m1} d1: {d1}")
         d0 = date(y0, m0, d0)
         d1 = date(y1, m1, d1)
-        dias = d1 - d0
+        dias = d0 - d1
         #print(f"Dias: {dias.days}")
         diasfinal=dias.days
         #print(f"diasfinal: {diasfinal}")      
