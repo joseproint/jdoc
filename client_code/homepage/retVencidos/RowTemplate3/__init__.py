@@ -16,7 +16,7 @@ class RowTemplate3(RowTemplate3Template):
     """This method is called when the Link is shown on the screen"""
     fRet=self.item['fRetorno']
     operacion=self.lbl_transaccion.text
-    #alert(f"operacion:{operacion} fRet={fRet}")
+    alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
       if fRet is not None:
         ano=fRet[:4]
