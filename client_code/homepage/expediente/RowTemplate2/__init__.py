@@ -102,7 +102,7 @@ class RowTemplate2(RowTemplate2Template):
         dia=fRet[8:10]
         alert(f"ano:{ano} mes:{mes} dia:{dia}")
         #fRetorno = datetime(ano,mes,dia)
-        fRetorno=datetime.strptime(fRet, '%y/%m/%d %H:%M:%S')
+        fRetorno=datetime.strptime(fRet[:19], '%y/%m/%d %H:%M:%S')
         fHoy=datetime.today()
         y0 = fHoy.year
         m0 = fHoy.month
