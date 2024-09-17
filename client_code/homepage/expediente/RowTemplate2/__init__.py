@@ -50,7 +50,7 @@ class RowTemplate2(RowTemplate2Template):
         codExpediente = expediente
         empRecibe = self.link_origen.text
         empEntrega = emailDestino
-        #notas = f"Acuse de Recibo del Expediente: {codExpediente}"
+        notas = f"Acuse de Recibo del Expediente: {codExpediente}"
         tipotrans='ACUSERECIBO'
         numtrans = self.lbl_numero.text
         #esDevolucion = alert(f"Esta recibiendo la devolucion del documento {codExpediente}?",
