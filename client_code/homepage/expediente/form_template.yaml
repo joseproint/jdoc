@@ -188,13 +188,14 @@ components:
         name: data_grid_1
         properties:
           columns:
-          - {data_key: column_1, expand: false, id: JKSDUP, title: Transaccion, width: 107.66668701171875}
-          - {data_key: column_2, expand: false, id: VJQQOR, title: Numero, width: 77.22222900390625}
-          - {data_key: column_3, expand: false, id: OJLQEN, title: Fecha, width: 128.33331298828125}
-          - {data_key: column_4, expand: false, id: VQASTT, title: Origen, width: 155.66668701171875}
-          - {data_key: column_5, expand: false, id: HJDAPP, title: Destino, width: 163.6666259765625}
-          - {data_key: column_6, id: XKPOER, title: Notas}
-          - {data_key: column_1, id: HFIGGW, title: Recibo#}
+          - {data_key: column_1, expand: false, id: JKSDUP, title: Transaccion, width: 91.22222900390625}
+          - {data_key: column_2, expand: false, id: VJQQOR, title: Numero, width: 65.22216796875}
+          - {data_key: column_3, expand: false, id: OJLQEN, title: Fecha, width: 126}
+          - {data_key: column_4, expand: false, id: VQASTT, title: Origen, width: 133.5555419921875}
+          - {data_key: column_5, expand: false, id: HJDAPP, title: Destino, width: 150.4444580078125}
+          - {data_key: column_6, expand: false, id: XKPOER, title: Notas, width: 49}
+          - {data_key: column_7, expand: false, id: HFIGGW, title: Recibo#, width: 62.5555419921875}
+          - {data_key: column_8, id: WFQLQN, title: Dias}
           rows_per_page: 5
         type: DataGrid
       layout_properties: {grid_position: 'HDCIDY,QLROIH'}
