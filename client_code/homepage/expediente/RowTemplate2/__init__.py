@@ -93,35 +93,38 @@ class RowTemplate2(RowTemplate2Template):
   def link_dias_show(self, **event_args):
     """This method is called when the Link is shown on the screen"""
     fRet=self.item['fRetorno']
-    if fRet is not None:
-      ano=fRet[:4]
-      mes=fRet[6:1]
-      dia=fRet[8,1]
-      alert(f"ano:{ano} mes:{mes} dia:{dia}")
-      fRetorno = datetime.datetime(ano,mes,dia)
-      fHoy=datetime.today()
-      y0 = fHoy.year
-      m0 = fHoy.month
-      d0 = fHoy.day
-      #print(f"y0: {y0} m0: {m0} d0: {d0}")
-      y1 = fRetorno.year
-      m1 = fRetorno.month
-      d1 = fRetorno.day
-      #print(f"y1: {y1} m1: {m1} d1: {d1}")
-      d0 = date(y0, m0, d0)
-      d1 = date(y1, m1, d1)
-      dias = d1 - d0
-      #print(f"Dias: {dias.days}")
-      diasfinal=dias.days
-      #print(f"diasfinal: {diasfinal}")      
-      self.link_dias.text=diasfinal
-      if diasfinal<30:
+    operacion=self.lbl_transaccion.text
+    alert(f"operacion:{operacion} fRet={fRet}")
+    if operacion=='Transferencia':
+      if fRet is not None:
+        ano=fRet[:4]
+        mes=fRet[6:1]
+        dia=fRet[8,1]
+        alert(f"ano:{ano} mes:{mes} dia:{dia}")
+        fRetorno = datetime.datetime(ano,mes,dia)
+        fHoy=datetime.today()
+        y0 = fHoy.year
+        m0 = fHoy.month
+        d0 = fHoy.day
+        #print(f"y0: {y0} m0: {m0} d0: {d0}")
+        y1 = fRetorno.year
+        m1 = fRetorno.month
+        d1 = fRetorno.day
+        #print(f"y1: {y1} m1: {m1} d1: {d1}")
+        d0 = date(y0, m0, d0)
+        d1 = date(y1, m1, d1)
+        dias = d1 - d0
+        #print(f"Dias: {dias.days}")
+        diasfinal=dias.days
+        #print(f"diasfinal: {diasfinal}")      
+        self.link_dias.text=diasfinal
+        if diasfinal<30:
+          self.link_dias.foreground='green'
+        elif diasfinal<60:
+          self.link_dias.foreground='yellow'
+        elif diasfinal<90:
+          self.link_dias.foreground='orange'
+        elif diasfinal<180:
+          self.link_dias.foreground='red'
+      else:
         self.link_dias.foreground='green'
-      elif diasfinal<60:
-        self.link_dias.foreground='yellow'
-      elif diasfinal<90:
-        self.link_dias.foreground='orange'
-      elif diasfinal<180:
-        self.link_dias.foreground='red'
-    else:
-      self.link_dias.foreground='green'
