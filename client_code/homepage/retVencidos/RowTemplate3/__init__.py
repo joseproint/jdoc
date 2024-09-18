@@ -60,7 +60,7 @@ class RowTemplate3(RowTemplate3Template):
     """This method is called when the link is clicked"""
     codExpediente = self.lbl_codigo.text
     expRow = anvil.server.call(
-      'search_Expedientes',
+      'get_unExpSql',
       codExpediente
     )
     open_form('homepage.expediente',codExpediente, expRow )

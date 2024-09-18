@@ -555,7 +555,7 @@ def get_RetVencidosSql():
   """
   rowExp = f_extDb(queryStr,False)
   return rowExp
-  
+
 @anvil.server.callable
 def get_expSearchSql(dato):
   queryStr=f"""
@@ -567,6 +567,15 @@ def get_expSearchSql(dato):
       or etiqueta like '%{dato}%'
   """
   rowExp = f_extDb(queryStr,False)
+  return rowExp
+
+@anvil.server.callable
+def get_unExpSql(dato):
+  queryStr=f"""
+      SELECT * from Expedientes
+      where id ='{dato}'
+  """
+  rowExp = f_extDb(queryStr,True)
   return rowExp
 
 @anvil.server.callable
