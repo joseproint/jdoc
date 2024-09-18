@@ -19,6 +19,7 @@ class RowTemplate3(RowTemplate3Template):
     alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
       if fRet is not None:
+        alert("aqui voy...")
         ano=fRet[:4]
         mes=fRet[5:7]
         dia=fRet[8:10]
