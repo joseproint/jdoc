@@ -322,6 +322,19 @@ class expediente(expedienteTemplate):
           #alert(f"lat:{latitude} , lng:{longitude}")
           self.txt_lat.text=latitude
           self.txt_lng.text=longitude
-          #self.marcarMapa()
+          self.marcarMapa()
       except:
-          alert(f"Dirección incompleta...")
+          alert(f"Direccion incompleta...")
+
+  def marcarMapa(self):
+    latitude=self.txt_lat.text
+    longitude=self.txt_lng.text
+    if latitude!=0 and longitude!=0:
+      marker = self.map_1.Marker(
+        animation=self.map_1.Animation.DROP,
+        position=self.map_1.LatLng(latitude,longitude)
+        )
+      self.map_1.add_component(marker)
+      self.map_1.center = marker.position
+      self.map_1.zoom = 13
+      
