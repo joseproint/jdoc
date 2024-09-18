@@ -308,11 +308,11 @@ class expediente(expedienteTemplate):
 
   def link_geoloc_click(self, **event_args):
     """This method is called when the link is clicked"""
-    """This method is called when the link is clicked"""
     dir = self.text_box_direccion.text
     if dir is not None:
       try:
-        results = self.map_1.geocode(address=dir)
+        results = GoogleMap.geocode(address=dir)
+        #results = self.map_1.geocode(address=dir)
         if len(results)>0:
           latitude = results[0].geometry.location.lat()
           longitude = results[0].geometry.location.lng()   
