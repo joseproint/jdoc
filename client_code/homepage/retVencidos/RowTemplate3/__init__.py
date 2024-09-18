@@ -63,5 +63,6 @@ class RowTemplate3(RowTemplate3Template):
       'get_unExpSql',
       codExpediente
     )
+    print(f"expRow: {expRow}")
     open_form('homepage.expediente',codExpediente, expRow )
 
