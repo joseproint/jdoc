@@ -310,7 +310,7 @@ class expediente(expedienteTemplate):
     """This method is called when the link is clicked"""
     dir = self.text_box_direccion.text
     if dir is not None:
-      try:
+      #try:
         results = GoogleMap.geocode(address=dir)
         #results = self.map_1.geocode(address=dir)
         if len(results)>0:
@@ -323,8 +323,8 @@ class expediente(expedienteTemplate):
           self.txt_lat.text=latitude
           self.txt_lng.text=longitude
           self.marcarMapa()
-      except:
-          alert(f"Direccion incompleta...")
+      #except:
+      #    alert(f"Direccion incompleta...")
 
   def marcarMapa(self):
     latitude=self.txt_lat.text
