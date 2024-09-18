@@ -22,5 +22,10 @@ components:
   name: link_dias
   properties: {icon: 'fa:circle'}
   type: Link
+- event_bindings: {click: link_editar_click}
+  layout_properties: {column: PXCPRT}
+  name: link_editar
+  properties: {align: center, icon: 'fa:pencil', text: ''}
+  type: Link
 container: {type: DataRowPanel}
 is_package: true

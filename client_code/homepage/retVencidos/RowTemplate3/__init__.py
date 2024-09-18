@@ -56,3 +56,7 @@ class RowTemplate3(RowTemplate3Template):
       else:
         self.link_dias.foreground='green'
 
+  def link_editar_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.expediente',self.lbl_codigo.text, self.item )
+

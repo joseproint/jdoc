@@ -25,6 +25,7 @@ components:
       - {data_key: column_2, id: VJQQOR, title: Descripcion}
       - {data_key: column_3, id: OJLQEN, title: Usuario}
       - {data_key: column_4, id: BSIOEZ, title: Dias}
+      - {data_key: column_1, id: PXCPRT, title: ''}
     type: DataGrid
   layout_properties: {grid_position: 'WUSOEC,UKSYXG'}
   name: card_1
