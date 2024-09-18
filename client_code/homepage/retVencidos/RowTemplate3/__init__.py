@@ -59,9 +59,9 @@ class RowTemplate3(RowTemplate3Template):
   def link_editar_click(self, **event_args):
     """This method is called when the link is clicked"""
     codExpediente = self.lbl_codigo.text
-    self.item = anvil.server.call(
+    expRow = anvil.server.call(
       'search_Expedientes',
       codExpediente
     )
-    open_form('homepage.expediente',codExpediente, self.item )
+    open_form('homepage.expediente',codExpediente, expRow )
 
