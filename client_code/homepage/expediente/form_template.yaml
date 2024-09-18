@@ -156,7 +156,7 @@ components:
         type: TextBox
       layout_properties: {grid_position: 'GEKQUA,LYQNXE'}
       name: card_2
-      properties: {col_widths: '{"WFZFLO":7,"KTLUHJ":23,"AFJGGH":8,"RUAAHI":22,"JVNZVK":50,"EGXGYT":8,"WRIFUM":20,"VCTCIW":15,"DECIHJ":17,"PTEDYZ":12}', role: card, wrap_on: never}
+      properties: {col_widths: '{"WFZFLO":7,"KTLUHJ":21,"AFJGGH":10,"RUAAHI":22,"JVNZVK":50,"EGXGYT":8,"WRIFUM":20,"VCTCIW":15,"DECIHJ":17,"PTEDYZ":12}', role: card, wrap_on: never}
       type: ColumnPanel
     - components:
       - components:
@@ -217,7 +217,7 @@ components:
     type: ColumnPanel
   - layout_properties: {grid_position: 'RHVHTN,EQTIFX'}
     name: map_1
-    properties: {}
+    properties: {visible: false}
     type: GoogleMap
   layout_properties:
     col_widths: {}
