@@ -18,11 +18,11 @@ class RowTemplate3(RowTemplate3Template):
     """This method is called when the Link is shown on the screen"""
     fRet=self.item['fRetorno']
     operacion=self.item['tipotrans']
-    alert(f"operacion:{operacion} fRet={fRet}")
+    #alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
-      alert('comenzando...')
+      #alert('comenzando...')
       if fRet is not None:
-        alert("aqui voy...")
+        #alert("aqui voy...")
         ano=fRet[:4]
         mes=fRet[5:7]
         dia=fRet[8:10]
