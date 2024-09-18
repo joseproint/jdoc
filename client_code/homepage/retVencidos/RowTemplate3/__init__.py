@@ -18,6 +18,7 @@ class RowTemplate3(RowTemplate3Template):
     operacion=self.lbl_transaccion.text
     alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
+      alert('comenzando...')
       if fRet is not None:
         alert("aqui voy...")
         ano=fRet[:4]
