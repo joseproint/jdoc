@@ -305,3 +305,23 @@ class expediente(expedienteTemplate):
     #else:
     #  return False
     return diasVencido
+
+  def link_geoloc_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    """This method is called when the link is clicked"""
+    dir = self.text_box_direccion.text
+    if dir is not None:
+      try:
+        results = self.map_1.geocode(address=dir)
+        if len(results)>0:
+          latitude = results[0].geometry.location.lat()
+          longitude = results[0].geometry.location.lng()   
+          #position=results[0].geometry.location
+          #m = Marker(position=results[0].geometry.location)
+          #map.add_component(m)
+          #alert(f"lat:{latitude} , lng:{longitude}")
+          self.txt_lat.text=latitude
+          self.txt_lng.text=longitude
+          #self.marcarMapa()
+      except:
+          alert(f"Dirección incompleta...")
