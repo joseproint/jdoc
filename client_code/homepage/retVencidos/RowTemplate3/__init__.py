@@ -15,7 +15,7 @@ class RowTemplate3(RowTemplate3Template):
   def link_dias_show(self, **event_args):
     """This method is called when the Link is shown on the screen"""
     fRet=self.item['fRetorno']
-    operacion=self.lbl_transaccion.text
+    operacion=self.item['tipotrans']
     alert(f"operacion:{operacion} fRet={fRet}")
     if operacion=='TRANSFERENCIA':
       alert('comenzando...')
