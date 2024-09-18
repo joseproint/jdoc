@@ -58,7 +58,7 @@ class RowTemplate3(RowTemplate3Template):
 
   def link_editar_click(self, **event_args):
     """This method is called when the link is clicked"""
-    codExpediente = self.lbl_codigo.text
+    codExpediente = self.lbl_transaccion.text
     expRow = anvil.server.call(
       'get_unExpSql',
       codExpediente
