@@ -7,7 +7,9 @@ from anvil.tables import app_tables
 from ..logo import Globals
 from .. import hpGlobals
 import time
-import datetime
+
+from datetime import datetime, timedelta
+from datetime import date
 global sucursal,deposito,archivo,gaveta,seccion
 global rowClases, rowCbienes, server_time
 
@@ -282,3 +284,57 @@ class expediente(expedienteTemplate):
     """This method is called when an item is selected"""
     pass
 
+  def fDiasVencido(self,fRetorno):
+    fLimite=datetime.today() + timedelta(days=-31)
+    y0 = fRetorno.year
+    m0 = fRetorno.month
+    d0 = fRetorno.day
+    #print(f"y0: {y0} m0: {m0} d0: {d0}")
+    y1 = fLimite.year
+    m1 = fLimite.month
+    d1 = fLimite.day
+    #print(f"y1: {y1} m1: {m1} d1: {d1}")
+    d0 = date(y0, m0, d0)
+    d1 = date(y1, m1, d1)
+    dias = d1 - d0
+    #print(f"Dias: {dias.days}")
+    diasVencido=dias.days
+    #print(f"diasfinal: {diasfinal}")
+    #if diasfinal>30:
+    #  return True
+    #else:
+    #  return False
+    return diasVencido
+
+  def link_geoloc_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    dir = self.text_box_direccion.text
+    if dir is not None:
+      try:
+        results = GoogleMap.geocode(address=dir)
+        #results = self.map_1.geocode(address=dir)
+        if len(results)>0:
+          latitude = results[0].geometry.location.lat()
+          longitude = results[0].geometry.location.lng()   
+          #position=results[0].geometry.location
+          #m = Marker(position=results[0].geometry.location)
+          #map.add_component(m)
+          #alert(f"lat:{latitude} , lng:{longitude}")
+          self.txt_lat.text=latitude
+          self.txt_lng.text=longitude
+          self.marcarMapa()
+      except:
+          alert(f"Funcion de GoogleMaps deshabilitada...")
+
+  def marcarMapa(self):
+    latitude=self.txt_lat.text
+    longitude=self.txt_lng.text
+    if latitude!=0 and longitude!=0:
+      marker = self.map_1.Marker(
+        animation=self.map_1.Animation.DROP,
+        position=self.map_1.LatLng(latitude,longitude)
+        )
+      self.map_1.add_component(marker)
+      self.map_1.center = marker.position
+      self.map_1.zoom = 13
+      

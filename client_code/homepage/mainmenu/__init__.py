@@ -51,3 +51,11 @@ class mainmenu(mainmenuTemplate):
     #alert('en construccion..')
     open_form('homepage.mapa')
 
+  def link_vencimientos_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.retVencidos')
+
+  def link_invDoc_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.jassetinvcheck')
+

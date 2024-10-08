@@ -34,7 +34,8 @@ components:
     name: button_buscar
     properties: {text: Buscar}
     type: Button
-  - layout_properties: {grid_position: 'NQKDJQ,UZYHQM'}
+  - event_bindings: {bounds_changed: map_1_bounds_changed}
+    layout_properties: {grid_position: 'NQKDJQ,UZYHQM'}
     name: map_1
     properties: {height: '445'}
     type: GoogleMap

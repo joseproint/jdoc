@@ -1,0 +1,31 @@
+components:
+- data_bindings:
+  - {code: 'self.item[''numtrans'']', property: text, writeback: false}
+  layout_properties: {column: JKSDUP}
+  name: lbl_codigo
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''codexpediente'']', property: text, writeback: false}
+  layout_properties: {column: VJQQOR}
+  name: lbl_transaccion
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''empRecibe'']', property: text, writeback: false}
+  layout_properties: {column: OJLQEN}
+  name: lbl_usuario
+  properties: {}
+  type: Label
+- event_bindings: {show: link_dias_show}
+  layout_properties: {column: BSIOEZ}
+  name: link_dias
+  properties: {icon: 'fa:circle'}
+  type: Link
+- event_bindings: {click: link_editar_click}
+  layout_properties: {column: PXCPRT}
+  name: link_editar
+  properties: {align: center, icon: 'fa:pencil', text: ''}
+  type: Link
+container: {type: DataRowPanel}
+is_package: true

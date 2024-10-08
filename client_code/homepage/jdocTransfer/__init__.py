@@ -64,7 +64,7 @@ class jdocTransfer(jdocTransferTemplate):
   def btn_guardar_click(self, **event_args):
     """This method is called when the button is clicked"""
     global server_time
-    fecha=self.fechaRetorno.date
+    fRetorno=self.fechaRetorno.date
     etiqueta=self.rowAF.text_box_codigo.text
 
     #loc=self.drop_down_loc.selected_value
@@ -113,9 +113,10 @@ class jdocTransfer(jdocTransferTemplate):
     #if anvil.server.call('transfiereExp',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
     tipotrans='TRANSFERENCIA'
     numtrans=None
-    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans) is True:
+    esDevolucion=False
+    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
       #transferencia Ok
-      self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
+      #self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
       alert('transferencia realizada')
       open_form('homepage.expedientes')
     else:
@@ -145,7 +146,7 @@ class jdocTransfer(jdocTransferTemplate):
 
       {nombreOrigen}
     """
-    task=anvil.server.call('fEmailTask',origen,destino,titulo,notas,pdf)
+    #task=anvil.server.call('fEmailTask',origen,destino,titulo,notas,pdf)
     #print(task)
 
   def drop_down_responsible_change(self, **event_args):

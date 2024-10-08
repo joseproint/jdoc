@@ -38,10 +38,15 @@ components:
   type: Link
 - data_bindings:
   - {code: 'self.item[''numrecibo'']', property: text, writeback: false}
-  event_bindings: {click: link_nrecibo_click}
+  event_bindings: {click: link_nrecibo_click, show: link_nrecibo_show}
   layout_properties: {column: HFIGGW}
   name: link_nrecibo
-  properties: {bold: true, font_size: 12, icon: 'fa:handshake-o', text: ''}
+  properties: {bold: true, font_size: 12, icon: 'fa:clock-o', text: ''}
+  type: Link
+- event_bindings: {show: link_dias_show}
+  layout_properties: {column: WFQLQN}
+  name: link_dias
+  properties: {font_size: 12, foreground: yellow, icon: 'fa:circle', text: ''}
   type: Link
 container:
   properties: {visible: true}

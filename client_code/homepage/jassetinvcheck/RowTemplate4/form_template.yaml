@@ -1,0 +1,29 @@
+components:
+- data_bindings:
+  - {code: 'self.item[''ID'']', property: text, writeback: false}
+  layout_properties: {column: JKSDUP}
+  name: label_1
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''descripcion'']', property: text, writeback: false}
+  layout_properties: {column: VJQQOR}
+  name: label_2
+  properties: {}
+  type: Label
+- data_bindings:
+  - {code: '''Found'' if self.item[''registro'']==''F'' else ''MisPlaced'' if self.item[''registro'']==''M'' else ''Lost''', property: text, writeback: false}
+  layout_properties: {column: OJLQEN}
+  name: label_3
+  properties: {}
+  type: Label
+- layout_properties: {column: TDYHHH}
+  name: check_box_labeled
+  properties: {align: center, text: ''}
+  type: CheckBox
+- layout_properties: {column: CHNBKF}
+  name: link_printlabel
+  properties: {align: center, font_size: 18, icon: 'fa:print'}
+  type: Link
+container: {type: DataRowPanel}
+is_package: true

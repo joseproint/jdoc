@@ -12,6 +12,7 @@ import anvil.http
 import urllib.request
 import time
 
+
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -523,6 +524,24 @@ def get_SucursalesSql():
   return rowSucursales
 
 @anvil.server.callable
+def get_departamentos():
+  conn = connect()
+  with conn.cursor() as cur:
+    queryStr=f"""
+     select depto, nombre_depto as nombre
+     from departamentos
+     order by nombre_depto
+    """
+    #queryStr=f"select id,descripcion from activos where id='{id}'"
+    cur.execute(queryStr)
+    #return cur.fetchall()
+    rowDep=cur.fetchall()
+    cur.close()
+    conn.close()
+    #print(rowDep)
+    return rowDep
+    
+@anvil.server.callable
 def get_ClasesExpSql():
   queryStr=f"""
       SELECT * from clasesExp
@@ -547,6 +566,15 @@ def get_ExpedientesSql():
   return rowExp
 
 @anvil.server.callable
+def get_RetVencidosSql():
+  queryStr=f"""
+      SELECT * from exptrack
+      where fDevuelto is Null
+  """
+  rowExp = f_extDb(queryStr,False)
+  return rowExp
+
+@anvil.server.callable
 def get_expSearchSql(dato):
   queryStr=f"""
       SELECT * from Expedientes
@@ -557,6 +585,15 @@ def get_expSearchSql(dato):
       or etiqueta like '%{dato}%'
   """
   rowExp = f_extDb(queryStr,False)
+  return rowExp
+
+@anvil.server.callable
+def get_unExpSql(dato):
+  queryStr=f"""
+      SELECT * from Expedientes
+      where id ='{dato}'
+  """
+  rowExp = f_extDb(queryStr,True)
   return rowExp
 
 @anvil.server.callable
@@ -755,9 +792,9 @@ def f_empActualizaSql(empRow, nombreViejo,cNombre,cEmail,cEstado,cTelefono,cSuel
       if cTipoPago=='Hour':
         cFrecPago = 'Hourly'
 
-      from . import Nomina
-      tasaHora = Nomina.f_tasaHora(cSueldo,cFrecPago)
-      
+      #from . import Nomina
+      #tasaHora = Nomina.f_tasaHora(cSueldo,cFrecPago)
+      tasaHora = f_tasaHora(cSueldo,cFrecPago)
       queryStr=f"""
       UPDATE EMPLEADOS SET empCodigo=%s,empNombre=%s,empEmail=%s,empStatus=%s,empTelefono=%s,empSueldo=%s,empFrecPago=%s,empTipoPago=%s,
         empSexo=%s,empBirthday=%s,empDireccion=%s,empCiudad=%s,empTasaHora=%s
@@ -888,7 +925,7 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf):
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion):
   #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
@@ -904,20 +941,33 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas)
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
   queryStr=f"""
-     INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas) 
-      VALUES (%s,%s,%s,%s,%s,%s,%s);
-    """
+      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
+      """
   print(queryStr)
   comandoSql(queryStr,data)
-  if tipotrans=='ACUSERECIBO':
+  if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
-    data = (numRecibo,numTransf)
-    queryStr=f"""
-      UPDATE EXPTRACK SET NUMRECIBO=%s 
-      WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
-      """
+    if esDevolucion:
+      data = (numRecibo,fecha,numTransf)
+      if tipotrans=='DEVOLUCION':
+        queryStr=f"""
+          UPDATE EXPTRACK SET NUMDEVOLUCION=%s, FDEVUELTO=%s 
+          WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+          """
+      else:
+        queryStr=f"""
+          UPDATE EXPTRACK SET NUMRECIBO=%s, FDEVUELTO=%s 
+          WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+          """
+    else:
+      data = (numRecibo,numTransf)
+      queryStr=f"""
+        UPDATE EXPTRACK SET NUMRECIBO=%s 
+        WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+        """
     print(queryStr)
     comandoSql(queryStr,data)
   return transferenciaOk
@@ -1012,3 +1062,97 @@ def datosAFAjson(dataRow):
     cont=cont+1
   jsonData='['+jsonData+']'
   return jsonData
+
+@anvil.server.callable
+def f_tasaHora(monto,frecuencia):
+  tasaHora=0
+  if frecuencia=='Monthly':
+    tasaHora = ((monto*12)/52)/44
+  elif frecuencia=='Weekly':
+    tasaHora = monto/44
+  elif frecuencia=='BiWeekly':
+    #quincenal
+    tasaHora = ((monto*24)/52)/44
+  elif frecuencia=='Daily':
+    tasaHora = monto/8
+  elif frecuencia=='Hourly':
+    tasaHora = monto
+  return tasaHora
+
+@anvil.server.callable
+def f_procesaInv(scannedRows):
+  #procesa el inventario realizado en un departamento
+  task=anvil.server.launch_background_task('f_actInv',scannedRows)
+  #codigo,loc_actual,dep_actual,registro,codEtiqueta,lat,lng)
+  return task
+    
+@anvil.server.background_task
+def f_actInv(scannedRows):
+  #codigo,loc,dep,registro,codEtiqueta,lat,lng):
+  #actualiza tabla de activos con el inventario realizado en un depto
+  conn=connect()
+  cur=conn.cursor()
+  print("aqui vamos...")
+  print(f"Scaneados: {len(scannedRows)}")
+  for x in scannedRows:
+    codigo=x['ID']
+    loc_actual=x['localidad_actual']
+    dep_actual=x['depto_actual']
+    registro=x['registro']
+    codEtiqueta=x['codEtiqueta']
+    lat = x['lat']
+    lng = x['lng']
+    #queryStr=f"""
+    #   UPDATE ACTIVOS SET localidad_actual='{loc_actual}',depto_actual='{dep_actual}',registro='{registro}',codEtiqueta='{codEtiqueta}', lat={lat}, lng={lng}
+    #    where ID='{codigo}';
+    #"""
+    queryStr=f"""
+       UPDATE EXPEDIENTES SET localidad_actual='{loc_actual}',depto_actual='{dep_actual}',registro='{registro}',codEtiqueta='{codEtiqueta}', lat={lat}, lng={lng}
+        where ID='{codigo}';
+    """
+    print(queryStr)
+    actualizacionOk=False
+    #conn=connect()
+    #cur=conn.cursor()
+    try:
+      cur.execute(queryStr)
+      conn.commit()
+      actualizacionOk=True
+    except pymysql.MySQLError as e:
+      print('Got error {!r}, errno is {}'.format(e, e.args[0]))
+      conn.rollback()
+    print(f"codigo:{codigo} - actOK: {actualizacionOk}")  
+  cur.close()
+  conn.close()
+  return actualizacionOk
+
+@anvil.server.callable
+def get_Afs(loc,dep):
+  #queryStr=f"""
+  #  SELECT * from activos where localidad='{loc}' and depto='{dep}'
+  #"""
+  #queryStr=f"SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from activos  where localidad='{loc}' and depto='{dep}'"
+  #queryStr='SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from activos'
+  queryStr='SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from EXPEDIENTES'
+  print(queryStr)
+  conn=connect()
+  cur=conn.cursor()
+  cur.execute(queryStr)
+  rowAf=cur.fetchall()
+  cur.close()
+  conn.close()
+  #print(rowAf)
+  return rowAf
+
+@anvil.server.callable
+def f_sucGeoCord(loc):
+  queryStr=f"SELECT * from sucursales where sucID='{loc}'"
+  print(queryStr)
+  conn=connect()
+  cur=conn.cursor()
+  cur.execute(queryStr)
+  rowSuc=cur.fetchOne()
+  cur.close()
+  conn.close()
+  #print(rowSuc)
+  return rowSuc
