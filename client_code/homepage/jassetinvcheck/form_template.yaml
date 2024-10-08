@@ -198,6 +198,37 @@ components:
       name: spacer_1
       properties: {height: 32}
       type: Spacer
+    - components:
+      - layout_properties: {}
+        name: repeating_panel_1
+        properties: {item_template: homepage.jassetinvcheck.RowTemplate14, spacing_above: none, spacing_below: none}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'USPGXO,UUJNGN'}
+      name: data_grid_1
+      properties:
+        auto_header: true
+        background: ''
+        border: ''
+        columns:
+        - {$$hashKey: 'object:28247', data_key: column_1, expand: false, id: IRFTHW, title: ID, width: 59}
+        - {$$hashKey: 'object:28248', data_key: column_2, expand: false, id: ASXTIK, title: Description, width: 262}
+        - {$$hashKey: 'object:28249', data_key: column_3, expand: false, id: FPULTM, title: Status, width: 61}
+        - {$$hashKey: 'object:28250', data_key: column_4, expand: false, id: JBDNYG, title: Labelled, width: 63}
+        - {$$hashKey: 'object:28251', data_key: column_5, id: RLZWLK, title: ''}
+        foreground: ''
+        role: null
+        rows_per_page: 20
+        show_page_controls: true
+        spacing_above: small
+        spacing_below: small
+        tooltip: ''
+        visible: true
+        wrap_on: never
+      type: DataGrid
+    - layout_properties: {grid_position: 'VVVZSH,TGEKVV'}
+      name: geolocator_1
+      properties: {}
+      type: form:dep_2rdvm2c211qg5:Geolocator
     layout_properties: {grid_position: 'ZYXAFM,NSMGTQ'}
     name: card_2
     properties: {role: card}
