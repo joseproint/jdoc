@@ -1078,3 +1078,81 @@ def f_tasaHora(monto,frecuencia):
   elif frecuencia=='Hourly':
     tasaHora = monto
   return tasaHora
+
+@anvil.server.callable
+def f_procesaInv(scannedRows):
+  #procesa el inventario realizado en un departamento
+  task=anvil.server.launch_background_task('f_actInv',scannedRows)
+  #codigo,loc_actual,dep_actual,registro,codEtiqueta,lat,lng)
+  return task
+    
+@anvil.server.background_task
+def f_actInv(scannedRows):
+  #codigo,loc,dep,registro,codEtiqueta,lat,lng):
+  #actualiza tabla de activos con el inventario realizado en un depto
+  conn=connect()
+  cur=conn.cursor()
+  print("aqui vamos...")
+  print(f"Scaneados: {len(scannedRows)}")
+  for x in scannedRows:
+    codigo=x['ID']
+    loc_actual=x['localidad_actual']
+    dep_actual=x['depto_actual']
+    registro=x['registro']
+    codEtiqueta=x['codEtiqueta']
+    lat = x['lat']
+    lng = x['lng']
+    #queryStr=f"""
+    #   UPDATE ACTIVOS SET localidad_actual='{loc_actual}',depto_actual='{dep_actual}',registro='{registro}',codEtiqueta='{codEtiqueta}', lat={lat}, lng={lng}
+    #    where ID='{codigo}';
+    #"""
+    queryStr=f"""
+       UPDATE EXPEDIENTES SET localidad_actual='{loc_actual}',depto_actual='{dep_actual}',registro='{registro}',codEtiqueta='{codEtiqueta}', lat={lat}, lng={lng}
+        where ID='{codigo}';
+    """
+    print(queryStr)
+    actualizacionOk=False
+    #conn=connect()
+    #cur=conn.cursor()
+    try:
+      cur.execute(queryStr)
+      conn.commit()
+      actualizacionOk=True
+    except pymysql.MySQLError as e:
+      print('Got error {!r}, errno is {}'.format(e, e.args[0]))
+      conn.rollback()
+    print(f"codigo:{codigo} - actOK: {actualizacionOk}")  
+  cur.close()
+  conn.close()
+  return actualizacionOk
+
+@anvil.server.callable
+def get_Afs(loc,dep):
+  #queryStr=f"""
+  #  SELECT * from activos where localidad='{loc}' and depto='{dep}'
+  #"""
+  #queryStr=f"SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from activos  where localidad='{loc}' and depto='{dep}'"
+  #queryStr='SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from activos'
+  queryStr='SELECT ID,descripcion,registro,localidad,depto,lat,lng,codEtiqueta,localidad_actual,depto_actual from EXPEDIENTES'
+  print(queryStr)
+  conn=connect()
+  cur=conn.cursor()
+  cur.execute(queryStr)
+  rowAf=cur.fetchall()
+  cur.close()
+  conn.close()
+  #print(rowAf)
+  return rowAf
+
+@anvil.server.callable
+def f_sucGeoCord(loc):
+  queryStr=f"SELECT * from sucursales where sucID='{loc}'"
+  print(queryStr)
+  conn=connect()
+  cur=conn.cursor()
+  cur.execute(queryStr)
+  rowSuc=cur.fetchOne()
+  cur.close()
+  conn.close()
+  #print(rowSuc)
+  return rowSuc
