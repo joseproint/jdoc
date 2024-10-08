@@ -1,6 +1,6 @@
 allow_embedding: false
 dependencies:
-- dep_id: dep_2rdvm2c211qg5
+- dep_id: dep_0gc5ezdb1g49dv
   resolution_hints: {app_id: YM6H4O4IFXLNM3MM, name: Geolocator, package_name: Geolocator}
   version: {branch: master}
 metadata: {description: Document Finder, logo_img: 'asset:jDocLogo-logo.png', title: jDoc}
