@@ -62,6 +62,15 @@ components:
       properties: {role: card}
       type: ColumnPanel
     - components:
+      - layout_properties: {grid_position: 'VMLKJM,JXTPGA'}
+        name: link_invDoc
+        properties: {align: center, bold: true, text: Inventario Fisico de Expedientes}
+        type: Link
+      layout_properties: {grid_position: 'FVFTTI,IVKIPY'}
+      name: card_9
+      properties: {role: card}
+      type: ColumnPanel
+    - components:
       - event_bindings: {click: link_ubicaciones_click}
         layout_properties: {grid_position: 'FACQGK,QWEYNB'}
         name: link_ubicaciones
@@ -77,7 +86,7 @@ components:
         name: link_usuarios
         properties: {align: center, bold: true, text: Usuarios}
         type: Link
-      layout_properties: {grid_position: 'OVHMRI,TGVRNF'}
+      layout_properties: {grid_position: 'KWLWTO,KIWSON'}
       name: card_7
       properties: {role: card}
       type: ColumnPanel
