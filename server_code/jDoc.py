@@ -524,6 +524,24 @@ def get_SucursalesSql():
   return rowSucursales
 
 @anvil.server.callable
+def get_departamentos():
+  conn = connect()
+  with conn.cursor() as cur:
+    queryStr=f"""
+     select depto, nombre_depto as nombre
+     from departamentos
+     order by nombre_depto
+    """
+    #queryStr=f"select id,descripcion from activos where id='{id}'"
+    cur.execute(queryStr)
+    #return cur.fetchall()
+    rowDep=cur.fetchall()
+    cur.close()
+    conn.close()
+    #print(rowDep)
+    return rowDep
+    
+@anvil.server.callable
 def get_ClasesExpSql():
   queryStr=f"""
       SELECT * from clasesExp
