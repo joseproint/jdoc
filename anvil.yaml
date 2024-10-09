@@ -1,5 +1,8 @@
 allow_embedding: false
-dependencies: []
+dependencies:
+- dep_id: dep_9uioj7uwy9uwx
+  resolution_hints: {app_id: XBGU3TNELLV4D6KS, name: Anvil_Extras, package_name: Anvil_Extras}
+  version: {branch: master}
 metadata: {description: Document Finder, logo_img: 'asset:jDocLogo-logo.png', title: jDoc}
 name: jDoc
 package_name: jDoc
