@@ -7,7 +7,7 @@ from anvil.tables import app_tables
 import json
 from .. import hpGlobals
 import anvil.js
-from anvil_extras.storage import indexed_db
+#from anvil_extras.storage import indexed_db
 
 global af_store
 global codigos
