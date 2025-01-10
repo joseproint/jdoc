@@ -971,13 +971,22 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno,fotoProcesada)
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
   queryStr=f"""
-      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno,firma) 
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);
+      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
       """
   print(queryStr)
   comandoSql(queryStr,data)
+  #=========== manejo la firma ========================
+  queryStr=f"""
+       UPDATE EXPTRACK SET FIRMA=%s
+       WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
+  """
+  data = (fotoProcesada,numTransf)
+  comandoSql(queryStr,data)
+  #=========== fin manejo de la firma =================
+  
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
     if esDevolucion:
