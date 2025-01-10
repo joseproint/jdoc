@@ -983,7 +983,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
        UPDATE EXPTRACK SET FIRMA=%s
        WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
   """
-  data = (fotoProcesada,numTransf)
+  data = (fotoProcesada,numtrans)
   comandoSql(queryStr,data)
   #=========== fin manejo de la firma =================
   
