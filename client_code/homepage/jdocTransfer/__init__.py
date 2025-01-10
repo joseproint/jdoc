@@ -91,7 +91,7 @@ class jdocTransfer(jdocTransferTemplate):
     #lat=hpGlobals.f_getLat()
     #lng=hpGlobals.f_getLng()
     notas=self.txt_notes.text
-    firma=None
+    #firma=None
     cia=''
     #codigoaf=self.rowAF.codigoaf
     #descripcion=self.rowAF.descripcion
