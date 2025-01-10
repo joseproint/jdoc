@@ -11,7 +11,7 @@ import datetime
 global server_time
 
 class jdocTransfer(jdocTransferTemplate):
-  def __init__(self, **properties):
+  def __init__(self, rowAF, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.rowAF = rowAF
