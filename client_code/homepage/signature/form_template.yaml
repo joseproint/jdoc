@@ -1,4 +1,9 @@
 components:
+- event_bindings: {click: link_atras_click}
+  layout_properties: {slot: default}
+  name: link_atras
+  properties: {icon: 'fa:reply', text: Atras}
+  type: Link
 - layout_properties: {slot: default}
   name: firma_1
   properties: {}
@@ -7,12 +12,12 @@ components:
   - event_bindings: {click: button_save_click}
     layout_properties: {grid_position: 'KYDCIF,UXOPVG'}
     name: button_save
-    properties: {text: Save}
+    properties: {text: Aceptar}
     type: Button
   - event_bindings: {click: button_clear_click}
     layout_properties: {grid_position: 'KYDCIF,SMLUZQ'}
     name: button_clear
-    properties: {text: Clear}
+    properties: {text: Limpiar}
     type: Button
   - layout_properties: {grid_position: 'VEMYNU,RDUZRB'}
     name: image_1

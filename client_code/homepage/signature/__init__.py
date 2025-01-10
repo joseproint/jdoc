@@ -20,3 +20,7 @@ class signature(signatureTemplate):
   def button_clear_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.call_js('clear')
+
+  def link_atras_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('homepage.jdocTransfer')
