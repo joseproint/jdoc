@@ -161,4 +161,8 @@ class jdocTransfer(jdocTransferTemplate):
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.call_js('clear')
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('homepage.signature')
   
