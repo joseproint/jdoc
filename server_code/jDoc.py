@@ -926,10 +926,12 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
 
 @anvil.server.callable
 def procesaFoto(foto):
-  with open("/tmp/test.jpg", "wb") as f:
+  #with open("/tmp/test.jpg", "wb") as f:
+  with open("test.jpg", "wb") as f:
     f.write(foto.get_bytes())
   # Open a file in binary mode
-  with open("/tmp/test.jpg", 'rb') as f:
+  #with open("/tmp/test.jpg", 'rb') as f:
+  with open("test.jpg", 'rb') as f:
     photo = f.read()
     file=base64.b64encode(photo)
   #para quitarle la letra b the binary string al string
@@ -951,11 +953,8 @@ def procesaFoto(foto):
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
-    fotoBytes=firma.get_bytes()
-    file=base64.b64encode(fotoBytes)
-    #para quitarle la letra b the binary string al string
-    fotoProcesada=f"'{file.decode('ascii')}'"     
-    #fotoProcesada=procesaFoto(firma)
+    #fotoBytes=firma.get_bytes()
+    fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
   transferenciaOk=True
