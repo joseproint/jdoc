@@ -925,7 +925,7 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion):
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
   transferenciaOk=True
   queryStr=f"""
@@ -941,10 +941,10 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno)
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno,firma)
   queryStr=f"""
-      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno) 
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
+      INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno,firma) 
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);
       """
   print(queryStr)
   comandoSql(queryStr,data)

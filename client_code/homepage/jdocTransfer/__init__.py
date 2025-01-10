@@ -66,7 +66,8 @@ class jdocTransfer(jdocTransferTemplate):
 
     url=URLMedia(self.call_js('getURL'))
     self.image_1.source = url
-    
+    firma = url
+
     #loc=self.drop_down_loc.selected_value
     #self.loc=loc['sucID']
     #locname=self.locname
@@ -114,7 +115,7 @@ class jdocTransfer(jdocTransferTemplate):
     tipotrans='TRANSFERENCIA'
     numtrans=None
     esDevolucion=False
-    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
+    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion,firma) is True:
       #transferencia Ok
       #self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
       alert('transferencia realizada')

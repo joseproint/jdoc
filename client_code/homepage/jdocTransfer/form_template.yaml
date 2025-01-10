@@ -70,7 +70,7 @@ components:
   - event_bindings: {click: button_clear_click}
     layout_properties: {grid_position: 'KYDCIF,SMLUZQ'}
     name: button_clear
-    properties: {text: Limpiar Firma}
+    properties: {text: Blanquear Firma}
     type: Button
   - event_bindings: {click: btn_guardar_click}
     layout_properties: {grid_position: 'KYDCIF,ISQUVK'}
