@@ -1,8 +1,9 @@
-from ._anvil_designer import jdocTransferTemplate
+from ._anvil_designer import jdocTransfer_antTemplate
 from anvil import *
 import anvil.server
-import anvil.google.auth, anvil.google.drive
-from anvil.google.drive import app_files
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 from .. import hpGlobals
 from ..logo import Globals
 import json
@@ -10,9 +11,11 @@ import time
 import datetime
 global server_time
 
-class jdocTransfer(jdocTransferTemplate):
-  def __init__(self, **properties):
+class jdocTransfer_ant(jdocTransfer_antTemplate):
+  def __init__(self, rowAF, **properties):
+    #def __init__(self, rowAF, **properties):
     # Set Form properties and Data Bindings.
+    #
     self.init_components(**properties)
     self.rowAF = rowAF
     #suc_rows = anvil.server.call('get_Sucursales')
@@ -162,16 +165,4 @@ class jdocTransfer(jdocTransferTemplate):
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('homepage.signature')
-
-  def button_save_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    url=URLMedia(self.call_js('getURL'))
-    self.image_1.source = url
-
-  def button_clear_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.call_js('clear')
-
-  def link_atras_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    open_form('homepage.jdocTransfer')
+  
