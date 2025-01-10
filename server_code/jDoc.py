@@ -925,8 +925,33 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
   return pdfReport
 
 @anvil.server.callable
+def procesaFoto(foto):
+  with open("/tmp/test.jpg", "wb") as f:
+    f.write(foto.get_bytes())
+  # Open a file in binary mode
+  with open("/tmp/test.jpg", 'rb') as f:
+    photo = f.read()
+    file=base64.b64encode(photo)
+  #para quitarle la letra b the binary string al string
+  file=f"'{file.decode('ascii')}'" 
+  #conn = connect()
+  #try:
+  #  with conn.cursor() as cur:
+  #    comando=f"UPDATE invfisico set foto=CONVERT({file},binary) where codbarra='{codigo}'"
+  #    print(comando)
+  #    cur.execute(comando)
+  #    conn.commit()
+  #    conn.close()
+  #    return "1"
+  #except Exception as e:
+  #  print(f'Error in insertion to MySQL database: {e}')
+  return file
+  
+@anvil.server.callable
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
+  fotoBytes=firma.get_bytes()
+  fotoProcesada=procesaFoto(firma)
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 
@@ -941,7 +966,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
       numtrans = 1
   else:
     numtrans = 1
-  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno,firma)
+  data= (tipotrans,numtrans,fecha,codExpediente,empRecibe,empEntrega,notas,fRetorno,fotoProcesada)
   queryStr=f"""
       INSERT INTO EXPTRACK (tipotrans,numtrans,ftransaccion,codexpediente,empRecibe,empEntrega,notas,fRetorno,firma) 
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);
