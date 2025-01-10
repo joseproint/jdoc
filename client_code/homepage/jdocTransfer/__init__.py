@@ -152,4 +152,13 @@ class jdocTransfer(jdocTransferTemplate):
   def drop_down_responsible_change(self, **event_args):
     """This method is called when an item is selected"""
     pass
+
+  def link_firmaOk_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    url=URLMedia(self.call_js('getURL'))
+    self.image_1.source = url
+
+  def link_1_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.call_js('clear')
   

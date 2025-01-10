@@ -2,12 +2,14 @@ allow_embedding: false
 dependencies: []
 metadata: {description: Document Finder, logo_img: 'asset:jDocLogo-logo.png', title: jDoc}
 name: jDoc
+native_deps: null
 package_name: jDoc
 runtime_options:
   client_version: '3'
+  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
   server_spec: {base: python310-standard}
   server_version: python3-sandbox
-  version: 2
+  version: 3
 services:
 - client_config: {}
   server_config: {}
