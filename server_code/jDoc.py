@@ -951,8 +951,9 @@ def procesaFoto(foto):
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
-    #fotoBytes=firma.get_bytes()
-    fotoProcesada=procesaFoto(firma)
+    fotoBytes=firma.get_bytes()
+    fotoProcesada = fotoBytes
+    #fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
   transferenciaOk=True
