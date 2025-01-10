@@ -950,8 +950,11 @@ def procesaFoto(foto):
 @anvil.server.callable
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
-  fotoBytes=firma.get_bytes()
-  fotoProcesada=procesaFoto(firma)
+  if firma is not None:
+    #fotoBytes=firma.get_bytes()
+    fotoProcesada=procesaFoto(firma)
+  else:
+    print("Debe firmar el documento...")
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 
