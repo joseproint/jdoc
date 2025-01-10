@@ -952,7 +952,9 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
     fotoBytes=firma.get_bytes()
-    fotoProcesada = fotoBytes
+    file=base64.b64encode(fotoBytes)
+    #para quitarle la letra b the binary string al string
+    fotoProcesada=f"'{file.decode('ascii')}'"     
     #fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
