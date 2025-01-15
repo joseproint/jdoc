@@ -432,8 +432,8 @@ def get_foto(tipotrans,numtrans):
       foto=rowAf['firma']
       print(f"foto: {foto}")
       if foto is not None:
-        newfoto=anvil.BlobMedia("image/png",foto)
-        #newfoto=anvil.BlobMedia("image/jpeg",foto)
+        #newfoto=anvil.BlobMedia("image/png",foto)
+        newfoto=anvil.BlobMedia("image/jpeg",foto)
     return newfoto
 
 @anvil.server.callable
