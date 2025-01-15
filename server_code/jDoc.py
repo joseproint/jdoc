@@ -955,7 +955,7 @@ def procesaFoto(foto):
 def insertaFirma(tipotrans,numtrans,firma):
     sqlQuery=f"""
         INSERT INTO firmas (tipotrans,numtrans,firma) 
-        VALUES ('{tipotrans}', '{numtrans}',CONVERT({firma},binary));
+        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}));
         """
     print(sqlQuery) 
     conn = connect()
