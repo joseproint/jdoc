@@ -957,10 +957,10 @@ def insertaFirma(tipotrans,numtrans,firma):
         INSERT INTO firmas (tipotrans,numtrans,firma) 
         VALUES ('{tipotrans}', '{numtrans}','{firma}');
         """
+    print(sqlQuery) 
     conn = connect()
-    with conn.cursor(as_dict=True) as cur:
+    with conn.cursor() as cur:
      cur.execute(sqlQuery)
-     print(sqlQuery) 
      conn.commit()
      cur.close()
      conn.close()
