@@ -414,13 +414,13 @@ def fguardaUserLinkSql(email, usertoken):
   comandoSql(queryStr,data)  
   
 @anvil.server.callable
-def get_foto(id):
+def get_foto(tipotrans,numtrans):
   conn = connect()
   with conn.cursor() as cur:
     queryStr=f"""
-     select userImage
-     from userinfo
-     where userName = '{id}'
+     select firma
+     from firmas
+     where tipotrans='{tipotrans}' and numtrans='{numtrans}'
     """
     cur.execute(queryStr)
     rowAf=cur.fetchone()
@@ -429,7 +429,7 @@ def get_foto(id):
     newfoto=None
     if rowAf is not None:
       print('aqui voy get_foto()...')
-      foto=rowAf['userImage']
+      foto=rowAf['firma']
       if foto is not None:
         newfoto=anvil.BlobMedia("image/png",foto)
     return newfoto
@@ -924,7 +924,6 @@ def createSend_pdf(pantalla,fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng
      pdfReport = PDFRenderer(filename=f'TransferenciaEXP.pdf').render_form('homepage.jdocTransfer_copy',fecha,etiqueta,codigoaf,codemp,cia,loc,depto,lat,lng,firma,notas,descripcion)
   return pdfReport
 
-@anvil.server.callable
 def procesaFoto(foto):
   #with open("/tmp/test.jpg", "wb") as f:
   with open("test.jpg", "wb") as f:

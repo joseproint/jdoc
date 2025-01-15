@@ -219,6 +219,10 @@ components:
     name: map_1
     properties: {visible: false}
     type: GoogleMap
+  - layout_properties: {grid_position: 'WXBTJW,CNQKFG'}
+    name: image_2
+    properties: {}
+    type: Image
   layout_properties:
     col_widths: {}
     grid_position: KLDQDH,ALACJJ

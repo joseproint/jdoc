@@ -188,7 +188,10 @@ class expediente(expedienteTemplate):
 
   def link_etiqueta_click(self, **event_args):
     """This method is called when the link is clicked"""
-    pass
+    tipotrans='TRANSFERENCIA'
+    numtrans=12
+    firma = anvil.server.call('get_foto',tipotrans,numtrans)
+    self.image_2.source=firma
 
   def link_historial_click(self, **event_args):
     """This method is called when the link is clicked"""
