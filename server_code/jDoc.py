@@ -432,8 +432,8 @@ def get_foto(tipotrans,numtrans):
       foto=rowAf['firma']
       print(f"foto: {foto}")
       if foto is not None:
-        #newfoto=anvil.BlobMedia("image/png",foto)
-        newfoto=anvil.BlobMedia("image/jpeg",foto)
+        newfoto=anvil.BlobMedia("image/png",foto)
+        #newfoto=anvil.BlobMedia("image/jpeg",foto)
     return newfoto
 
 @anvil.server.callable
@@ -953,10 +953,10 @@ def procesaFoto(foto):
   return file
 
 @anvil.server.callable
-def insertaFirma(tipotrans,numtrans,firma):
+def insertaFirma(tipotrans,numtrans,firma,cType):
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,firma) 
-        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}));
+        INSERT INTO firmas (tipotrans,numtrans,firma,ContentType) 
+        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}');
         """
     print(sqlQuery) 
     conn = connect()
@@ -971,6 +971,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
     fotoBytes=firma.get_bytes()
+    cType=firma.content_type
     fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
@@ -996,8 +997,8 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   print(queryStr)
   comandoSql(queryStr,data)
   #=========== manejo la firma ========================
+  insertaFirma(tipotrans,numtrans,fotoBytes,cType)
   #insertaFirma(tipotrans,numtrans,fotoProcesada)
-  insertaFirma(tipotrans,numtrans,fotoProcesada)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
