@@ -431,9 +431,9 @@ def get_foto(tipotrans,numtrans):
       print('aqui voy get_foto()...')
       foto=rowAf['firma']
       if foto is not None:
-        newfoto=anvil.BlobMedia("image/png",foto)
-    #return newfoto
-    return foto
+        #newfoto=anvil.BlobMedia("image/png",foto)
+        newfoto=anvil.BlobMedia("image/jpeg",foto)
+    return newfoto
 
 @anvil.server.callable
 def get_ponchesXRango(fini,ffin,email):
