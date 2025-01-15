@@ -429,8 +429,8 @@ def get_foto(tipotrans,numtrans):
     newfoto=None
     if rowAf is not None:
       print('aqui voy get_foto()...')
-      print(f"{rowAf['tipotrans']} - {rowAf['numtrans']}")
       foto=rowAf['firma']
+      print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
         newfoto=anvil.BlobMedia("image/jpeg",foto)
