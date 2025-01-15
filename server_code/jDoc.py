@@ -992,7 +992,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   comandoSql(queryStr,data)
   #=========== manejo la firma ========================
   #insertaFirma(tipotrans,numtrans,fotoProcesada)
-  insertaFirma(tipotrans,numtrans,fotoBytes)
+  insertaFirma(tipotrans,numtrans,fotoProcesada)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
