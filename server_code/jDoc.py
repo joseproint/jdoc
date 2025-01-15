@@ -420,7 +420,7 @@ def get_foto(tipotrans,numtrans):
     queryStr=f"""
      select firma
      from firmas
-     where tipotrans='{tipotrans}' and numtrans='{numtrans}'
+     where tipotrans='{tipotrans}' and numtrans={numtrans}
     """
     cur.execute(queryStr)
     rowAf=cur.fetchone()
