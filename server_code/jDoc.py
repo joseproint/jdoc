@@ -954,7 +954,7 @@ def procesaFoto(foto):
 @anvil.server.callable
 def insertaFirma(tipotrans,numtrans,firma):
     conn = connect()
-    with conn.cursor() as cur:
+    with conn.cursor(as_dict=True) as cur:
      cur.execute(f"""
         INSERT INTO firmas (tipotrans,numtrans,firma) 
         VALUES ('{tipotrans}', '{numtrans}','{firma}');
