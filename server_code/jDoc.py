@@ -948,12 +948,24 @@ def procesaFoto(foto):
   #except Exception as e:
   #  print(f'Error in insertion to MySQL database: {e}')
   return file
-  
+
+@anvil.server.callable
+def insertaFirma(tipotrans,numtrans,firma):
+    conn = connect()
+    with conn.cursor() as cur:
+     cur.execute(f"""
+        INSERT INTO firmas (tipotrans,numtrans,firma) 
+        VALUES ('{tipotrans}', '{numtrans}','{firma}');
+        """)
+     conn.commit()
+     cur.close()
+     conn.close()
+      
 @anvil.server.callable
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
-    #fotoBytes=firma.get_bytes()
+    fotoBytes=firma.get_bytes()
     fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
@@ -979,14 +991,9 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   print(queryStr)
   comandoSql(queryStr,data)
   #=========== manejo la firma ========================
-  queryStr=f"""
-       UPDATE EXPTRACK SET FIRMA=%s
-       WHERE TIPOTRANS='TRANSFERENCIA' AND NUMTRANS=%s;
-  """
-  data = (fotoProcesada,numtrans)
-  comandoSql(queryStr,data)
+  #insertaFirma(tipotrans,numtrans,fotoProcesada)
+  insertaFirma(tipotrans,numtrans,fotoBytes)
   #=========== fin manejo de la firma =================
-  
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
     if esDevolucion:
