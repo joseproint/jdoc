@@ -929,13 +929,15 @@ def procesaFoto(foto):
   #with open("/tmp/test.jpg", "wb") as f:
   with open("test.jpg", "wb") as f:
     f.write(foto.get_bytes())
+    print("* * * * ARCHIVO TEST.JPG GUARDADO * * * * * ")
   # Open a file in binary mode
   #with open("/tmp/test.jpg", 'rb') as f:
   with open("test.jpg", 'rb') as f:
     photo = f.read()
     file=base64.b64encode(photo)
+    print("* * * * * ARCHIVO JPG base64 codificado")
   #para quitarle la letra b the binary string al string
-  file=f"'{file.decode('ascii')}'" 
+  #file=f"'{file.decode('ascii')}'" 
   #conn = connect()
   #try:
   #  with conn.cursor() as cur:
