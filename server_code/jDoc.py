@@ -999,7 +999,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #=========== manejo la firma ========================
   #insertaFirma(tipotrans,numtrans,fotoBytes,cType)
   firmaOriginal=firma.get_bytes()
-  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,firmaOriginal)
+  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
