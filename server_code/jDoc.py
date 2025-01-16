@@ -955,9 +955,11 @@ def procesaFoto(foto):
 @anvil.server.callable
 def insertaFirma(tipotrans,numtrans,firma,cType,firmaOriginal):
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
-        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',{firmaOriginal};
+        #INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
+        INSERT INTO firmas (tipotrans,numtrans,ContentType,imagen) 
+        VALUES ('{tipotrans}', '{numtrans}','{cType}',{firmaOriginal};
         """
+        #VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',{firmaOriginal};
     print(sqlQuery) 
     conn = connect()
     with conn.cursor() as cur:
@@ -999,7 +1001,8 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #=========== manejo la firma ========================
   #insertaFirma(tipotrans,numtrans,fotoBytes,cType)
   firmaOriginal=firma.get_bytes()
-  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
+  #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
+  insertaFirma(tipotrans,numtrans,cType,fotoProcesada)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
