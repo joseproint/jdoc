@@ -72,6 +72,11 @@ components:
     name: button_clear
     properties: {text: Blanquear Firma}
     type: Button
+  - event_bindings: {change: file_loader_1_change}
+    layout_properties: {grid_position: 'KYDCIF,ZVKPIA'}
+    name: file_loader_1
+    properties: {}
+    type: FileLoader
   - event_bindings: {click: btn_guardar_click}
     layout_properties: {grid_position: 'KYDCIF,ISQUVK'}
     name: btn_guardar

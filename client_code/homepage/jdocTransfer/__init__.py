@@ -64,8 +64,9 @@ class jdocTransfer(jdocTransferTemplate):
     fRetorno=self.fechaRetorno.date
     etiqueta=self.rowAF.text_box_codigo.text
 
-    url=URLMedia(self.call_js('getURL'))
-    self.image_1.source = url
+    #url=URLMedia(self.call_js('getURL'))
+    #self.image_1.source = url
+    url=self.image_1.source
     firma = url
 
     #loc=self.drop_down_loc.selected_value
@@ -179,3 +180,7 @@ class jdocTransfer(jdocTransferTemplate):
   def link_atras_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('homepage.jdocTransfer')
+
+  def file_loader_1_change(self, file, **event_args):
+    """This method is called when a new file is loaded into this FileLoader"""
+    self.image_1.source=file
