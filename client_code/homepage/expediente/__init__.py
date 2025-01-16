@@ -189,7 +189,7 @@ class expediente(expedienteTemplate):
   def link_etiqueta_click(self, **event_args):
     """This method is called when the link is clicked"""
     tipotrans='TRANSFERENCIA'
-    numtrans=12
+    numtrans=20
     firma = anvil.server.call('get_foto',tipotrans,numtrans)
     if firma:
       self.image_2.source=firma
