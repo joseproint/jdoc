@@ -194,7 +194,7 @@ class expediente(expedienteTemplate):
     if firma:
       self.image_2.source=firma
     else:
-      alert("firma no es válida..")
+      alert("foto no es válida..")
 
   def link_historial_click(self, **event_args):
     """This method is called when the link is clicked"""
