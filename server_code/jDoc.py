@@ -955,8 +955,8 @@ def procesaFoto(foto):
 @anvil.server.callable
 def insertaFirma(tipotrans,numtrans,firma,cType):
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,firma,ContentType) 
-        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}');
+        INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
+        VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',CONVERT(varbinary(max),{firma}));
         """
     print(sqlQuery) 
     conn = connect()
