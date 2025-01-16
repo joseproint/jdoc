@@ -998,7 +998,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   comandoSql(queryStr,data)
   #=========== manejo la firma ========================
   #insertaFirma(tipotrans,numtrans,fotoBytes,cType)
-  firmaOriginal=firma
+  firmaOriginal=firma.get_bytes()
   insertaFirma(tipotrans,numtrans,fotoProcesada,cType,firmaOriginal)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
