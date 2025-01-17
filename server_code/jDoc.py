@@ -433,7 +433,8 @@ def get_foto(tipotrans,numtrans):
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
-        newfoto=anvil.BlobMedia("image/jpeg",foto)
+        #newfoto=anvil.BlobMedia("image/jpeg",foto)
+        newfoto=base64.b64encode(foto)
     return newfoto
 
 @anvil.server.callable
