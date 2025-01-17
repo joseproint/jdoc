@@ -958,7 +958,7 @@ def procesaFoto(foto):
 def insertaFirma(tipotrans,numtrans,firma,cType):
     #INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,ContentType,firma) t_
+        INSERT INTO firmas (tipotrans,numtrans,ContentType,firma)
         VALUES ('{tipotrans}', {numtrans},'{cType}',{firma})
         """
     #VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',{firmaOriginal};
