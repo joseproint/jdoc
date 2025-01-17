@@ -433,9 +433,10 @@ def get_foto(tipotrans,numtrans):
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
-        newfoto=anvil.BlobMedia("image/jpeg",foto)
-    return newfoto
-
+        #newfoto=anvil.BlobMedia("image/jpeg",foto)
+    #return newfoto
+    return foto
+    
 @anvil.server.callable
 def get_ponchesXRango(fini,ffin,email):
   queryStr=f"""
