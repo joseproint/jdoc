@@ -194,7 +194,7 @@ class expediente(expedienteTemplate):
     firma = anvil.server.call('get_foto',tipotrans,numtrans)
     if firma:
       #self.image_2.source=firma
-      self.image_2.source=base64.b64encode(firma)
+      self.image_2.source=base64.b64decode(firma)
     else:
       alert("foto no es válida..")
 
