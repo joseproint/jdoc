@@ -7,6 +7,7 @@ from anvil.tables import app_tables
 from ..logo import Globals
 from .. import hpGlobals
 import time
+import base64
 
 from datetime import datetime, timedelta
 from datetime import date
@@ -192,7 +193,8 @@ class expediente(expedienteTemplate):
     numtrans = self.txt_lat.text
     firma = anvil.server.call('get_foto',tipotrans,numtrans)
     if firma:
-      self.image_2.source=firma
+      #self.image_2.source=firma
+      self.image_2.source=base64.b64encode(firma)
     else:
       alert("foto no es válida..")
 
