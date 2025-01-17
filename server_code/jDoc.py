@@ -938,7 +938,7 @@ def procesaFoto(foto):
     file=base64.b64encode(photo)
     print("* * * * * ARCHIVO JPG base64 codificado")
   #para quitarle la letra b the binary string al string
-  file=f"'{file.decode('ascii')}'" 
+  #file=f"'{file.decode('ascii')}'" 
   #conn = connect()
   #try:
   #  with conn.cursor() as cur:
