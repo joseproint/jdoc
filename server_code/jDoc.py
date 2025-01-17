@@ -973,6 +973,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
     fotoBytes=firma.get_bytes()
+    print(f"fotobytes:{fotoBytes}")
     cType=firma.content_type
     fotoProcesada=procesaFoto(firma)
   else:
