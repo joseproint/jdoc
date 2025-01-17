@@ -418,7 +418,7 @@ def get_foto(tipotrans,numtrans):
   conn = connect()
   with conn.cursor() as cur:
     queryStr=f"""
-     select firma
+     select imagen
      from firmas
      where tipotrans='{tipotrans}' and numtrans={numtrans}
     """
@@ -429,7 +429,7 @@ def get_foto(tipotrans,numtrans):
     newfoto=None
     if rowAf is not None:
       print('aqui voy get_foto()...')
-      foto=rowAf['firma']
+      foto=rowAf['imagen']
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
