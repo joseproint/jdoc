@@ -418,7 +418,7 @@ def get_foto(tipotrans,numtrans):
   conn = connect()
   with conn.cursor() as cur:
     queryStr=f"""
-     select imagen2
+     select firma
      from firmas
      where tipotrans='{tipotrans}' and numtrans={numtrans}
     """
@@ -426,10 +426,10 @@ def get_foto(tipotrans,numtrans):
     rowAf=cur.fetchone()
     cur.close()
     conn.close()
-    newfoto=None
+    #newfoto=None
     if rowAf is not None:
       print('aqui voy get_foto()...')
-      foto=rowAf['imagen2']
+      foto=rowAf['firma']
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
@@ -955,11 +955,11 @@ def procesaFoto(foto):
   return file
 
 @anvil.server.callable
-def insertaFirma(tipotrans,numtrans,firma,cType,firmaOriginal):
+def insertaFirma(tipotrans,numtrans,firma,cType):
     #INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,ContentType,imagen2) 
-        VALUES ('{tipotrans}', {numtrans},'{cType}',{firmaOriginal})
+        INSERT INTO firmas (tipotrans,numtrans,ContentType,firma) t_
+        VALUES ('{tipotrans}', {numtrans},'{cType}',{firma})
         """
     #VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',{firmaOriginal};
     print(sqlQuery) 
@@ -974,8 +974,8 @@ def insertaFirma(tipotrans,numtrans,firma,cType,firmaOriginal):
 def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
-    fotoBytes=firma.get_bytes()
-    print(f"fotobytes:{fotoBytes}")
+    #fotoBytes=firma.get_bytes()
+    #print(f"fotobytes:{fotoBytes}")
     cType=firma.content_type
     fotoProcesada=procesaFoto(firma)
   else:
@@ -1003,12 +1003,13 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   comandoSql(queryStr,data)
   #=========== manejo la firma ========================
   #insertaFirma(tipotrans,numtrans,fotoBytes,cType)
-  firmaOriginal=firma.get_bytes()
+  #firmaOriginal=firma.get_bytes()
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,firma)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoBytes)
-  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
+  #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
+  insertaFirma(tipotrans,numtrans,fotoProcesada,cType)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
