@@ -192,8 +192,7 @@ class expediente(expedienteTemplate):
     numtrans = self.txt_lat.text
     firma = anvil.server.call('get_foto',tipotrans,numtrans)
     if firma:
-      #self.image_2.source=firma
-      self.image_2.source=anvil.BlobMedia("image/jpeg",firma)
+      self.image_2.source=firma
     else:
       alert("foto no es válida..")
 
