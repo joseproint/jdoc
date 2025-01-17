@@ -64,9 +64,9 @@ class jdocTransfer(jdocTransferTemplate):
     fRetorno=self.fechaRetorno.date
     etiqueta=self.rowAF.text_box_codigo.text
 
-    #url=URLMedia(self.call_js('getURL'))
-    #self.image_1.source = url
-    url=self.image_1.source
+    url=URLMedia(self.call_js('getURL'))
+    self.image_1.source = url
+    #url=self.image_1.source
     firma = url
 
     #loc=self.drop_down_loc.selected_value
