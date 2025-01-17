@@ -194,7 +194,10 @@ class expediente(expedienteTemplate):
     firma = anvil.server.call('get_foto',tipotrans,numtrans)
     if firma:
       #self.image_2.source=firma
-      self.image_2.source=base64.b64decode(firma)
+      mime_type="image/jpg"
+      binary_data = base64.b64decode(firma)
+      media_Object=BlobMedia(mime_type, binary_data)
+      self.image_2.source=media_Object
     else:
       alert("foto no es válida..")
 
