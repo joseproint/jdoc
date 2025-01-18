@@ -432,7 +432,7 @@ def get_foto(tipotrans,numtrans,columna):
       #foto=rowAf['firma']
       if columna=='firma':
         foto=rowAf['firma']
-      elseif columna=='cedula':
+      elif columna=='cedula':
         foto=rowAf['cedula']
       print(f"foto: {foto}")
       if foto is not None:
