@@ -21,5 +21,16 @@ class notas(notasTemplate):
       media_Object=BlobMedia(mime_type, binary_data)
       self.image_firma.source=media_Object
     else:
-      alert("firma no es válida..")
+      alert("Imagen firma no es válida..")
+
+    #Ahora leo la foto de la cedula de identidad
+    cedula = anvil.server.call('get_foto',tipotrans,numtrans)
+    if cedula:
+      #self.image_2.source=firma
+      mime_type="image/jpg"
+      binary_data = base64.b64decode(cedula)
+      media_Object=BlobMedia(mime_type, binary_data)
+      self.image_cedula.source=media_Object
+    else:
+      alert("Imagen Cedula de Identidad no es válida..")    
     # Any code you write here will run before the form opens.
