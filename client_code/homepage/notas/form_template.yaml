@@ -1,21 +1,24 @@
 components:
 - components:
+  - layout_properties: {grid_position: 'ZCVCQY,GBZSSR'}
+    name: label_1
+    properties: {bold: true, text: 'Notas:'}
+    type: Label
   - layout_properties: {grid_position: 'ZCVCQY,WFCTRM'}
     name: lbl_notas
     properties: {}
     type: Label
-  - event_bindings: {click: link_back_click}
-    layout_properties: {grid_position: 'ZCVCQY,QQGUGE'}
-    name: link_back
-    properties: {align: right, background: '', bold: false, border: '', col_spacing: medium, col_widths: '{}', font: '', font_size: null, foreground: '', icon: 'fa:reply', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Back, tooltip: '', underline: false, url: '', visible: true, wrap_on: never}
-    type: Link
   - layout_properties: {grid_position: 'XQXINK,MBRNAJ'}
     name: image_firma
     properties: {}
     type: Image
+  - layout_properties: {grid_position: 'TUWJVA,MUMJSW'}
+    name: label_2
+    properties: {align: center, bold: true, text: Firma}
+    type: Label
   layout_properties: {grid_position: 'SOHXAK,FHHZDU'}
   name: column_panel_1
-  properties: {col_widths: '{"WFCTRM":54,"QQGUGE":6}'}
+  properties: {col_widths: '{"WFCTRM":68,"QQGUGE":6,"GBZSSR":6}'}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

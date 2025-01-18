@@ -24,8 +24,7 @@ class RowTemplate2(RowTemplate2Template):
     result = alert(content=notas(self.item),
                    large=True,
                    buttons=[
-                     ("Change", "change", "success"),
-                     ("Discard", "discard", "danger")
+                     ("Cerrar", "cerrar", "salir")
                    ])
 
   def link_origen_click(self, **event_args):
