@@ -3,7 +3,7 @@ from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
-
+import base64
 
 class notas(notasTemplate):
   def __init__(self, item, **properties):
