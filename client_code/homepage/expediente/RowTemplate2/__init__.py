@@ -4,6 +4,7 @@ import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 from ...logo import Globals
+from ...notas import notas
 import datetime
 from datetime import datetime, timedelta
 from datetime import date
@@ -19,7 +20,13 @@ class RowTemplate2(RowTemplate2Template):
 
   def link_notas_click(self, **event_args):
     """This method is called when the link is clicked"""
-    alert(f"Nota: {self.item['notas']}")
+    #alert(f"Nota: {self.item['notas']}")
+    result = alert(content=Notas(self.item),
+                   large=True,
+                   buttons=[
+                     ("Change", "change", "success"),
+                     ("Discard", "discard", "danger")
+                   ])
 
   def link_origen_click(self, **event_args):
     """This method is called when the link is clicked"""
