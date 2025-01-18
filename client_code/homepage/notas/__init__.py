@@ -13,7 +13,8 @@ class notas(notasTemplate):
 
     tipotrans='TRANSFERENCIA'
     numtrans = item['numtrans']
-    firma = anvil.server.call('get_foto',tipotrans,numtrans)
+    columna = 'firma'
+    firma = anvil.server.call('get_foto',tipotrans,numtrans,columna)
     if firma:
       #self.image_2.source=firma
       mime_type="image/jpg"
@@ -24,7 +25,8 @@ class notas(notasTemplate):
       alert("Imagen firma no es válida..")
 
     #Ahora leo la foto de la cedula de identidad
-    cedula = anvil.server.call('get_foto',tipotrans,numtrans)
+    columna = 'cedula'
+    cedula = anvil.server.call('get_foto',tipotrans,numtrans,columna)
     if cedula:
       #self.image_2.source=firma
       mime_type="image/jpg"
