@@ -414,11 +414,11 @@ def fguardaUserLinkSql(email, usertoken):
   comandoSql(queryStr,data)  
   
 @anvil.server.callable
-def get_foto(tipotrans,numtrans):
+def get_foto(tipotrans,numtrans,columna):
   conn = connect()
   with conn.cursor() as cur:
     queryStr=f"""
-     select firma
+     select {columna}
      from firmas
      where tipotrans='{tipotrans}' and numtrans={numtrans}
     """
@@ -429,7 +429,8 @@ def get_foto(tipotrans,numtrans):
     #newfoto=None
     if rowAf is not None:
       print('aqui voy get_foto()...')
-      foto=rowAf['firma']
+      #foto=rowAf['firma']
+      foto=f"rowAf['{columna}']"
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
