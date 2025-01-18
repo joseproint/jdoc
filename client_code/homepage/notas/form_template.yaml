@@ -12,13 +12,27 @@ components:
     name: image_firma
     properties: {}
     type: Image
+  - layout_properties: {grid_position: 'EQCOJR,LVONCZ'}
+    name: label_3
+    properties:
+      align: center
+      spacing:
+        margin: [0, null, 0, null]
+        padding: [null, null, 0, null]
+      text: ____________________________________________________________
+    type: Label
   - layout_properties: {grid_position: 'TUWJVA,MUMJSW'}
     name: label_2
-    properties: {align: center, bold: true, text: Firma}
+    properties:
+      align: center
+      bold: true
+      spacing:
+        padding: [0, null, null, null]
+      text: Firma
     type: Label
   layout_properties: {grid_position: 'SOHXAK,FHHZDU'}
   name: column_panel_1
-  properties: {col_widths: '{"WFCTRM":68,"QQGUGE":6,"GBZSSR":6}'}
+  properties: {col_widths: '{"WFCTRM":69,"GBZSSR":5}'}
   type: ColumnPanel
 container: {type: ColumnPanel}
 is_package: true

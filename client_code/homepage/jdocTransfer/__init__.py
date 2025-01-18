@@ -66,9 +66,9 @@ class jdocTransfer(jdocTransferTemplate):
 
     url=URLMedia(self.call_js('getURL'))
     self.image_1.source = url
-    #url=self.image_1.source
+    cedula=self.image_cedula.source
     firma = url
-
+    
     #loc=self.drop_down_loc.selected_value
     #self.loc=loc['sucID']
     #locname=self.locname
@@ -116,7 +116,7 @@ class jdocTransfer(jdocTransferTemplate):
     tipotrans='TRANSFERENCIA'
     numtrans=None
     esDevolucion=False
-    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion,firma) is True:
+    if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion,firma,cedula) is True:
       #transferencia Ok
       #self.generaPDF(fecha,codExpediente,codExpediente,empRecibe,cia,locname,depname,self.lat,self.lng,firma,notas,descripcion)
       alert('transferencia realizada')
@@ -183,4 +183,4 @@ class jdocTransfer(jdocTransferTemplate):
 
   def file_loader_1_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
-    self.image_1.source=file
+    self.image_cedula.source=file

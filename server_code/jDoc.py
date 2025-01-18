@@ -955,11 +955,11 @@ def procesaFoto(foto):
   return file
 
 @anvil.server.callable
-def insertaFirma(tipotrans,numtrans,firma,cType):
+def insertaFirma(tipotrans,numtrans,firma,cType,cedula,cType2):
     #INSERT INTO firmas (tipotrans,numtrans,firma,ContentType,imagen) 
     sqlQuery=f"""
-        INSERT INTO firmas (tipotrans,numtrans,ContentType,firma)
-        VALUES ('{tipotrans}', {numtrans},'{cType}',{firma})
+        INSERT INTO firmas (tipotrans,numtrans,ContentType,firma,cedula,ContentType2)
+        VALUES ('{tipotrans}', {numtrans},'{cType}',{firma},{cedula},'{cType2}')
         """
     #VALUES ('{tipotrans}', '{numtrans}',CONVERT(varbinary(max),{firma}),'{cType}',{firmaOriginal};
     print(sqlQuery) 
@@ -971,7 +971,7 @@ def insertaFirma(tipotrans,numtrans,firma,cType):
      conn.close()
       
 @anvil.server.callable
-def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma):
+def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTransf,fRetorno,esDevolucion,firma,cedula):
   #tipotrans='TRANSFERENCIA'
   if firma is not None:
     #fotoBytes=firma.get_bytes()
@@ -980,6 +980,9 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
     fotoProcesada=procesaFoto(firma)
   else:
     print("Debe firmar el documento...")
+  if cedula is not None:
+    cType2=cedula.content_type
+    cedulaProcesada=procesaFoto(cedula)
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 
@@ -1009,7 +1012,7 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,firma)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoBytes)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
-  insertaFirma(tipotrans,numtrans,fotoProcesada,cType)
+  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,cedulaProcesada,cType2)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
