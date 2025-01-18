@@ -430,7 +430,10 @@ def get_foto(tipotrans,numtrans,columna):
     if rowAf is not None:
       print('aqui voy get_foto()...')
       #foto=rowAf['firma']
-      foto=f"rowAf['{columna}']"
+      if columna=='firma':
+        foto=rowAf['firma']
+      elseif columna=='cedula':
+        foto=rowAf['cedula']
       print(f"foto: {foto}")
       if foto is not None:
         #newfoto=anvil.BlobMedia("image/png",foto)
