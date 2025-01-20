@@ -112,7 +112,8 @@ class jdocTransfer(jdocTransferTemplate):
     codExpediente=etiqueta
     empEntrega = Globals.f_getEmail()
     empRecibe = empleado
-    alert(f"Empleado: {empRecibe}")
+    anvil.alert(f"Empleado: {empRecibe}")
+    print(f"Empleado: {empRecibe}")
     if empRecibe == 'AATercero':
       #para los que reciben el documento y no son de la empresa
       alert("es un tercero..")
