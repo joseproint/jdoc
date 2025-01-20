@@ -164,10 +164,6 @@ class jdocTransfer(jdocTransferTemplate):
     #task=anvil.server.call('fEmailTask',origen,destino,titulo,notas,pdf)
     #print(task)
 
-  def drop_down_responsible_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
   def link_firmaOk_click(self, **event_args):
     """This method is called when the link is clicked"""
     url=URLMedia(self.call_js('getURL'))
@@ -197,3 +193,7 @@ class jdocTransfer(jdocTransferTemplate):
   def file_loader_1_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
     self.image_cedula.source=file
+
+  def drop_down_empleados_change(self, **event_args):
+    """This method is called when an item is selected"""
+    alert(f"seleccionaste a: {self.drop_down_empleados.selected_value}"

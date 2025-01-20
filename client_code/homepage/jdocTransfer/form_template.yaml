@@ -24,7 +24,7 @@ components:
         name: label_3
         properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Transferir a, tooltip: '', underline: false, visible: true}
         type: Label
-      - event_bindings: {change: drop_down_responsible_change}
+      - event_bindings: {change: drop_down_empleados_change}
         layout_properties: {grid_position: 'LGGYZY,CIIPMO'}
         name: drop_down_empleados
         properties: {}
