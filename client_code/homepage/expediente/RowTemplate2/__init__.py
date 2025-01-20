@@ -49,7 +49,8 @@ class RowTemplate2(RowTemplate2Template):
       emailDestino = self.item['empRecibe']
       emailUsuario = Globals.f_getEmail()
       #alert(f"usuario:{emailUsuario} destino:{emailDestino}")
-      if (emailUsuario != emailDestino) and (emailDestino != 'AATercero@gmail.com'):
+      nombreRecibe=self.item['nombreRecibe']
+      if (emailUsuario != emailDestino) and (nombreRecibe != 'AATercero@gmail.com'):
         alert('Solo el usuario destino puede acusar recibo del expediente!')
       else:
         numrecibo=self.link_nrecibo.text
