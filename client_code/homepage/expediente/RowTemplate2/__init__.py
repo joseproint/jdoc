@@ -87,7 +87,9 @@ class RowTemplate2(RowTemplate2Template):
             notas = f"Acuse de Recibo del Expediente: {codExpediente}"
           fRetorno=None #el acuse de recibo no guarda fecha de retorno
           tipotrans='DEVOLUCION'
-        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion) is True:
+        firma=None
+        cedula=None
+        if anvil.server.call('transfiereExp',fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numtrans,fRetorno,esDevolucion,firma,cedula) is True:
           alert(f"{tipotrans} generado para una {tTransOrigen}..")
 
   def link_nrecibo_show(self, **event_args):
