@@ -196,4 +196,4 @@ class jdocTransfer(jdocTransferTemplate):
 
   def drop_down_empleados_change(self, **event_args):
     """This method is called when an item is selected"""
-    alert(f"seleccionaste a: {self.drop_down_empleados.selected_value}"
+    alert(f"seleccionaste a: {self.drop_down_empleados.selected_value}")
