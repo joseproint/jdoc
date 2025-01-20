@@ -112,8 +112,10 @@ class jdocTransfer(jdocTransferTemplate):
     codExpediente=etiqueta
     empEntrega = Globals.f_getEmail()
     empRecibe = empleado
+    alert(f"Empleado: {empRecibe}")
     if empRecibe == 'AATercero':
       #para los que reciben el documento y no son de la empresa
+      alert("es un tercero..")
       self.txt_email.visible=True 
       self.txt_email.enabled=True
       emailRecibe=self.txt_email.text
