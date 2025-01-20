@@ -114,7 +114,7 @@ class jdocTransfer(jdocTransferTemplate):
     empRecibe = empleado
     anvil.alert(f"Empleado: {empRecibe}")
     print(f"Empleado: {empRecibe}")
-    if empRecibe == 'AATercero':
+    if empRecibe == 'AATercero@gmail.com':
       #para los que reciben el documento y no son de la empresa
       alert("es un tercero..")
       self.txt_email.visible=True 
