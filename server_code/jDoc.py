@@ -983,6 +983,10 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
     cType=firma.content_type
     fotoProcesada=procesaFoto(firma)
   else:
+    cType=None
+    fotoProcesada=None
+    cType2=None
+    cedula=None
     print("Debe firmar el documento...")
   if cedula is not None:
     cType2=cedula.content_type
