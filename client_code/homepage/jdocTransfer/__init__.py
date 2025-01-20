@@ -92,7 +92,7 @@ class jdocTransfer(jdocTransferTemplate):
     #lat=hpGlobals.f_getLat()
     #lng=hpGlobals.f_getLng()
     notas=self.txt_notes.text
-    emailRecibe=self.txt_email.text
+   
     #firma=None
     cia=''
     #codigoaf=self.rowAF.codigoaf
@@ -112,7 +112,16 @@ class jdocTransfer(jdocTransferTemplate):
     codExpediente=etiqueta
     empEntrega = Globals.f_getEmail()
     empRecibe = empleado
-    
+    if empRecibe == 'AATercero':
+      #para los que reciben el documento y no son de la empresa
+      self.txt_email.visible=True 
+      self.txt_email.enabled=True
+      emailRecibe=self.txt_email.text
+      empRecibe=emailRecibe
+    else:
+      self.txt_email.visible=False
+      self.txt_email.enabled=False
+       
     #if anvil.server.call('transfiereExp',fecha,etiqueta,codigoaf,codemp,cia,self.loc,self.depto,self.lat,self.lng,firma,notas)==True:
     tipotrans='TRANSFERENCIA'
     numtrans=None
