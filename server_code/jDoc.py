@@ -991,6 +991,9 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   if cedula is not None:
     cType2=cedula.content_type
     cedulaProcesada=procesaFoto(cedula)
+  else:
+    cType2=None
+    cedulaProcesada=None
   transferenciaOk=True
   queryStr=f"""
     SELECT MAX(numtrans) as ultimo from EXPTRACK 
@@ -1020,7 +1023,8 @@ def transfiereExp(fecha,codExpediente,empRecibe,empEntrega,notas,tipotrans,numTr
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,firma)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoBytes)
   #insertaFirma(tipotrans,numtrans,fotoProcesada,cType,fotoProcesada)
-  insertaFirma(tipotrans,numtrans,fotoProcesada,cType,cedulaProcesada,cType2)
+  if tipotrans=='TRANSFERENCIA':
+    insertaFirma(tipotrans,numtrans,fotoProcesada,cType,cedulaProcesada,cType2)
   #=========== fin manejo de la firma =================
   if tipotrans=='ACUSERECIBO' or tipotrans=='DEVOLUCION':
     numRecibo=numtrans
